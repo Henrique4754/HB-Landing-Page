@@ -1,0 +1,178 @@
+@import url(global.css);
+@import url(variables.css);
+.hero {
+  display: flex;
+  min-height: 100vh;
+  background-image: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0) 0%,
+      var(--azul-escuroBG) 100%
+    ),
+    url(image/iphone\ exploded.png);
+  background-size: cover;
+  position: relative;
+  width: 100%;
+}
+.section__start {
+  color: var(--corTexto-claro);
+  text-align: center;
+  margin: auto;
+}
+.section__start h1 {
+  padding: 1rem;
+  text-transform: uppercase;
+  color: var(--corTexto-claro);
+  font-size: 4rem;
+  font-weight: 100;
+}
+.section__start p {
+  padding: 1rem;
+  font-size: 1.3rem;
+  color: var(--corTexto-claro);
+}
+.line {
+  display: block;
+  border-bottom: 1px solid var(--corTexto-claro);
+  margin: 1rem 0 2.5rem 0;
+}
+h2 {
+  text-align: center;
+  color: var(--corTexto-claro);
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+#section__jobs {
+  margin-bottom: 1.5rem;
+}
+.jobs__list {
+  text-align: center;
+}
+.jobs__list p {
+  padding: 1rem 1.25rem 0.5rem;
+}
+.jobs__list h3 {
+  padding: 0.1rem 1.25rem;
+}
+.jobs__list > li {
+  background-color: var(--corFundo);
+  color: var(--corTexto-escuro);
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.5);
+  display: inline-block;
+  margin: 1.4rem;
+  height: 39rem;
+  width: 28rem;
+  text-align: left;
+}
+.jobs__list img {
+  border-top-left-radius: 0.5rem;
+  border-top-right-radius: 0.5rem;
+  object-fit: cover;
+  width: 100%;
+}
+.cardbtn {
+  padding: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 9999px;
+  color: var(--corTexto-claro);
+  background-color: var(--azul-btn);
+  transition: linear 0.3s;
+}
+.cardbtn:hover {
+  color: var(--corBtn-hover);
+}
+.sobre {
+  align-items: flex-start;
+  display: flex;
+  margin: auto;
+  width: 800px;
+  background-color: var(--corFundo);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.5);
+}
+.img__inline-box {
+  width: 300px;
+  object-fit: cover;
+  border-radius: 0.7rem;
+}
+.text__box,
+.img__inline-box {
+  display: inline-block;
+  object-fit: cover;
+  object-position: center;
+}
+.text__box {
+  width: 500px;
+  padding-left: 1rem;
+  color: var(--corTexto-escuro);
+  text-align: justify;
+  font-size: 1.4rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+@media (max-width: 600px) {
+  .hero {
+    display: flex;
+    min-height: 100vh;
+    background-position: top;
+    background-image: linear-gradient(
+        to bottom,
+        rgba(0, 0, 0, 0) 0%,
+        var(--azul-escuroBG) 100%
+      ),
+      url(image/iphone\ exploded.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: relative;
+    width: 100%;
+  }
+  h2 {
+    text-align: center;
+    color: var(--corTexto-claro);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+  .jobs__list img {
+    object-fit: cover;
+    padding: 1rem;
+    width: 100%;
+  }
+  .jobs__list > li {
+    color: var(--corTexto-escuro);
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    margin: 1.4rem;
+    height: 34rem;
+    width: 22rem;
+    text-align: left;
+  }
+  .sobre {
+  display: grid;
+  width: 90%;
+  background-color: var(--corFundo);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+}
+.img__inline-box {
+  display: block;
+  border-radius: 0.7rem;
+  margin: 0 auto;
+}
+.text__box,
+.img__inline-box {
+  display: block;
+}
+.text__box {
+  width: 100%;
+  padding-top: 1rem;
+  padding-left: 0;
+  color: var(--corTexto-escuro);
+  text-align: center;
+  font-weight: 500;
+}
+}
+
+

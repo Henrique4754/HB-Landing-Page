@@ -1,0 +1,43 @@
+:root{
+    --corTexto-escuro:#333333;
+    --corFundo:#eaeaea;
+    --corTexto-claro:#ffffff;
+    --corBtn-hover:#cccccc;
+    --azul-escuroBG:hsl(240, 100%, 20%);
+    --azul-btn:rgb(0, 0, 255);
+    
+}
+
+
+
+
+
+
+
+/* Lista de cores usadas neste CSS:
+
+1. Branco (#ffffff)
+  - color: white; (em .section__start, .section__start h1, .section__start p, .line, h2)
+  - border-bottom: 1px solid white; (.line)
+  - color: #cccccc; (.cardbtn:hover)
+
+2. Preto (#000000)
+  - rgba(0, 0, 0, 0) (gradiente de fundo em .hero)
+  - color: black; (.jobs__list > li, .jobs__list > li em @media)
+  - box-shadow: rgba(0, 0, 0, 0.5); (.jobs__list > li, .jobs__list > li em @media)
+
+3. Cinza claro (#eaeaea)
+  - background-color: #eaeaea; (.jobs__list > li, .sobre)
+
+4. Cinza escuro (#cccccc)
+  - color: #cccccc; (.cardbtn:hover)
+
+5. Azul escuro (hsl(240, 100%, 20%) → #000066)
+  - background-image: linear-gradient(..., hsl(240, 100%, 20%) 100%) (.hero, .hero em @media)
+
+6. Roxo (hsl(251, 100%, 50%) → #3c00ff)
+  - background-color: hsl(251, 100%, 50%); (.cardbtn)
+
+7. Cinza médio (hsl(0, 0%, 20%) → #333333)
+  - color: hsl(0, 0%, 20%); (.text__box)
+*/

@@ -1,0 +1,54 @@
+@import url(variables.css);
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: poppins;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  background-color: var(--azul-escuroBG);
+}
+header {
+  padding: 1rem;
+  text-align: center;
+  position: fixed;
+  z-index: 10;
+  width: 100%;
+  backdrop-filter: blur(6.5px);
+}
+nav > ul > li {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0rem 1.5rem;
+}
+nav a {
+  color: var(--corTexto-claro);
+  font-size: 1.5rem;
+  text-decoration: none;
+}
+nav a:hover {
+  color: var(--corBtn-hover);
+}
+.contactbtn {
+  font-weight: 600;
+  font-size: 1rem;
+  text-decoration: none;
+  border-radius: 9999px;
+  padding: 1rem;
+  color: var(--corTexto-claro);
+  background-color: var(--azul-btn);
+  transition: linear 0.3s;
+}
+.contactbtn:hover {
+  color: var(--corBtn-hover);
+}
+footer {
+  font-weight: 600;
+  padding: 1rem;
+  font-size: 1.2rem;
+  color: var(--corTexto-claro);
+  text-align: center;
+}

@@ -1,0 +1,24 @@
+centralizalão de footer
+/* Garante que o html e o body ocupem 100% da altura e remove margens padrão */
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%; /* Garante que o body tenha no mínimo a altura da tela */
+  margin: 0;
+  display: flex; /* Transforma o body em um container flex */
+  flex-direction: column; /* Organiza os itens (header, main, footer) em coluna */
+}
+
+/* Faz o conteúdo principal crescer e ocupar o espaço vazio */
+main {
+  flex-grow: 1;
+}
+
+/* Estilos básicos para header e footer (opcional) */
+header, footer {
+  background-color: #f1f1f1;
+  padding: 20px;
+  text-align: center;
+}
+_________________________________________________________________________________________
