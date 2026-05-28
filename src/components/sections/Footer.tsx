@@ -93,9 +93,35 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-hairline">
-        <Container className="py-6">
+        <Container className="flex flex-col items-center gap-1.5 py-6">
           <p className="text-center text-xs text-muted">
             © {year} Henrique Braga de Carvalho · HB Comércio &amp; Acessórios.
+          </p>
+          {/*
+            Atribuição obrigatória do modelo 3D usado no hero (licença CC BY 4.0).
+            Mantém autor, link da fonte e link da licença visíveis conforme
+            exigido por creativecommons.org/licenses/by/4.0.
+          */}
+          <p className="text-center text-[11px] text-muted/70">
+            Modelo 3D{" "}
+            <a
+              href="https://skfb.ly/o7QrM"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline decoration-dotted hover:text-ink"
+            >
+              "iPhone 12 Teardown"
+            </a>{" "}
+            por Peter_D, sob{" "}
+            <a
+              href="https://creativecommons.org/licenses/by/4.0/"
+              target="_blank"
+              rel="noopener noreferrer license"
+              className="underline decoration-dotted hover:text-ink"
+            >
+              CC BY 4.0
+            </a>
+            .
           </p>
         </Container>
       </div>
