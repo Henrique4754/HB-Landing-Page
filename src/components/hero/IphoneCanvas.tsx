@@ -46,7 +46,7 @@ useGLTF.preload(MODEL_URL, false, true);
 const START_ANGLE_DEG = 87.2;
 const END_ANGLE_DEG = 356.8;
 const START_TIME_S = 27.95;
-const END_TIME_S = 44.8;
+const END_TIME_S = 45.0;
 
 /**
  * Modelo do iPhone com a animação "iPhone 12 Teardown" (45s) embutida no GLB.
