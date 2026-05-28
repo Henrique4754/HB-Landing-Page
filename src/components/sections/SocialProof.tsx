@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { Star, ArrowUpRight, ArrowUpRight as ExternalIcon } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
@@ -6,7 +7,95 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { CtaLink } from "../ui/Button";
 import { InstagramGlyph } from "../icons/InstagramGlyph";
 import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
+import { cn } from "../../lib/cn";
 import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS, REVIEWS } from "../../lib/site";
+
+// Tempo (ms) que cada depoimento fica visível antes do próximo entrar.
+const AUTOPLAY_MS = 6000;
+
+/**
+ * Carrossel auto-cíclico de depoimentos. Um card por vez; transição com
+ * overlap (entrada e saída acontecem simultaneamente via AnimatePresence
+ * sem `mode=wait`). Pausa quando o mouse passa em cima ou quando algum
+ * dot recebe foco por teclado.
+ */
+function ReviewsCarousel() {
+  const [index, setIndex] = useState(0);
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused) return;
+    const id = window.setInterval(() => {
+      setIndex((i) => (i + 1) % REVIEWS.length);
+    }, AUTOPLAY_MS);
+    return () => window.clearInterval(id);
+  }, [paused]);
+
+  const current = REVIEWS[index];
+
+  return (
+    <motion.div
+      variants={fadeUp}
+      {...inViewProps}
+      className="mt-10"
+      onMouseEnter={() => setPaused(true)}
+      onMouseLeave={() => setPaused(false)}
+      onFocus={() => setPaused(true)}
+      onBlur={() => setPaused(false)}
+    >
+      {/* Palco do carrossel — altura mínima evita pulo de layout entre cards. */}
+      <div
+        className="relative mx-auto min-h-[200px] max-w-2xl sm:min-h-[180px]"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <AnimatePresence>
+          <motion.article
+            key={current.author}
+            initial={{ opacity: 0, y: 18, scale: 0.97 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -18, scale: 0.97 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="absolute inset-0 flex flex-col gap-4 rounded-2xl border border-hairline bg-surface p-7"
+          >
+            <div
+              className="flex items-center gap-1 text-cta"
+              aria-label={`${current.rating} de 5 estrelas`}
+            >
+              {Array.from({ length: current.rating }).map((_, i) => (
+                <Star key={i} size={16} fill="currentColor" aria-hidden />
+              ))}
+            </div>
+            <p className="text-base leading-relaxed text-muted sm:text-lg">
+              "{current.text}"
+            </p>
+            <div className="mt-auto flex items-baseline justify-between gap-3">
+              <span className="text-sm font-medium text-ink">{current.author}</span>
+              <span className="spec-label text-[10px] text-muted/80">Google</span>
+            </div>
+          </motion.article>
+        </AnimatePresence>
+      </div>
+
+      {/* Indicadores (clicáveis pra pular pro card direto). */}
+      <div className="mt-5 flex items-center justify-center gap-2">
+        {REVIEWS.map((review, i) => (
+          <button
+            key={review.author}
+            type="button"
+            onClick={() => setIndex(i)}
+            aria-label={`Ver depoimento de ${review.author}`}
+            aria-current={i === index}
+            className={cn(
+              "h-1.5 rounded-full transition-all duration-300",
+              i === index ? "w-6 bg-brand" : "w-1.5 bg-muted/30 hover:bg-muted/60",
+            )}
+          />
+        ))}
+      </div>
+    </motion.div>
+  );
+}
 
 /**
  * Prova social — crença vira confiança (PRD seção 7).
@@ -91,33 +180,10 @@ export function SocialProof() {
         </div>
 
         {/*
-          Faixa de depoimentos reais — copiados literalmente do Google Meu
-          Negócio (5 reviews). Sem fabricação, conforme restrição do PRD.
+          Carrossel auto-cíclico dos 5 depoimentos reais do Google Meu Negócio.
+          Copiados literalmente — sem fabricação (restrição do PRD).
         */}
-        <motion.ul
-          variants={staggerContainer}
-          {...inViewProps}
-          className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
-        >
-          {REVIEWS.map((review) => (
-            <motion.li
-              key={review.author}
-              variants={fadeUp}
-              className="flex flex-col gap-3 rounded-2xl border border-hairline bg-surface p-6"
-            >
-              <div className="flex items-center gap-1 text-cta" aria-label={`${review.rating} de 5 estrelas`}>
-                {Array.from({ length: review.rating }).map((_, i) => (
-                  <Star key={i} size={14} fill="currentColor" aria-hidden />
-                ))}
-              </div>
-              <p className="text-sm leading-relaxed text-muted">"{review.text}"</p>
-              <div className="mt-auto flex items-baseline justify-between gap-3 pt-1">
-                <span className="text-sm font-medium text-ink">{review.author}</span>
-                <span className="spec-label text-[10px] text-muted/80">Google</span>
-              </div>
-            </motion.li>
-          ))}
-        </motion.ul>
+        <ReviewsCarousel />
 
         <div className="mt-10 flex justify-center">
           <CtaLink
