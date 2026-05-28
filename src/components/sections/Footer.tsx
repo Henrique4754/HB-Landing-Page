@@ -97,6 +97,17 @@ export function Footer() {
           <p className="text-center text-xs text-muted">
             © {year} Henrique Braga de Carvalho · HB Comércio &amp; Acessórios.
           </p>
+          <p className="text-center text-xs text-muted">
+            Feito por{" "}
+            <a
+              href="https://www.henriquebraga.dev.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-medium text-ink/90 underline decoration-dotted underline-offset-2 transition-colors hover:text-brand"
+            >
+              Henrique Braga Dev
+            </a>
+          </p>
           {/*
             Atribuição obrigatória do modelo 3D usado no hero (licença CC BY 4.0).
             Mantém autor, link da fonte e link da licença visíveis conforme
