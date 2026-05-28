@@ -48,7 +48,7 @@ function ReviewsCarousel() {
     >
       {/* Palco — altura fixa pra acomodar a stack e não pular layout. */}
       <div
-        className="relative mx-auto h-[280px] max-w-2xl sm:h-[240px]"
+        className="relative mx-auto h-[210px] max-w-2xl sm:h-[170px]"
         aria-live="polite"
         aria-atomic="true"
       >
@@ -82,7 +82,7 @@ function ReviewsCarousel() {
               key={review.author}
               animate={{ y, scale, opacity, zIndex: total - rawDist }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-0 flex flex-col gap-4 rounded-2xl border border-hairline bg-surface p-7 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]"
+              className="absolute inset-0 flex flex-col gap-3 rounded-2xl border border-hairline bg-surface p-5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)] sm:p-6"
               aria-hidden={rawDist !== 0}
             >
               <div
