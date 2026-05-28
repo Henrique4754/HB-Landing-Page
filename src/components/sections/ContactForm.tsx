@@ -106,7 +106,7 @@ export function ContactForm() {
                     autoComplete="name"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    onBlur={() => setErrors((p) => ({ ...p, ...validate() }))}
+                    onBlur={() => setErrors(validate())}
                     aria-invalid={!!errors.name}
                     aria-describedby={errors.name ? "form-name-error" : undefined}
                     className={fieldClass(errors.name)}
@@ -131,7 +131,7 @@ export function ContactForm() {
                     autoComplete="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    onBlur={() => setErrors((p) => ({ ...p, ...validate() }))}
+                    onBlur={() => setErrors(validate())}
                     aria-invalid={!!errors.phone}
                     aria-describedby={errors.phone ? "form-phone-error" : undefined}
                     className={fieldClass(errors.phone)}
