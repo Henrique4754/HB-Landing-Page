@@ -6,7 +6,7 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { CtaLink } from "../ui/Button";
 import { InstagramGlyph } from "../icons/InstagramGlyph";
 import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
-import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS } from "../../lib/site";
+import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS, REVIEWS } from "../../lib/site";
 
 /**
  * Prova social — crença vira confiança (PRD seção 7).
@@ -89,6 +89,37 @@ export function SocialProof() {
             ))}
           </motion.div>
         </div>
+
+        {/*
+          Faixa de depoimentos reais — copiados literalmente do Google Meu
+          Negócio (5 reviews). Sem fabricação, conforme restrição do PRD.
+        */}
+        <motion.ul
+          variants={staggerContainer}
+          {...inViewProps}
+          className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3"
+        >
+          {REVIEWS.map((review) => (
+            <motion.li
+              key={review.author}
+              variants={fadeUp}
+              className="flex flex-col gap-3 rounded-2xl border border-hairline bg-surface p-6"
+            >
+              <div className="flex items-center gap-1 text-cta" aria-label={`${review.rating} de 5 estrelas`}>
+                {Array.from({ length: review.rating }).map((_, i) => (
+                  <Star key={i} size={14} fill="currentColor" aria-hidden />
+                ))}
+              </div>
+              <p className="text-sm leading-relaxed text-muted">"{review.text}"</p>
+              <div className="mt-auto flex items-baseline justify-between gap-3 pt-1">
+                <span className="text-sm font-medium text-ink">{review.author}</span>
+                <span className="spec-label text-[10px] text-muted/80">
+                  Google · {review.date}
+                </span>
+              </div>
+            </motion.li>
+          ))}
+        </motion.ul>
 
         <div className="mt-10 flex justify-center">
           <CtaLink

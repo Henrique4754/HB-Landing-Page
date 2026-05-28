@@ -62,3 +62,48 @@ export const MAPS =
 // Dados do negócio, confirmados com o cliente.
 export const GOOGLE_RATING = "5,0"; // nota real do Google (5 avaliações)
 export const BUSINESS_HOURS = "Seg a Sáb, 9h às 18h";
+
+/**
+ * Avaliações reais coletadas no Google Meu Negócio (5 no total — bate com
+ * o `reviewCount` do schema LocalBusiness). Editado SÓ pra corrigir acentos
+ * e pontuação; conteúdo e nomes são exatamente como aparecem no Google.
+ */
+export type Review = {
+  author: string;
+  rating: 1 | 2 | 3 | 4 | 5;
+  date: string;
+  text: string;
+};
+
+export const REVIEWS: Review[] = [
+  {
+    author: "Sailon Israel",
+    rating: 5,
+    date: "dez. 2022",
+    text: "Gostei muito do atendimento, não teve enrolação. Me explicou o que tava acontecendo com meu PS4 da melhor maneira possível.",
+  },
+  {
+    author: "Julio Cesar Almeida Barreto",
+    rating: 5,
+    date: "dez. 2022",
+    text: "Eficiência e qualidade profissional, excelente atendimento.",
+  },
+  {
+    author: "Ellen Christel",
+    rating: 5,
+    date: "nov. 2022",
+    text: "Excelente atendimento, preço justo e pontualidade.",
+  },
+  {
+    author: "Andrey Dias",
+    rating: 5,
+    date: "jul. 2025",
+    text: "Loja com profissional excelente! Super recomendo!",
+  },
+  {
+    author: "Laiza Mello",
+    rating: 5,
+    date: "jul. 2025",
+    text: "Ótimo atendimento, produtos de qualidade, já vou sair indicando pra todo mundo.",
+  },
+];
