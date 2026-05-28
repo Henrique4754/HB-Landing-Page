@@ -113,9 +113,7 @@ export function SocialProof() {
               <p className="text-sm leading-relaxed text-muted">"{review.text}"</p>
               <div className="mt-auto flex items-baseline justify-between gap-3 pt-1">
                 <span className="text-sm font-medium text-ink">{review.author}</span>
-                <span className="spec-label text-[10px] text-muted/80">
-                  Google · {review.date}
-                </span>
+                <span className="spec-label text-[10px] text-muted/80">Google</span>
               </div>
             </motion.li>
           ))}
