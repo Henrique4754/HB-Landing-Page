@@ -14,6 +14,10 @@
       name="description"
       content="Assistência técnica de celulares e computadores em Campos dos Goytacazes. Orçamento grátis, garantia de 90 dias e conserto no mesmo dia. Chame no WhatsApp."
     />
+    <link rel="canonical" href="https://hb-landing-page-tau.vercel.app/" />
+    <meta name="geo.region" content="BR-RJ" />
+    <meta name="geo.placename" content="Campos dos Goytacazes" />
+    <meta name="author" content="HB Comércio &amp; Acessórios" />
 
     <!-- Open Graph / redes sociais -->
     <meta property="og:type" content="website" />
@@ -36,6 +40,127 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
     />
+
+    <!--
+      Structured data (Schema.org JSON-LD) — ajuda Google AI Overviews, ChatGPT,
+      Perplexity, Claude e Gemini a entender quem é o negócio, onde atende e
+      a resposta direta de cada pergunta frequente. Rich results no Google
+      (mapa, telefone, horário) e melhor chance de citação por LLMs.
+    -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "LocalBusiness",
+          "@id": "https://hb-landing-page-tau.vercel.app/#business",
+          "name": "HB Comércio & Acessórios",
+          "alternateName": "HB Comércio",
+          "description": "Assistência técnica de celulares e computadores em Campos dos Goytacazes – RJ. Orçamento grátis, garantia de 90 dias e conserto no mesmo dia.",
+          "url": "https://hb-landing-page-tau.vercel.app/",
+          "image": "https://hb-landing-page-tau.vercel.app/og-image.png",
+          "logo": "https://hb-landing-page-tau.vercel.app/og-image.png",
+          "telephone": "+5522998616139",
+          "priceRange": "$$",
+          "currenciesAccepted": "BRL",
+          "paymentAccepted": "Dinheiro, PIX, Cartão de Crédito, Cartão de Débito",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Campos dos Goytacazes",
+            "addressRegion": "RJ",
+            "addressCountry": "BR"
+          },
+          "areaServed": {
+            "@type": "City",
+            "name": "Campos dos Goytacazes"
+          },
+          "openingHoursSpecification": [
+            {
+              "@type": "OpeningHoursSpecification",
+              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+              "opens": "09:00",
+              "closes": "18:00"
+            }
+          ],
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "5.0",
+            "reviewCount": "5",
+            "bestRating": "5",
+            "worstRating": "1"
+          },
+          "sameAs": [
+            "https://www.instagram.com/hb_comercio.acessorios/"
+          ],
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Serviços",
+            "itemListElement": [
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manutenção de celulares (iPhone e Android)" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Manutenção de computadores" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Troca de tela de celular" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Troca de bateria de celular" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Formatação e limpeza de PC" } },
+              { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Upgrade de SSD e memória RAM" } }
+            ]
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Quanto custa o conserto?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Depende do serviço. Por isso o orçamento é grátis e sem compromisso: a gente avalia e te passa o preço antes de qualquer coisa."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Quanto tempo demora o conserto?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Celular costuma ficar pronto no mesmo dia e PC em até 48h. Casos mais complexos podem levar um pouco mais, e a gente sempre avisa o prazo antes."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Vocês buscam o aparelho?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim. Na nossa região (Campos dos Goytacazes) a gente busca e devolve. Você não sai de casa."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Meus dados e fotos estão seguros?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Totalmente. Seus arquivos ficam intactos e em sigilo. Se o serviço exigir formatação, avisamos antes e fazemos backup com você."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Tem garantia no conserto?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Tem sim, são 90 dias no serviço. Deu problema no que consertamos, resolvemos de novo sem custo."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Atendem empresas?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim. Cuidamos de PCs e celulares de empresas e comércios da região também."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
