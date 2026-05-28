@@ -1,4 +1,4 @@
-import { Suspense, lazy, useRef } from "react";
+import { Suspense, lazy, useRef, useState } from "react";
 import { motion, useScroll, useReducedMotion, useMotionValue } from "framer-motion";
 import { Phone, Check } from "lucide-react";
 import { Container } from "../ui/Container";
@@ -103,6 +103,9 @@ function StaticHero() {
  */
 function Scroll3DHero() {
   const containerRef = useRef<HTMLElement>(null);
+  // `canvasReady` vira true quando o GLB de fato carrega e a cena é resolvida.
+  // Driva o fade-in que mascara o delay de download/parse do modelo (4MB).
+  const [canvasReady, setCanvasReady] = useState(false);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -128,12 +131,25 @@ function Scroll3DHero() {
           }}
         />
 
-        {/* Canvas 3D centralizado, atrás do texto. */}
-        <div className="pointer-events-none absolute inset-0 -z-10">
+        {/*
+          Canvas 3D centralizado atrás do texto. Começa invisível (opacity 0)
+          e faz fade-in suave em 900ms assim que o GLB termina de carregar
+          (`onReady` é chamado quando a cena é resolvida no Model). Isso
+          mascara o delay de download/parse do modelo de 4MB.
+        */}
+        <motion.div
+          className="pointer-events-none absolute inset-0 -z-10"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: canvasReady ? 1 : 0 }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        >
           <Suspense fallback={null}>
-            <IphoneCanvas progress={scrollYProgress} />
+            <IphoneCanvas
+              progress={scrollYProgress}
+              onReady={() => setCanvasReady(true)}
+            />
           </Suspense>
-        </div>
+        </motion.div>
 
         {/*
           Vinheta radial escura na esquerda (atrás do texto) + fade vertical

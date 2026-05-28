@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useEffect, useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, Environment, PerspectiveCamera } from "@react-three/drei";
 import type { MotionValue } from "framer-motion";
@@ -65,7 +65,13 @@ const END_TIME_S = 45.0;
  * `position={[0,-0.073,0]}` centraliza o modelo na vertical (bbox vai de
  * y=0 na base até y=0.147 no topo).
  */
-function Model({ progress }: { progress: MotionValue<number> }) {
+function Model({
+  progress,
+  onReady,
+}: {
+  progress: MotionValue<number>;
+  onReady?: () => void;
+}) {
   const { scene, animations } = useGLTF(MODEL_URL, false, true);
 
   const { mixer, clip } = useMemo(() => {
@@ -75,6 +81,11 @@ function Model({ progress }: { progress: MotionValue<number> }) {
     action.play();
     return { mixer: m, clip: c };
   }, [scene, animations]);
+
+  // Quando a cena é resolvida, sinaliza pra cima — usado pra fade-in suave.
+  useEffect(() => {
+    if (scene && onReady) onReady();
+  }, [scene, onReady]);
 
   useFrame(() => {
     const action = mixer.existingAction(clip);
@@ -96,7 +107,13 @@ function Model({ progress }: { progress: MotionValue<number> }) {
  * - Handler de context-lost: se a GPU resetar o contexto (resize, devtools,
  *   troca de aba), R3F restaura automaticamente em vez de perder o modelo.
  */
-export function IphoneCanvas({ progress }: { progress: MotionValue<number> }) {
+export function IphoneCanvas({
+  progress,
+  onReady,
+}: {
+  progress: MotionValue<number>;
+  onReady?: () => void;
+}) {
   return (
     <Canvas
       dpr={[1, 1.5]}
@@ -119,7 +136,7 @@ export function IphoneCanvas({ progress }: { progress: MotionValue<number> }) {
       <directionalLight position={[-1.5, -0.5, -1]} intensity={0.45} />
       <Environment preset="city" />
       <OrbitingCamera progress={progress} />
-      <Model progress={progress} />
+      <Model progress={progress} onReady={onReady} />
     </Canvas>
   );
 }
