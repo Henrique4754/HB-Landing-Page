@@ -43,9 +43,9 @@ useGLTF.preload(MODEL_URL, false, true);
 
 // Pontos âncora capturados via debug log — ajuste fino do trecho da animação
 // e do arco da órbita que o scroll vai dirigir.
-const START_ANGLE_DEG = 85.5;
+const START_ANGLE_DEG = 244.3;
 const END_ANGLE_DEG = 357.8;
-const START_TIME_S = 40.72;
+const START_TIME_S = 43.62;
 const END_TIME_S = 45.0;
 
 /**
