@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { Star, ArrowUpRight, ArrowUpRight as ExternalIcon } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
