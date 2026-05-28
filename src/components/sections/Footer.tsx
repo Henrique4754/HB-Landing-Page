@@ -78,6 +78,17 @@ export function Footer() {
             Celulares e computadores · pessoas e empresas · orçamento grátis e sem
             compromisso.
           </p>
+          {/*
+            Reforço SEO local — bairros atendidos em Campos dos Goytacazes.
+            Cobre buscas long-tail por bairro ("conserto celular Pelinca",
+            "assistência técnica Parque Califórnia" etc).
+          */}
+          <p className="text-xs leading-relaxed text-muted/80">
+            <span className="font-medium text-muted">Bairros atendidos em Campos dos
+            Goytacazes:</span> Centro, Pelinca, Parque Califórnia, Lapa,
+            Custodópolis, Penha, Parque Tamandaré, Goytacazes e demais bairros da
+            cidade e região.
+          </p>
         </div>
       </Container>
 

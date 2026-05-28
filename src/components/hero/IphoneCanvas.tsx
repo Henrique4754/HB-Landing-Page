@@ -1,4 +1,4 @@
-import { useMemo, useRef } from "react";
+import { useMemo } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { useGLTF, Environment, PerspectiveCamera } from "@react-three/drei";
 import type { MotionValue } from "framer-motion";
@@ -76,25 +76,12 @@ function Model({ progress }: { progress: MotionValue<number> }) {
     return { mixer: m, clip: c };
   }, [scene, animations]);
 
-  // Throttle do console.log: só logar quando o progress mudou mais de 1%.
-  const lastLoggedRef = useRef(-1);
-
   useFrame(() => {
     const action = mixer.existingAction(clip);
     if (!action) return;
-    // Mapeia o scroll pro trecho exato do clip capturado nos pontos âncora.
-    const p = progress.get();
-    action.time = START_TIME_S + p * (END_TIME_S - START_TIME_S);
+    // Mapeia o scroll pro trecho exato do clip definido pelos pontos âncora.
+    action.time = START_TIME_S + progress.get() * (END_TIME_S - START_TIME_S);
     mixer.update(0);
-
-    // [DEBUG] log dos valores atuais — remover depois que ajustar os pontos.
-    if (Math.abs(p - lastLoggedRef.current) > 0.01) {
-      lastLoggedRef.current = p;
-      const angleDeg = (p * 360).toFixed(1);
-      console.log(
-        `[hero] progress=${p.toFixed(3)} | angle=${angleDeg}° | time=${action.time.toFixed(2)}s / ${clip.duration.toFixed(2)}s`,
-      );
-    }
   });
 
   return <primitive object={scene} position={[0, -0.073, 0]} />;
