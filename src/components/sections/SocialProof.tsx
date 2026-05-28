@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Star, Play, ArrowUpRight } from "lucide-react";
+import { Star, ArrowUpRight, ArrowUpRight as ExternalIcon } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
@@ -8,20 +8,11 @@ import { InstagramGlyph } from "../icons/InstagramGlyph";
 import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
 import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS } from "../../lib/site";
 
-// Usa os reels reais se houver; senão, 3 cards de fallback que linkam ao Instagram.
-const reelLinks = REELS.length > 0 ? REELS : [INSTAGRAM, INSTAGRAM, INSTAGRAM];
-
-/** Extrai o código de um reel da URL do Instagram (entre `/reel/` e a próxima `/` ou `?`). */
-function extractReelCode(url: string): string | null {
-  const m = url.match(/\/reel\/([^/?]+)/);
-  return m ? m[1] : null;
-}
-
 /**
  * Prova social — crença vira confiança (PRD seção 7).
- * NOTA: os reels/fotos de bancada reais entram antes do go-live (PRD §7 pendências).
- * Aqui montamos a estrutura com placeholders que já linkam ao Instagram — sem
- * inventar depoimentos (restrição do PRD: não fabricar provas).
+ * Reels reais hospedados por nós (mp4 comprimido) com poster do 1º frame.
+ * Player nativo HTML5: zero chrome do Instagram, zero JS de terceiros,
+ * `preload="metadata"` baixa só ~100KB pro poster ser exibido sem clique.
  */
 export function SocialProof() {
   return (
@@ -59,54 +50,43 @@ export function SocialProof() {
             </span>
           </motion.a>
 
-          {/* Grade de reels (placeholders linkando ao Instagram) */}
+          {/* Grade de reels — player nativo */}
           <motion.div
             variants={staggerContainer}
             {...inViewProps}
             className="grid grid-cols-3 gap-4"
           >
-            {reelLinks.map((href, i) => {
-              const code = extractReelCode(href);
-              // Sem código de reel: cai no card de fallback (link pro perfil).
-              if (!code) {
-                return (
-                  <motion.a
-                    key={i}
-                    href={href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    variants={fadeUp}
-                    className="group relative grid aspect-[9/16] place-items-center overflow-hidden rounded-2xl border border-hairline bg-gradient-to-b from-surface-2 to-surface transition-colors hover:border-brand/60"
-                    aria-label="Ver reels no Instagram"
-                  >
-                    <span className="grid size-12 place-items-center rounded-full bg-base/70 text-ink backdrop-blur-sm transition-transform group-hover:scale-110">
-                      <Play size={20} fill="currentColor" />
-                    </span>
-                    <span className="spec-label absolute bottom-3 left-3 text-[10px] text-muted">
-                      REEL · HB
-                    </span>
-                  </motion.a>
-                );
-              }
-              // Embed oficial do Instagram. `loading="lazy"` evita carregar
-              // o JS pesado do Insta enquanto a seção não entra na viewport.
-              return (
-                <motion.div
-                  key={code}
-                  variants={fadeUp}
-                  className="relative aspect-[9/16] overflow-hidden rounded-2xl border border-hairline bg-surface"
+            {REELS.map((reel, i) => (
+              <motion.div
+                key={reel.videoSrc}
+                variants={fadeUp}
+                className="group relative aspect-[9/16] overflow-hidden rounded-2xl border border-hairline bg-surface"
+              >
+                <video
+                  className="absolute inset-0 h-full w-full object-cover"
+                  src={reel.videoSrc}
+                  poster={reel.poster}
+                  preload="metadata"
+                  controls
+                  playsInline
+                  controlsList="nodownload"
+                  aria-label={`Reel de reparo HB ${i + 1}`}
+                />
+                {/*
+                  Link sutil pro Instagram original — não rouba o click do player,
+                  só fica visível no hover (botão flutuante no canto).
+                */}
+                <a
+                  href={reel.instagramUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Ver reel original no Instagram"
+                  className="absolute right-2 top-2 z-10 grid size-8 place-items-center rounded-full bg-base/70 text-ink opacity-0 backdrop-blur-sm transition-opacity hover:bg-base/90 group-hover:opacity-100 focus-visible:opacity-100"
                 >
-                  <iframe
-                    src={`https://www.instagram.com/reel/${code}/embed/`}
-                    title={`Reel de reparo HB ${i + 1}`}
-                    loading="lazy"
-                    scrolling="no"
-                    allow="autoplay; encrypted-media; picture-in-picture; web-share"
-                    className="absolute inset-0 h-full w-full border-0"
-                  />
-                </motion.div>
-              );
-            })}
+                  <ExternalIcon size={14} />
+                </a>
+              </motion.div>
+            ))}
           </motion.div>
         </div>
 

@@ -25,12 +25,34 @@ export const WA = {
 // Instagram: perfil oficial da HB.
 export const INSTAGRAM = "https://www.instagram.com/hb_comercio.acessorios/";
 
-// Reels reais exibidos na seção de prova social.
-// Se ficar vazio, a grade cai num fallback que linka pro perfil/Instagram.
-export const REELS: string[] = [
-  "https://www.instagram.com/hb_comercio.acessorios/reel/DSFxGPFkYuT/",
-  "https://www.instagram.com/hb_comercio.acessorios/reel/DOqcn53DSu9/",
-  "https://www.instagram.com/hb_comercio.acessorios/reel/DMVcbO5sD8a/",
+/**
+ * Reels reais exibidos na seção de prova social.
+ * `videoSrc` é hospedado por nós (mp4 comprimido) pra rodar inline sem o chrome
+ * do Instagram; `poster` é o 1º frame (jpg leve) — carrega instantâneo;
+ * `instagramUrl` mantém o link original pra quem quiser ver o post original.
+ */
+export type Reel = {
+  videoSrc: string;
+  poster: string;
+  instagramUrl: string;
+};
+
+export const REELS: Reel[] = [
+  {
+    videoSrc: "/video/reels/reel-1.mp4",
+    poster: "/video/reels/reel-1-poster.jpg",
+    instagramUrl: "https://www.instagram.com/hb_comercio.acessorios/reel/DSFxGPFkYuT/",
+  },
+  {
+    videoSrc: "/video/reels/reel-2.mp4",
+    poster: "/video/reels/reel-2-poster.jpg",
+    instagramUrl: "https://www.instagram.com/hb_comercio.acessorios/reel/DOqcn53DSu9/",
+  },
+  {
+    videoSrc: "/video/reels/reel-3.mp4",
+    poster: "/video/reels/reel-3-poster.jpg",
+    instagramUrl: "https://www.instagram.com/hb_comercio.acessorios/reel/DMVcbO5sD8a/",
+  },
 ];
 
 // Localização no Google Maps (busca pelo nome do negócio na cidade).
