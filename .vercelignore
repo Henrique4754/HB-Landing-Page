@@ -1,11 +1,15 @@
 # Build precisa só de: index.html, src/, public/, configs e package.json.
 # Tudo abaixo é fonte/arquivo e não entra no deploy (mantém o upload leve).
+#
+# IMPORTANTE: usar `/path` (com barra inicial) pra ancorar na raiz e NÃO
+# excluir pastas homônimas dentro de public/. Padrões sem barra (`video`,
+# `image`) match em qualquer nível e estavam quebrando public/video etc.
 node_modules
 dist
-legacy
-old
-image
-video
-favicons
-scripts
+/legacy
+/old
+/image
+/video
+/favicons
+/scripts
 PRD-landing-page-HB.md
