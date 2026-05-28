@@ -14,24 +14,29 @@ import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS, REVIEWS } from "../../lib/site";
 const AUTOPLAY_MS = 3500;
 
 /**
- * Carrossel auto-cíclico de depoimentos. Um card por vez; transição com
- * overlap (entrada e saída acontecem simultaneamente via AnimatePresence
- * sem `mode=wait`). Pausa quando o mouse passa em cima ou quando algum
- * dot recebe foco por teclado.
+ * Carrossel auto-cíclico com efeito "baralho":
+ *  - 3 cards visíveis empilhados (front + 2 atrás peek pelo bottom) → dá
+ *    sensação de "tem mais vindo" mesmo com poucos reviews.
+ *  - A cada ciclo o card da frente sobe e some, e o deck se reorganiza.
+ *
+ * Como funciona: render todos os reviews uma vez com `key` estável por
+ * autor; cada card calcula sua distância circular do front e anima pra
+ * y/scale/opacity correspondentes. Quando index avança, todos os cards
+ * animam pra suas novas posições simultaneamente — daí o efeito de
+ * baralho se realinhando.
  */
 function ReviewsCarousel() {
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
+  const total = REVIEWS.length;
 
   useEffect(() => {
     if (paused) return;
     const id = window.setInterval(() => {
-      setIndex((i) => (i + 1) % REVIEWS.length);
+      setIndex((i) => (i + 1) % total);
     }, AUTOPLAY_MS);
     return () => window.clearInterval(id);
-  }, [paused]);
-
-  const current = REVIEWS[index];
+  }, [paused, total]);
 
   return (
     <motion.div
@@ -41,40 +46,64 @@ function ReviewsCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Palco do carrossel — altura mínima evita pulo de layout entre cards. */}
+      {/* Palco — altura fixa pra acomodar a stack e não pular layout. */}
       <div
-        className="relative mx-auto min-h-[200px] max-w-2xl sm:min-h-[180px]"
+        className="relative mx-auto h-[280px] max-w-2xl sm:h-[240px]"
         aria-live="polite"
         aria-atomic="true"
       >
-        <AnimatePresence>
-          <motion.article
-            key={current.author}
-            initial={{ opacity: 0, y: 18, scale: 0.97 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -18, scale: 0.97 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="absolute inset-0 flex flex-col gap-4 rounded-2xl border border-hairline bg-surface p-7"
-          >
-            <div
-              className="flex items-center gap-1 text-cta"
-              aria-label={`${current.rating} de 5 estrelas`}
-            >
-              {Array.from({ length: current.rating }).map((_, i) => (
-                <Star key={i} size={16} fill="currentColor" aria-hidden />
-              ))}
-            </div>
-            <p className="text-base leading-relaxed text-muted sm:text-lg">
-              "{current.text}"
-            </p>
-            <div className="mt-auto flex items-baseline justify-between gap-3">
-              <span className="text-sm font-medium text-ink">{current.author}</span>
-              <span className="spec-label text-[10px] text-muted/80">Google</span>
-            </div>
-          </motion.article>
-        </AnimatePresence>
-      </div>
+        {REVIEWS.map((review) => {
+          // Distância circular do front. 0 = front; 1,2 = peek atrás; resto = oculto.
+          const rawDist = (REVIEWS.indexOf(review) - index + total) % total;
+          // Card que acabou de sair do front: sobe e some por cima do deck.
+          const isOutgoing = rawDist === total - 1;
+          const inStack = rawDist <= 2;
 
+          let y: number;
+          let scale: number;
+          let opacity: number;
+          if (isOutgoing) {
+            y = -90;
+            scale = 0.96;
+            opacity = 0;
+          } else if (inStack) {
+            y = rawDist * 14;
+            scale = 1 - rawDist * 0.04;
+            opacity = 1 - rawDist * 0.3;
+          } else {
+            // No fundo, fora de vista — pronto pra reentrar.
+            y = 48;
+            scale = 0.88;
+            opacity = 0;
+          }
+
+          return (
+            <motion.article
+              key={review.author}
+              animate={{ y, scale, opacity, zIndex: total - rawDist }}
+              transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+              className="absolute inset-x-0 flex flex-col gap-4 rounded-2xl border border-hairline bg-surface p-7 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)]"
+              aria-hidden={rawDist !== 0}
+            >
+              <div
+                className="flex items-center gap-1 text-cta"
+                aria-label={`${review.rating} de 5 estrelas`}
+              >
+                {Array.from({ length: review.rating }).map((_, j) => (
+                  <Star key={j} size={16} fill="currentColor" aria-hidden />
+                ))}
+              </div>
+              <p className="text-base leading-relaxed text-muted sm:text-lg">
+                "{review.text}"
+              </p>
+              <div className="mt-auto flex items-baseline justify-between gap-3">
+                <span className="text-sm font-medium text-ink">{review.author}</span>
+                <span className="spec-label text-[10px] text-muted/80">Google</span>
+              </div>
+            </motion.article>
+          );
+        })}
+      </div>
     </motion.div>
   );
 }
