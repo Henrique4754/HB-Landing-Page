@@ -1,0 +1,11 @@
+# Build precisa só de: index.html, src/, public/, configs e package.json.
+# Tudo abaixo é fonte/arquivo e não entra no deploy (mantém o upload leve).
+node_modules
+dist
+legacy
+old
+image
+video
+favicons
+scripts
+PRD-landing-page-HB.md

@@ -1,98 +1,44 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
-
-<head>
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-    </style>
-
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="semantico.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
-    <meta name="msapplication-TileColor" content="#ffffff" />
-    <meta name="theme-color" content="#ffffff" />
-    <title>Home</title>
-</head>
 
-<body>
-    <header>
-        <nav>
-            <ul class="navigation">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#section__jobs">Serviços</a></li>
-                <li><a href="#section__about">Sobre</a></li>
-            </ul>
-        </nav>
-    </header>
+    <!-- Tema da barra do navegador casa com o fundo navy do site -->
+    <meta name="theme-color" content="#070B18" />
 
-    <section id="home" class="hero">
-        <div class="section__start">
-            <h1>HB Comercio & acessórios</h1>
-            <p>Descubra como a HB Comércio pode transformar sua experiência com tecnologia!</p>
-            <span class="line"></span>
-            <a href="https://wa.me/5522998616139" class="contactbtn" target="_blank">Entre em contato!</a>
-        </div>
-    </section>
-    <section id="section__jobs"><br><br><br>
-        <h2 id="#services">O Que Nós Oferecemos!</h2>
-        <ul class="jobs__list">
-            <li>
-                <img src="image/manutenção pc card.png" alt="">
-                <h3>Manutenção de Computadores</h3>
-                <p>Formatação | Limpeza | Upgrade | Montagem | Office | Pasta Térmica...</p>
-                <p><a class="cardbtn"
-                        href="https://wa.me/5522998616139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20meu%20computador!"
-                        target="_blank">Entrar em Contato</a></p>
-            </li>
-            <li>
-                <img src="image/manutenção celular card.PNG" alt="">
-                <h3>Manutenção de Celulares</h3>
-                <p>Troca de telas | iPhone | Android | Películas | Capas | Báteria...</p>
-                <p><a class="cardbtn"
-                        href="https://wa.me/5522998616139?text=Ol%C3%A1!%20Gostaria%20de%20fazer%20um%20or%C3%A7amento%20para%20meu%20celular!"
-                        target="_blank">
-                        Entrar em Contato</a></p>
-            </li>
-            <li>
-                <img src="image/atendente card.png" alt="">
-                <h3>Fale Com Um Atendente</h3>
-                <p>Nenhuma das duas opções? Fale diretamente com o atendente!</p>
-                <p><a class="cardbtn"
-                        href="https://wa.me/5522998616139?text=Ol%C3%A1!%20Gostaria%20de%20saber%20a%20respeito%20%20"
-                        target="_blank">Entre Em Contato</a></p>
-            </li>
-        </ul>
-    </section>
-    <section id="section__about">
-        <h2>Sobre Nós</h2>
-        <div class="sobre">
-            <video class="img__inline-box" src="video/video manutenção.mp4" controls loop
-                    muted></video></a>
-            <div class="text__box">
-                <p>A HB Comércio é uma empresa especializada em manutenção de computadores e celulares, oferecendo
-                    serviços de
-                    alta qualidade para atender às suas necessidades tecnológicas. Com uma equipe experiente e dedicada,
-                    garantimos
-                    que seus dispositivos funcionem perfeitamente.</p><br>
-                <p>Nosso compromisso é fornecer soluções rápidas e eficazes, seja para formatação de PCs, troca de telas
-                    de
-                    celulares ou qualquer outro serviço relacionado à tecnologia. Estamos aqui para ajudar você a
-                    aproveitar ao
-                    máximo seus dispositivos!</p><br>
-                    
-                <p>Não perca tempo! Se o seu dispositivo precisa de reparo, entre em contato conosco e resolva já os
-                    seus problemas! </p>
-                    <a href="https://www.instagram.com/reel/DL97u3bsgPp/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-                target="_blank"><p><br><strong>Clique aqui e acesse nosso Instagram!</strong></p></a>
-            </div>
+    <!-- SEO (copy definido no PRD §4) -->
+    <title>HB Comércio | Conserto de Celular e Computador em Campos dos Goytacazes</title>
+    <meta
+      name="description"
+      content="Assistência técnica de celulares e computadores em Campos dos Goytacazes. Orçamento grátis, garantia de 90 dias e conserto no mesmo dia. Chame no WhatsApp."
+    />
 
-        </div>
-    </section>
+    <!-- Open Graph / redes sociais -->
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt_BR" />
+    <meta property="og:title" content="HB Comércio | Conserto de Celular e Computador" />
+    <meta
+      property="og:description"
+      content="Orçamento grátis, garantia de 90 dias e conserto no mesmo dia em Campos dos Goytacazes. Sem gambiarra."
+    />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content="/og-image.png" />
 
-    <footer>
-        <p>&copy; Henrique Braga de Carvalho 2025</p>
-    </footer>
-</body>
-
+    <!-- Pré-conexão com Google Fonts para acelerar o primeiro paint do texto -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>

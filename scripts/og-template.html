@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; box-sizing: border-box; }
+      body { width: 1200px; height: 630px; overflow: hidden; }
+      .card {
+        position: relative; width: 1200px; height: 630px;
+        background: linear-gradient(135deg, #070b18, #0b1e4d);
+        font-family: "Inter", sans-serif; color: #f4f7ff; padding: 80px;
+        display: flex; flex-direction: column; justify-content: center;
+      }
+      .grid {
+        position: absolute; inset: 0;
+        background-image:
+          linear-gradient(to right, rgba(37,99,235,.08) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(37,99,235,.08) 1px, transparent 1px);
+        background-size: 80px 80px;
+      }
+      .glow {
+        position: absolute; inset: 0;
+        background: radial-gradient(50% 60% at 75% 25%, rgba(37,99,235,.28), transparent 70%);
+      }
+      .brand {
+        position: absolute; top: 80px; left: 80px;
+        display: flex; align-items: center; gap: 18px;
+      }
+      .badge {
+        width: 72px; height: 72px; border-radius: 18px; background: #0b1e4d;
+        border: 2px solid rgba(37,99,235,.5);
+        display: grid; place-items: center;
+        font-family: "Space Grotesk"; font-weight: 700; font-size: 34px;
+      }
+      .brand span { font-family: "Space Grotesk"; font-weight: 700; font-size: 26px; }
+      h1 {
+        position: relative; font-family: "Space Grotesk"; font-weight: 700;
+        font-size: 68px; line-height: 1.05; letter-spacing: -0.02em; max-width: 880px;
+      }
+      h1 em { color: #2563eb; font-style: normal; }
+      .specs {
+        position: relative; margin-top: 28px; font-family: "JetBrains Mono";
+        font-size: 22px; letter-spacing: .06em; color: #9daac6;
+      }
+      .pill {
+        position: relative; margin-top: 40px; align-self: flex-start;
+        background: #25d366; color: #04210f; font-weight: 600; font-size: 24px;
+        padding: 18px 36px; border-radius: 999px;
+      }
+      .region {
+        position: absolute; bottom: 70px; right: 80px;
+        font-family: "JetBrains Mono"; font-size: 20px; color: #9daac6;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="card">
+      <div class="grid"></div>
+      <div class="glow"></div>
+      <div class="brand"><div class="badge">HB</div><span>HB Comércio &amp; Acessórios</span></div>
+      <h1>Seu aparelho de volta rápido. <em>E em boas mãos.</em></h1>
+      <div class="specs">GARANTIA 90 DIAS · MESMO DIA · ORÇAMENTO GRÁTIS</div>
+      <div class="pill">Chamar no WhatsApp</div>
+      <div class="region">Campos dos Goytacazes · RJ</div>
+    </div>
+  </body>
+</html>
