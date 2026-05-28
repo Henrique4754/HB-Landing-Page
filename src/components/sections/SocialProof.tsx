@@ -11,7 +11,8 @@ import { cn } from "../../lib/cn";
 import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS, REVIEWS } from "../../lib/site";
 
 // Tempo (ms) que cada depoimento fica visível antes do próximo entrar.
-const AUTOPLAY_MS = 6000;
+// Ciclo curto pra dar sensação de "muitos clientes" mesmo com 5 reviews reais.
+const AUTOPLAY_MS = 3500;
 
 /**
  * Carrossel auto-cíclico de depoimentos. Um card por vez; transição com
@@ -40,8 +41,6 @@ function ReviewsCarousel() {
       className="mt-10"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
-      onFocus={() => setPaused(true)}
-      onBlur={() => setPaused(false)}
     >
       {/* Palco do carrossel — altura mínima evita pulo de layout entre cards. */}
       <div
@@ -77,22 +76,6 @@ function ReviewsCarousel() {
         </AnimatePresence>
       </div>
 
-      {/* Indicadores (clicáveis pra pular pro card direto). */}
-      <div className="mt-5 flex items-center justify-center gap-2">
-        {REVIEWS.map((review, i) => (
-          <button
-            key={review.author}
-            type="button"
-            onClick={() => setIndex(i)}
-            aria-label={`Ver depoimento de ${review.author}`}
-            aria-current={i === index}
-            className={cn(
-              "h-1.5 rounded-full transition-all duration-300",
-              i === index ? "w-6 bg-brand" : "w-1.5 bg-muted/30 hover:bg-muted/60",
-            )}
-          />
-        ))}
-      </div>
     </motion.div>
   );
 }
