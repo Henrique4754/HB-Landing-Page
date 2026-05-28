@@ -7,7 +7,6 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { CtaLink } from "../ui/Button";
 import { InstagramGlyph } from "../icons/InstagramGlyph";
 import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
-import { cn } from "../../lib/cn";
 import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS, REVIEWS } from "../../lib/site";
 
 // Tempo (ms) que cada depoimento fica visível antes do próximo entrar.
