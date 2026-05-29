@@ -48,21 +48,6 @@
     <!-- Pré-conexão com Google Fonts para acelerar o primeiro paint do texto -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
-    <!--
-      Preload do modelo 3D só em telas grandes — começa a baixar em paralelo
-      com o JS, em vez de esperar o chunk do canvas ser parsed.
-      `media="(min-width: 1024px)"` impede o download no mobile, que cai no
-      hero estático e nunca precisa do GLB.
-    -->
-    <link
-      rel="preload"
-      href="/models/iphone.glb"
-      as="fetch"
-      type="model/gltf-binary"
-      crossorigin="anonymous"
-      media="(min-width: 1024px)"
-    />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@600;700&display=swap"
       rel="stylesheet"
