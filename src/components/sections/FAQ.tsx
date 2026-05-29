@@ -10,7 +10,10 @@ import { cn } from "../../lib/cn";
 const FAQS = [
   { q: "Quanto custa o conserto?", a: "Depende do serviço. Por isso o orçamento é grátis e sem compromisso: a gente avalia e te passa o preço antes de qualquer coisa." },
   { q: "Quanto tempo demora?", a: "Celular costuma ficar pronto no mesmo dia e PC em até 48h. Casos mais complexos podem levar um pouco mais, e a gente sempre avisa o prazo antes." },
-  { q: "Vocês buscam o aparelho?", a: "Sim. Na nossa região a gente busca e devolve. Você não sai de casa." },
+  { q: "Posso parcelar o conserto?", a: "Pode. A gente aceita PIX, dinheiro e cartão de crédito (à vista ou parcelado). Combinamos a forma de pagamento na hora do orçamento, sem juro escondido." },
+  { q: "Vocês usam peças originais ou paralelas?", a: "A gente trabalha com as duas. Sempre te conta qual peça vai usar e quanto custa cada opção, e quem decide é você. Em todas, a garantia de 90 dias vale igual." },
+  { q: "Vocês buscam o aparelho?", a: "Sim. Em Campos dos Goytacazes a gente busca e devolve. Você não sai de casa." },
+  { q: "Atendem fora de Campos dos Goytacazes?", a: "Atendemos. Cidades vizinhas como São João da Barra, Quissamã e Macaé entram no esquema busca e leva combinando antes pelo WhatsApp. Mais longe, dá pra mandar pelos Correios e a gente devolve do mesmo jeito." },
   { q: "Meus dados e fotos estão seguros?", a: "Totalmente. Seus arquivos ficam intactos e em sigilo. Se o serviço exigir formatação, avisamos antes e fazemos backup com você." },
   { q: "Tem garantia?", a: "Tem sim, são 90 dias no serviço. Deu problema no que consertamos, resolvemos de novo sem custo." },
   { q: "Atendem empresas?", a: "Sim. Cuidamos de PCs e celulares de empresas e comércios da região também." },

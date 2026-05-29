@@ -2,9 +2,9 @@ import { cn } from "../../lib/cn";
 
 /**
  * Logo oficial da HB Comércio & Acessórios.
- * Asset PNG transparente em public/logo.png — fundo branco original do JPEG
- * foi removido via alpha matting (scripts/process_logo.js) pra encaixar
- * limpo sobre o navy do tema.
+ * Asset SVG vetorial em public/logo.svg — escala sem perder qualidade em
+ * qualquer DPI. O SVG vem com fundo branco embutido, então fica como um
+ * badge quadrado sobre o navy do tema.
  */
 export function Logo({
   className,
@@ -15,15 +15,18 @@ export function Logo({
 }) {
   return (
     <span className={cn("inline-flex items-center gap-2.5", className)}>
-      <img
-        src="/logo.png"
-        alt="HB Comércio e Acessórios"
-        width={40}
-        height={40}
-        className="size-10 shrink-0 object-contain"
-        loading="eager"
-        fetchPriority="high"
-      />
+      {/* Wrapper overflow-hidden + scale na img: dá zoom no HB sem mexer no tamanho do badge */}
+      <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-md bg-white">
+        <img
+          src="/logo.svg"
+          alt="HB Comércio e Acessórios"
+          width={40}
+          height={40}
+          className="size-10 scale-[1.18] object-contain"
+          loading="eager"
+          fetchPriority="high"
+        />
+      </span>
       {showWordmark && (
         <span className="font-display text-lg font-bold leading-none tracking-tight text-ink">
           HB <span className="text-muted">Comércio</span>

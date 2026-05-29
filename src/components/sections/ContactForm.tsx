@@ -11,7 +11,7 @@ import { wa } from "../../lib/site";
 import { trackConversion } from "../../lib/analytics";
 import { cn } from "../../lib/cn";
 
-type Errors = { name?: string; phone?: string };
+type Errors = { name?: string; phone?: string; consent?: string };
 
 /**
  * Formulário — captura quem não quer falar agora (PRD seção 9).
@@ -22,6 +22,7 @@ export function ContactForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [device, setDevice] = useState("");
+  const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
 
@@ -31,6 +32,8 @@ export function ContactForm() {
     // Telefone: ao menos 10 dígitos (DDD + número)
     const digits = phone.replace(/\D/g, "");
     if (digits.length < 10) next.phone = "Coloca um telefone com DDD válido.";
+    // LGPD: consentimento explícito antes do envio.
+    if (!consent) next.consent = "Confirma a autorização pra gente te chamar.";
     return next;
   }
 
@@ -40,7 +43,12 @@ export function ContactForm() {
     setErrors(next);
     if (Object.keys(next).length > 0) {
       // Foca o primeiro campo inválido (acessibilidade)
-      document.getElementById(next.name ? "form-name" : "form-phone")?.focus();
+      const firstInvalid = next.name
+        ? "form-name"
+        : next.phone
+          ? "form-phone"
+          : "form-consent";
+      document.getElementById(firstInvalid)?.focus();
       return;
     }
 
@@ -160,6 +168,47 @@ export function ContactForm() {
                   />
                 </div>
 
+                <div className="flex flex-col gap-1.5">
+                  <label
+                    htmlFor="form-consent"
+                    className="flex cursor-pointer items-start gap-2.5 text-sm text-muted"
+                  >
+                    <input
+                      id="form-consent"
+                      name="consent"
+                      type="checkbox"
+                      checked={consent}
+                      onChange={(e) => {
+                        setConsent(e.target.checked);
+                        if (e.target.checked && errors.consent) {
+                          setErrors((prev) => ({ ...prev, consent: undefined }));
+                        }
+                      }}
+                      aria-invalid={errors.consent ? true : undefined}
+                      aria-describedby={errors.consent ? "form-consent-error" : undefined}
+                      className="mt-0.5 size-4 shrink-0 cursor-pointer accent-cta"
+                    />
+                    <span>
+                      Autorizo a HB Comércio a usar meu nome e telefone só pra
+                      me responder. Veja a{" "}
+                      <a
+                        href="/privacidade.html"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-ink underline decoration-dotted underline-offset-2 hover:text-brand"
+                      >
+                        Política de Privacidade
+                      </a>
+                      .
+                    </span>
+                  </label>
+                  {errors.consent && (
+                    <p id="form-consent-error" role="alert" className="text-sm text-red-300">
+                      {errors.consent}
+                    </p>
+                  )}
+                </div>
+
                 <CtaButton type="submit" disabled={status === "loading"} className="w-full">
                   {status === "loading" ? (
                     <>
@@ -175,7 +224,7 @@ export function ContactForm() {
                 </CtaButton>
 
                 <p className="text-center text-xs text-muted">
-                  Sem spam. Usamos seu contato só pra te responder.
+                  Sem spam. Seu contato fica só com a gente.
                 </p>
               </form>
             )}

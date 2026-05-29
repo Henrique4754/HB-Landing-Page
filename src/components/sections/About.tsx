@@ -1,63 +1,104 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
+import { UserRound } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
+import { SectionHeading } from "../ui/SectionHeading";
 import { CtaLink } from "../ui/Button";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
 import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
 import { WA } from "../../lib/site";
 
-/** Sobre — humaniza ("gente real") com vídeo da bancada (PRD seção 8). */
+/**
+ * Sobre — coloca rosto e nome em quem cuida do aparelho.
+ *  - Retrato do Henrique como âncora de confiança humana. Enquanto o arquivo
+ *    `public/about/henrique.jpg` não existir, o placeholder fica visível;
+ *    `onError` esconde a <img> quebrada.
+ *  - Vídeo da bancada vira segundo bloco (prova visual do trabalho).
+ */
 export function About() {
+  const [photoOk, setPhotoOk] = useState(true);
+
   return (
     <Section labelledBy="sobre-title">
       <Container>
-        <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-12">
-          {/* Vídeo da bancada — preload leve, com poster p/ não pesar o load */}
+        <SectionHeading
+          id="sobre-title"
+          eyebrow="Quem cuida do seu aparelho"
+          title="Por trás da bancada tem gente, não bot"
+        />
+
+        <div className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-14">
+          {/* Retrato + identificação */}
           <motion.div
             variants={fadeUp}
             {...inViewProps}
-            className="mx-auto w-full max-w-[300px] overflow-hidden rounded-2xl border border-hairline bg-surface"
+            className="mx-auto w-full max-w-[360px]"
           >
-            <video
-              className="aspect-[9/16] w-full object-cover"
-              controls
-              loop
-              muted
-              playsInline
-              preload="metadata"
-              poster="/video/poster.jpg"
-            >
-              <source src="/video/manutencao.mp4" type="video/mp4" />
-              Seu navegador não suporta vídeo. Veja nossos reparos no Instagram.
-            </video>
+            <div className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-hairline bg-surface">
+              {/* Placeholder atrás — aparece enquanto a foto não existe. */}
+              <div
+                aria-hidden
+                className="absolute inset-0 grid place-items-center bg-gradient-to-br from-surface-2 via-surface to-base"
+              >
+                <div className="flex flex-col items-center gap-2 text-muted/70">
+                  <UserRound size={56} strokeWidth={1.25} />
+                  <span className="spec-label text-[10px]">Foto do Henrique</span>
+                </div>
+              </div>
+              {photoOk && (
+                <img
+                  src="/about/henrique.jpg"
+                  alt="Henrique Braga, técnico responsável pela HB Comércio"
+                  width={720}
+                  height={900}
+                  loading="lazy"
+                  onError={() => setPhotoOk(false)}
+                  className="absolute inset-0 h-full w-full object-cover"
+                />
+              )}
+              {/* Selo discreto no canto da foto */}
+              <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between gap-3 rounded-xl bg-base/70 px-3 py-2 backdrop-blur-md">
+                <div className="flex flex-col">
+                  <span className="text-sm font-semibold text-ink">
+                    Henrique Braga
+                  </span>
+                  <span className="spec-label text-[10px] text-brand">
+                    Técnico responsável
+                  </span>
+                </div>
+                <span className="size-2 rounded-full bg-cta" aria-hidden />
+              </div>
+            </div>
           </motion.div>
 
+          {/* Bio + CTA */}
           <motion.div
             variants={staggerContainer}
             {...inViewProps}
             className="flex flex-col items-start gap-5"
           >
-            <motion.span variants={fadeUp} className="spec-label text-xs text-brand">
-              Quem cuida do seu aparelho
-            </motion.span>
-            <motion.h2
-              id="sobre-title"
+            <motion.p
               variants={fadeUp}
-              className="text-[clamp(1.75rem,5vw,2.5rem)] text-ink"
+              className="text-base leading-relaxed text-muted sm:text-lg"
             >
-              Bancada, ferramenta certa e gente que entende
-            </motion.h2>
-            <motion.p variants={fadeUp} className="text-base leading-relaxed text-muted">
-              A HB Comércio é especializada em manutenção de celulares e
-              computadores. Aqui não tem gambiarra nem atendente robô: tem bancada,
-              ferramenta certa e gente que entende do assunto cuidando do seu
-              aparelho como se fosse o próprio. Rápido, transparente e com
-              garantia, do orçamento à entrega.
+              Eu sou o Henrique, técnico da HB. Atendo cada cliente como
+              atenderia minha família: te explico o que tá acontecendo com o
+              aparelho na linguagem que você fala, passo o preço antes de
+              qualquer coisa e só ponho a mão depois que você aprovar.
+            </motion.p>
+            <motion.p
+              variants={fadeUp}
+              className="text-base leading-relaxed text-muted sm:text-lg"
+            >
+              Aqui não tem atendente robô nem orçamento que muda na hora de
+              pagar. Tem bancada, ferramenta certa e alguém que cuida do seu
+              aparelho do começo ao fim.
             </motion.p>
             <motion.div variants={fadeUp}>
               <CtaLink href={WA.generic} event="whatsapp_click" location="about">
                 <WhatsAppGlyph size={20} />
-                Falar com a HB
+                Falar comigo no WhatsApp
               </CtaLink>
             </motion.div>
           </motion.div>

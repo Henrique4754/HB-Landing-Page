@@ -1,12 +1,10 @@
 import { useState } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Phone } from "lucide-react";
 import { Container } from "../ui/Container";
 import { CtaLink } from "../ui/Button";
 import { Logo } from "../brand/Logo";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
-import { useScrolled } from "../../hooks/useScrolled";
-import { WA } from "../../lib/site";
-import { cn } from "../../lib/cn";
+import { WA, PHONE_TEL, PHONE_DISPLAY } from "../../lib/site";
 
 const LINKS = [
   { href: "#servicos", label: "Serviços" },
@@ -16,19 +14,11 @@ const LINKS = [
 ];
 
 export function Nav() {
-  const scrolled = useScrolled(80);
   const [open, setOpen] = useState(false);
 
   return (
-    <header
-      className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-colors duration-300",
-        // Transparente sobre o hero -> ganha fundo glass após 80px (PRD §5)
-        scrolled
-          ? "border-b border-hairline bg-base/80 backdrop-blur-xl"
-          : "border-b border-transparent bg-transparent",
-      )}
-    >
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-hairline bg-base/80 backdrop-blur-xl">
+
       <Container className="flex h-16 items-center justify-between gap-4 sm:h-[72px]">
         <a href="#topo" aria-label="Início — HB Comércio" className="rounded-lg">
           <Logo />
@@ -51,6 +41,21 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/* Telefone direto — só desktop, pra quem já decidiu ligar */}
+          <CtaLink
+            href={PHONE_TEL}
+            variant="secondary"
+            event="call_click"
+            location="nav"
+            external={false}
+            className="hidden h-11 min-h-0 px-4 text-sm lg:inline-flex"
+            aria-label={`Ligar para ${PHONE_DISPLAY}`}
+          >
+            <Phone size={16} />
+            <span className="hidden xl:inline">{PHONE_DISPLAY}</span>
+            <span className="xl:hidden">Ligar</span>
+          </CtaLink>
+
           <CtaLink
             href={WA.generic}
             event="whatsapp_click"

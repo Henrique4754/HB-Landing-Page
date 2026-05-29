@@ -11,6 +11,7 @@ import {
   INSTAGRAM,
   MAPS,
   BUSINESS_HOURS,
+  ADDRESS_SHORT,
 } from "../../lib/site";
 
 /** Footer — contato e localização (PRD seção 12). */
@@ -63,9 +64,14 @@ export function Footer() {
             href={MAPS}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
+            className="inline-flex items-start gap-2 text-sm text-muted transition-colors hover:text-ink"
           >
-            <MapPin size={16} /> Campos dos Goytacazes – RJ
+            <MapPin size={16} className="mt-0.5 shrink-0" />
+            <span>
+              {ADDRESS_SHORT}
+              <br />
+              Campos dos Goytacazes/RJ
+            </span>
           </a>
           <span className="inline-flex items-center gap-2 text-sm text-muted">
             <Clock size={16} /> {BUSINESS_HOURS}
@@ -95,7 +101,13 @@ export function Footer() {
       <div className="border-t border-hairline">
         <Container className="flex flex-col items-center gap-1.5 py-6">
           <p className="text-center text-xs text-muted">
-            © {year} Henrique Braga de Carvalho · HB Comércio &amp; Acessórios.
+            © {year} Henrique Braga de Carvalho · HB Comércio &amp; Acessórios ·{" "}
+            <a
+              href="/privacidade.html"
+              className="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink"
+            >
+              Política de Privacidade
+            </a>
           </p>
           <p className="text-center text-xs text-muted">
             Feito por{" "}

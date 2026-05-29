@@ -55,13 +55,15 @@ export const REELS: Reel[] = [
   },
 ];
 
-// Localização no Google Maps (busca pelo nome do negócio na cidade).
+// Localização no Google Maps (busca pelo nome + endereço pra cair no pin certo).
 export const MAPS =
-  "https://www.google.com/maps/search/?api=1&query=HB+Com%C3%A9rcio+e+Acess%C3%B3rios+Campos+dos+Goytacazes";
+  "https://www.google.com/maps/search/?api=1&query=HB+Com%C3%A9rcio+Rua+Raul+Cardoso+131+Campos+dos+Goytacazes";
 
 // Dados do negócio, confirmados com o cliente.
 export const GOOGLE_RATING = "5,0"; // nota real do Google (5 avaliações)
 export const BUSINESS_HOURS = "Seg a Sáb, 9h às 18h";
+export const ADDRESS = "Rua Raul Cardoso, 131 · Campos dos Goytacazes/RJ";
+export const ADDRESS_SHORT = "Rua Raul Cardoso, 131";
 
 /**
  * Avaliações reais coletadas no Google Meu Negócio (5 no total — bate com

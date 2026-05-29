@@ -118,7 +118,7 @@ function Scroll3DHero() {
     <section
       id="topo"
       ref={containerRef}
-      className="relative isolate h-[500vh]"
+      className="relative isolate h-[300vh]"
     >
       <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden pt-24 sm:pt-28">
         {/* Glow de marca */}
