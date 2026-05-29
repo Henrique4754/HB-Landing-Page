@@ -207,7 +207,7 @@ function HeroContent() {
         variants={fadeUp}
         className="max-w-xl text-base text-muted sm:text-lg"
       >
-        Celular e computador em Campos dos Goytacazes e região. Orçamento
+        Celular e computador em Campos dos Goytacazes. Orçamento
         grátis, garantia de 90 dias e pronto no mesmo dia. Sem gambiarra.
       </motion.p>
 

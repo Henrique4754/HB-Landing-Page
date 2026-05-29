@@ -25,7 +25,7 @@ export function Footer() {
           <Logo />
           <p className="max-w-xs text-sm text-muted">
             Manutenção de celulares e computadores em Campos dos Goytacazes – RJ.
-            Busca e leva em Campos e região.
+            Busca e leva em Campos dos Goytacazes.
           </p>
         </div>
 
@@ -93,7 +93,7 @@ export function Footer() {
             <span className="font-medium text-muted">Bairros atendidos em Campos dos
             Goytacazes:</span> Centro, Pelinca, Parque Califórnia, Lapa,
             Custodópolis, Penha, Parque Tamandaré, Goytacazes e demais bairros da
-            cidade e região.
+            cidade.
           </p>
         </div>
       </Container>

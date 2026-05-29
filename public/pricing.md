@@ -12,13 +12,13 @@
 
 - **Manutenção de celulares (iPhone e Android)**: troca de tela, bateria, conector de carga, alto-falante, película, recuperação de queda ou líquido.
 - **Manutenção de computadores**: formatação, limpeza, upgrade de SSD e memória, montagem, troca de pasta térmica, instalação de Office.
-- **Atendimento empresarial**: contratos para empresas e comércios da região.
+- **Atendimento empresarial**: contratos para empresas e comércios de Campos dos Goytacazes.
 
 ## Garantia & condições
 
 - Garantia: 90 dias em todo serviço executado.
 - Prazo: celular costuma ficar pronto no mesmo dia; PC em até 48h.
-- Busca e leva sem custo extra na região de Campos dos Goytacazes – RJ.
+- Busca e leva em Campos dos Goytacazes – RJ: taxa conforme a distância, combinada antes pelo WhatsApp.
 
 ## Pedir um orçamento
 

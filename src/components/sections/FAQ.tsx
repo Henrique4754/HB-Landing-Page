@@ -13,10 +13,10 @@ const FAQS = [
   { q: "Posso parcelar o conserto?", a: "Pode. A gente aceita PIX, dinheiro e cartão de crédito (à vista ou parcelado). Combinamos a forma de pagamento na hora do orçamento, sem juro escondido." },
   { q: "Vocês usam peças originais ou paralelas?", a: "A gente trabalha com as duas. Sempre te conta qual peça vai usar e quanto custa cada opção, e quem decide é você. Em todas, a garantia de 90 dias vale igual." },
   { q: "Vocês buscam o aparelho?", a: "Sim. Em Campos dos Goytacazes a gente busca e devolve. Você não sai de casa." },
-  { q: "Atendem fora de Campos dos Goytacazes?", a: "Atendemos. Cidades vizinhas como São João da Barra, Quissamã e Macaé entram no esquema busca e leva combinando antes pelo WhatsApp. Mais longe, dá pra mandar pelos Correios e a gente devolve do mesmo jeito." },
+  { q: "A busca e entrega tem custo?", a: "Tem uma taxa que depende da distância até você, e a gente combina o valor antes de sair. Assim você já sabe quanto fica e decide com tranquilidade, sem surpresa." },
   { q: "Meus dados e fotos estão seguros?", a: "Totalmente. Seus arquivos ficam intactos e em sigilo. Se o serviço exigir formatação, avisamos antes e fazemos backup com você." },
   { q: "Tem garantia?", a: "Tem sim, são 90 dias no serviço. Deu problema no que consertamos, resolvemos de novo sem custo." },
-  { q: "Atendem empresas?", a: "Sim. Cuidamos de PCs e celulares de empresas e comércios da região também." },
+  { q: "Atendem empresas?", a: "Sim. Cuidamos de PCs e celulares de empresas e comércios de Campos dos Goytacazes também." },
 ];
 
 /** FAQ — derruba as últimas objeções. Accordion acessível, um aberto por vez. */
