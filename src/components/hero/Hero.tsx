@@ -103,8 +103,9 @@ function StaticHero() {
  */
 function Scroll3DHero() {
   const containerRef = useRef<HTMLElement>(null);
-  // `canvasReady` vira true quando o GLB de fato carrega e a cena é resolvida.
-  // Driva o fade-in que mascara o delay de download/parse do modelo (4MB).
+  // `canvasReady` vira true quando o WebGL desenha o PRIMEIRO frame real
+  // (não no momento que a Promise do GLB resolve). Usado pra crossfade
+  // entre o WebP estático e o canvas 3D.
   const [canvasReady, setCanvasReady] = useState(false);
 
   const { scrollYProgress } = useScroll({
@@ -132,16 +133,35 @@ function Scroll3DHero() {
         />
 
         {/*
-          Canvas 3D centralizado atrás do texto. Começa invisível (opacity 0)
-          e faz fade-in suave em 900ms assim que o GLB termina de carregar
-          (`onReady` é chamado quando a cena é resolvida no Model). Isso
-          mascara o delay de download/parse do modelo de 4MB.
+          Backdrop estático: o WebP do iPhone (40KB) aparece IMEDIATAMENTE,
+          mascarando o delay de download/parse do GLB (3.4MB + 1MB de JS).
+          Some via fade quando o canvas 3D fica pronto.
         */}
-        <motion.div
-          className="pointer-events-none absolute inset-0 -z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: canvasReady ? 1 : 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+        <img
+          src="/hero-iphone.webp"
+          alt=""
+          aria-hidden
+          width={1600}
+          height={900}
+          fetchPriority="high"
+          className="pointer-events-none absolute inset-y-0 left-[-20%] -z-10 h-full w-[140%] max-w-none object-cover transition-opacity duration-700 ease-out"
+          style={{
+            opacity: canvasReady ? 0 : 0.5,
+            maskImage:
+              "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)",
+            WebkitMaskImage:
+              "linear-gradient(to right, transparent 0%, black 14%, black 86%, transparent 100%)",
+          }}
+        />
+
+        {/*
+          Canvas 3D centralizado atrás do texto. Fade via CSS transition
+          (não framer-motion) porque é imune a race condition de cache quente
+          que fazia o modelo "snapar" sem animação.
+        */}
+        <div
+          className="pointer-events-none absolute inset-0 -z-10 transition-opacity duration-700 ease-out"
+          style={{ opacity: canvasReady ? 1 : 0 }}
         >
           <Suspense fallback={null}>
             <IphoneCanvas
@@ -149,7 +169,7 @@ function Scroll3DHero() {
               onReady={() => setCanvasReady(true)}
             />
           </Suspense>
-        </motion.div>
+        </div>
 
         {/*
           Vinheta radial escura na esquerda (atrás do texto) + fade vertical

@@ -1,6 +1,6 @@
-import { useEffect, useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { Canvas, useFrame, useThree } from "@react-three/fiber";
-import { useGLTF, Environment, PerspectiveCamera } from "@react-three/drei";
+import { useGLTF, PerspectiveCamera } from "@react-three/drei";
 import type { MotionValue } from "framer-motion";
 import * as THREE from "three";
 
@@ -73,6 +73,7 @@ function Model({
   onReady?: () => void;
 }) {
   const { scene, animations } = useGLTF(MODEL_URL, false, true);
+  const firedRef = useRef(false);
 
   const { mixer, clip } = useMemo(() => {
     const m = new THREE.AnimationMixer(scene);
@@ -82,17 +83,21 @@ function Model({
     return { mixer: m, clip: c };
   }, [scene, animations]);
 
-  // Quando a cena é resolvida, sinaliza pra cima — usado pra fade-in suave.
-  useEffect(() => {
-    if (scene && onReady) onReady();
-  }, [scene, onReady]);
-
   useFrame(() => {
     const action = mixer.existingAction(clip);
     if (!action) return;
     // Mapeia o scroll pro trecho exato do clip definido pelos pontos âncora.
     action.time = START_TIME_S + progress.get() * (END_TIME_S - START_TIME_S);
     mixer.update(0);
+
+    // Sinaliza ready APÓS o primeiro frame real do WebGL ter sido desenhado,
+    // não no momento em que a Promise do useGLTF resolve. Evita o "snap seco"
+    // que rolava quando o GLB vinha do cache e o onReady disparava antes do
+    // motion.div ter aplicado o initial={opacity:0}.
+    if (!firedRef.current && onReady) {
+      firedRef.current = true;
+      onReady();
+    }
   });
 
   return <primitive object={scene} position={[0, -0.073, 0]} />;
@@ -102,7 +107,10 @@ function Model({
  * Canvas do hero.
  * - Câmera FIXA na frente do aparelho (+X, onde fica a tela do iPhone neste GLB).
  *   O scroll só dirige a animação explodido → montado; sem giro de câmera.
- * - Iluminação: ambiente + 2 direcionais + HDR "city" pra reflexos do metal/vidro.
+ * - Iluminação puramente local (ambient + 3 direcionais): tirei o
+ *   Environment HDR do drei pra não bloquear o ready esperando download
+ *   de CDN externa (https://drei-assets…). As luzes diretas compensam
+ *   o look de reflexos no metal/vidro com menos custo de banda.
  * - dpr capado em 1.5 pra economizar fillrate no mobile.
  * - Handler de context-lost: se a GPU resetar o contexto (resize, devtools,
  *   troca de aba), R3F restaura automaticamente em vez de perder o modelo.
@@ -131,10 +139,10 @@ export function IphoneCanvas({
       }}
     >
       <PerspectiveCamera makeDefault position={[0.5, 0.06, 0]} fov={32} near={0.01} far={10} />
-      <ambientLight intensity={0.5} />
-      <directionalLight position={[1.5, 2, 1.5]} intensity={1.4} />
-      <directionalLight position={[-1.5, -0.5, -1]} intensity={0.45} />
-      <Environment preset="city" />
+      <ambientLight intensity={0.6} />
+      <directionalLight position={[1.5, 2, 1.5]} intensity={1.6} />
+      <directionalLight position={[-1.5, -0.5, -1]} intensity={0.55} />
+      <directionalLight position={[0, -1, 2]} intensity={0.35} />
       <OrbitingCamera progress={progress} />
       <Model progress={progress} onReady={onReady} />
     </Canvas>
