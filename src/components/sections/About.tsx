@@ -82,18 +82,9 @@ export function About() {
               variants={fadeUp}
               className="text-base leading-relaxed text-muted sm:text-lg"
             >
-              Eu sou o Henrique, técnico da HB. Atendo cada cliente como
-              atenderia minha família: te explico o que tá acontecendo com o
-              aparelho na linguagem que você fala, passo o preço antes de
-              qualquer coisa e só ponho a mão depois que você aprovar.
-            </motion.p>
-            <motion.p
-              variants={fadeUp}
-              className="text-base leading-relaxed text-muted sm:text-lg"
-            >
-              Aqui não tem atendente robô nem orçamento que muda na hora de
-              pagar. Tem bancada, ferramenta certa e alguém que cuida do seu
-              aparelho do começo ao fim.
+              Sou o Henrique, o técnico da HB. Cada aparelho que entra aqui
+              passa pela minha bancada do começo ao fim. Te passo o preço antes
+              e o serviço só começa depois que você aprovar.
             </motion.p>
             <motion.div variants={fadeUp}>
               <CtaLink href={WA.generic} event="whatsapp_click" location="about">
