@@ -1,0 +1,7 @@
+{
+  // O Microsoft Edge Tools roda o webhint, que gera diagnósticos axe/ARIA e de
+  // tsconfig que NÃO entendem JSX/React nem o solution-style de references.
+  // Eram falsos positivos (ex.: aria-invalid="{expression}", strict no root).
+  // O typecheck real é o `tsc` (npm run lint). Desligamos só o webhint.
+  "vscode-edge-devtools.webhint": false
+}
