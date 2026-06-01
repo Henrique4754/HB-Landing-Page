@@ -32,4 +32,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://hbcomercio.com.br/sitemap.xml
+Sitemap: https://www.hbcomercio.com.br/sitemap.xml
