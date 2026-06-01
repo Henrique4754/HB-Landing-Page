@@ -1,0 +1,195 @@
+// Template estático do blog. Funções puras: recebem dados, devolvem HTML.
+// Todas as classes Tailwind aqui são escaneadas via `@source` em src/index.css.
+
+export const SITE_URL = "https://hb-landing-page-tau.vercel.app";
+
+const WA_LINK =
+  "https://wa.me/5522998616139?text=" +
+  encodeURIComponent("Olá! Gostaria de fazer um orçamento.");
+const PHONE_DISPLAY = "(22) 99861-6139";
+
+const MESES = [
+  "jan",
+  "fev",
+  "mar",
+  "abr",
+  "mai",
+  "jun",
+  "jul",
+  "ago",
+  "set",
+  "out",
+  "nov",
+  "dez",
+];
+
+/** Formata uma data (Date ou string) como "01 jun 2026" usando UTC (evita off-by-one). */
+export function formatDate(date) {
+  const d = new Date(date);
+  const dd = String(d.getUTCDate()).padStart(2, "0");
+  return `${dd} ${MESES[d.getUTCMonth()]} ${d.getUTCFullYear()}`;
+}
+
+/** Escapa texto para uso seguro em atributos/elementos HTML. */
+export function escapeHtml(value) {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
+}
+
+function head({ title, description, canonical, ogImage, cssHref, jsonLd }) {
+  const img = ogImage ? `${SITE_URL}${ogImage}` : `${SITE_URL}/og-image.png`;
+  return `<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <link rel="icon" href="/favicon.ico?v=2" sizes="any" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicons/apple-touch-icon.png?v=2" />
+  <meta name="theme-color" content="#070B18" />
+  <title>${escapeHtml(title)}</title>
+  <meta name="description" content="${escapeHtml(description)}" />
+  <link rel="canonical" href="${canonical}" />
+  <meta property="og:type" content="article" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="${escapeHtml(title)}" />
+  <meta property="og:description" content="${escapeHtml(description)}" />
+  <meta property="og:url" content="${canonical}" />
+  <meta property="og:image" content="${img}" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:image" content="${img}" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="${cssHref}" />
+  ${jsonLd ? `<script type="application/ld+json">\n${JSON.stringify(jsonLd, null, 2)}\n</script>` : ""}
+</head>
+<body>`;
+}
+
+function header() {
+  return `<header class="sticky top-0 z-50 border-b border-hairline bg-base/80 backdrop-blur-xl">
+  <div class="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 px-5 sm:h-[72px] sm:px-6 lg:px-8">
+    <a href="/" aria-label="HB Comércio — início" class="inline-flex items-center gap-2.5 rounded-lg">
+      <span class="grid size-10 shrink-0 place-items-center overflow-hidden rounded-md bg-white">
+        <img src="/logo.svg" alt="HB Comércio e Acessórios" width="40" height="40" class="size-10 scale-[1.18] object-contain" />
+      </span>
+      <span class="font-display text-lg font-bold leading-none tracking-tight text-ink">HB <span class="text-muted">Comércio</span></span>
+    </a>
+    <nav class="flex items-center gap-3">
+      <a href="/" class="hidden text-sm font-medium text-muted transition-colors hover:text-ink sm:inline">Site</a>
+      <a href="${WA_LINK}" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[44px] items-center justify-center rounded-full bg-cta px-5 text-sm font-semibold text-cta-ink">WhatsApp</a>
+    </nav>
+  </div>
+</header>`;
+}
+
+function footer() {
+  return `<footer class="border-t border-hairline bg-surface/40">
+  <div class="mx-auto max-w-[1200px] px-5 py-10 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-2 text-sm text-muted">
+      <p>HB Comércio &amp; Acessórios — assistência técnica de celulares e computadores em Campos dos Goytacazes/RJ.</p>
+      <p>WhatsApp ${PHONE_DISPLAY} · Rua Raul Cardoso, 131 · Seg a Sáb, 9h às 18h</p>
+      <p>
+        <a href="/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Voltar ao site</a>
+        ·
+        <a href="/privacidade.html" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Política de Privacidade</a>
+      </p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>`;
+}
+
+function ctaBlock() {
+  return `<div class="mt-12 rounded-2xl border border-hairline bg-surface p-6 text-center sm:p-8">
+    <h2 class="font-display text-xl font-semibold text-ink">Precisa consertar seu aparelho?</h2>
+    <p class="mx-auto mt-2 max-w-md text-sm text-muted">Orçamento grátis e sem compromisso. Chame a gente no WhatsApp.</p>
+    <a href="${WA_LINK}" target="_blank" rel="noopener noreferrer" class="glow-cta mt-5 inline-flex min-h-[48px] items-center justify-center rounded-full bg-cta px-6 font-semibold text-cta-ink transition-colors hover:bg-cta-hover">Quero meu orçamento</a>
+  </div>`;
+}
+
+function card(post) {
+  const { slug, data, readingTime } = post;
+  const cover = data.cover
+    ? `<img src="${data.cover}" alt="" class="aspect-[16/9] w-full object-cover" loading="lazy" />`
+    : "";
+  return `<a href="/blog/${slug}/" class="group flex flex-col overflow-hidden rounded-2xl border border-hairline bg-surface transition-colors hover:border-brand/60">
+      ${cover}
+      <div class="flex flex-1 flex-col gap-2 p-5">
+        <p class="text-xs text-muted">${formatDate(data.date)} · ${readingTime} min</p>
+        <h2 class="font-display text-lg font-semibold text-ink transition-colors group-hover:text-brand">${escapeHtml(data.title)}</h2>
+        <p class="text-sm text-muted">${escapeHtml(data.description)}</p>
+      </div>
+    </a>`;
+}
+
+/** Página de listagem /blog/. */
+export function renderListPage(posts, { cssHref }) {
+  const canonical = `${SITE_URL}/blog/`;
+  return (
+    head({
+      title: "Blog da HB | Dicas de conserto de celular e computador",
+      description:
+        "Dicas e respostas sobre conserto de celular e computador em Campos dos Goytacazes. Conteúdo direto da assistência técnica HB Comércio.",
+      canonical,
+      ogImage: null,
+      cssHref,
+      jsonLd: null,
+    }) +
+    header() +
+    `<main class="mx-auto max-w-[1200px] px-5 py-14 sm:px-6 lg:px-8">
+    <p class="spec-label text-xs text-brand">Blog</p>
+    <h1 class="mt-2 font-display text-3xl font-bold text-ink sm:text-4xl">Blog da HB</h1>
+    <p class="mt-3 max-w-2xl text-muted">Dicas práticas sobre conserto de celular e computador, direto de quem mexe com isso todo dia em Campos dos Goytacazes.</p>
+    <div class="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+      ${posts.map(card).join("\n      ")}
+    </div>
+    ${ctaBlock()}
+  </main>` +
+    footer()
+  );
+}
+
+/** Página de um post /blog/<slug>/. */
+export function renderPostPage(post, { cssHref }) {
+  const { slug, data, html, readingTime } = post;
+  const canonical = `${SITE_URL}/blog/${slug}/`;
+  const cover = data.cover
+    ? `<img src="${data.cover}" alt="" class="mt-6 aspect-[16/9] w-full rounded-2xl object-cover" />`
+    : "";
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: data.title,
+    description: data.description,
+    datePublished: new Date(data.date).toISOString().slice(0, 10),
+    image: data.cover ? `${SITE_URL}${data.cover}` : `${SITE_URL}/og-image.png`,
+    mainEntityOfPage: canonical,
+    author: { "@type": "Organization", name: "HB Comércio & Acessórios" },
+    publisher: { "@type": "Organization", name: "HB Comércio & Acessórios" },
+  };
+  return (
+    head({
+      title: `${data.title} | HB Comércio`,
+      description: data.description,
+      canonical,
+      ogImage: data.cover,
+      cssHref,
+      jsonLd,
+    }) +
+    header() +
+    `<main class="mx-auto max-w-[720px] px-5 py-12 sm:px-6">
+    <a href="/blog/" class="text-sm text-muted transition-colors hover:text-ink">‹ Voltar ao blog</a>
+    <h1 class="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">${escapeHtml(data.title)}</h1>
+    <p class="mt-3 text-sm text-muted">${formatDate(data.date)} · ${readingTime} min de leitura</p>
+    ${cover}
+    <article class="article mt-8">${html}</article>
+    ${ctaBlock()}
+  </main>` +
+    footer()
+  );
+}
