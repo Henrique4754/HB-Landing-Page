@@ -97,9 +97,9 @@ export function Services() {
             <motion.article
               key={s.title}
               variants={fadeUp}
-              className="group flex flex-col rounded-2xl border border-hairline bg-surface p-7 transition-[transform,border-color] duration-200 hover:-translate-y-1 hover:border-brand/70"
+              className="group flex flex-col rounded-2xl border border-hairline bg-surface p-7 transition-[transform,border-color,box-shadow] duration-[400ms] ease-out-expo will-change-transform hover:-translate-y-1.5 hover:border-brand/70 hover:shadow-[0_12px_40px_-12px_rgba(37,99,235,0.35)]"
             >
-              <span className="grid size-12 place-items-center rounded-xl border border-hairline bg-surface-2 text-brand transition-colors group-hover:border-brand/60">
+              <span className="grid size-12 place-items-center rounded-xl border border-hairline bg-surface-2 text-brand transition-colors duration-300 ease-out-expo group-hover:border-brand/60">
                 <s.icon size={24} aria-hidden />
               </span>
               <h3 className="mt-5 font-display text-xl font-semibold text-ink">
