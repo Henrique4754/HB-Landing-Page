@@ -56,6 +56,12 @@ export function Footer() {
           >
             <InstagramGlyph size={16} /> Instagram
           </a>
+          <a
+            href="/blog/"
+            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
+          >
+            Blog
+          </a>
         </div>
 
         <div className="flex flex-col gap-3">

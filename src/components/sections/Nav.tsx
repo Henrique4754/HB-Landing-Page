@@ -10,6 +10,7 @@ const LINKS = [
   { href: "#servicos", label: "Serviços" },
   { href: "#por-que", label: "Por que a HB" },
   { href: "#como-funciona", label: "Como funciona" },
+  { href: "/blog/", label: "Blog" },
   { href: "#contato", label: "Contato" },
 ];
 
