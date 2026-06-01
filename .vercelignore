@@ -11,5 +11,9 @@ dist
 /image
 /video
 /favicons
-/scripts
+# Ignora os scripts de fonte (Python/render), mas libera os do blog que
+# rodam no build da Vercel (node scripts/build-blog.mjs).
+/scripts/*
+!/scripts/build-blog.mjs
+!/scripts/blog-template.mjs
 PRD-landing-page-HB.md
