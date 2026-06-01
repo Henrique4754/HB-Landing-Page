@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Inclui as classes usadas só no template estático do blog (fora do grafo do Vite). */
+@source "../scripts/blog-template.mjs";
+
 /*
   HB Comércio — Sistema de design "tech premium escuro / engenharia de precisão".
   Tokens definidos via @theme (Tailwind v4 CSS-first) viram utilitários:
@@ -138,4 +141,74 @@
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* Tipografia do corpo dos posts do blog (prose feito à mão, sem plugin). */
+.article {
+  color: var(--color-ink);
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.article > * + * {
+  margin-top: 1.25rem;
+}
+.article h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-top: 2.5rem;
+}
+.article h3 {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-top: 2rem;
+}
+.article p,
+.article ul,
+.article ol {
+  color: var(--color-ink);
+}
+.article ul,
+.article ol {
+  padding-left: 1.5rem;
+}
+.article ul {
+  list-style: disc;
+}
+.article ol {
+  list-style: decimal;
+}
+.article li + li {
+  margin-top: 0.5rem;
+}
+.article a {
+  color: var(--color-brand);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.article a:hover {
+  color: var(--color-ink);
+}
+.article strong {
+  color: var(--color-ink);
+  font-weight: 600;
+}
+.article blockquote {
+  border-left: 3px solid var(--color-brand);
+  padding-left: 1rem;
+  color: var(--color-muted);
+  font-style: italic;
+}
+.article code {
+  font-family: var(--font-mono);
+  font-size: 0.9em;
+  background: var(--color-surface);
+  padding: 0.15em 0.4em;
+  border-radius: 4px;
+}
+.article img {
+  border-radius: var(--radius-card);
 }
