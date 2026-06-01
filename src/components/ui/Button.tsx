@@ -14,7 +14,7 @@ export type ButtonVariant = "whatsapp" | "secondary" | "ghost";
 const base =
   "inline-flex items-center justify-center gap-2 rounded-full font-semibold " +
   "min-h-[48px] px-6 text-base leading-none touch-manipulation " +
-  "transition-[transform,background-color,box-shadow,border-color] duration-150 " +
+  "transition-[transform,scale,background-color,box-shadow,border-color] duration-200 ease-out-expo " +
   "active:scale-[0.98] cursor-pointer select-none whitespace-nowrap " +
   "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand";
 
