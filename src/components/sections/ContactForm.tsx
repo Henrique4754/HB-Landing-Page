@@ -4,7 +4,7 @@ import { CheckCircle2, Loader2 } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
-import { CtaButton } from "../ui/Button";
+import { CtaButton, CtaLink } from "../ui/Button";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
 import { fadeUp, inViewProps } from "../../lib/motion";
 import { wa } from "../../lib/site";
@@ -15,16 +15,21 @@ type Errors = { name?: string; phone?: string; consent?: string };
 
 /**
  * Formulário — captura quem não quer falar agora (PRD seção 9).
- * Sem backend: monta uma mensagem wa.me pré-preenchida e abre o WhatsApp.
- * Validação inline no blur; estado de loading -> sucesso; erros com aria-live.
+ * Envia o lead pra função serverless /api/lead (Resend manda o e-mail pra HB).
+ * Validação inline no blur; estados loading -> sucesso/erro; erros com aria-live.
+ * Honeypot oculto (`company`) filtra bots. Em falha de envio, oferece o WhatsApp
+ * como fallback pra nenhum lead se perder.
  */
 export function ContactForm() {
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
   const [device, setDevice] = useState("");
+  const [company, setCompany] = useState(""); // honeypot anti-spam (sempre vazio)
   const [consent, setConsent] = useState(false);
   const [errors, setErrors] = useState<Errors>({});
-  const [status, setStatus] = useState<"idle" | "loading" | "success">("idle");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">(
+    "idle",
+  );
 
   function validate(): Errors {
     const next: Errors = {};
@@ -37,7 +42,15 @@ export function ContactForm() {
     return next;
   }
 
-  function handleSubmit(e: FormEvent) {
+  // Mensagem de fallback pro WhatsApp se o envio do e-mail falhar.
+  const waFallback = wa(
+    `Olá! Meu nome é ${name.trim()}. ` +
+      `Telefone: ${phone.trim()}.` +
+      (device.trim() ? ` Aparelho/problema: ${device.trim()}.` : "") +
+      " Gostaria de um orçamento.",
+  );
+
+  async function handleSubmit(e: FormEvent) {
     e.preventDefault();
     const next = validate();
     setErrors(next);
@@ -52,20 +65,25 @@ export function ContactForm() {
       return;
     }
 
-    const message =
-      `Olá! Meu nome é ${name.trim()}. ` +
-      `Telefone: ${phone.trim()}.` +
-      (device.trim() ? ` Aparelho/problema: ${device.trim()}.` : "") +
-      " Gostaria de um orçamento.";
-
-    trackConversion("form_submit", "contact_form");
-
-    // Abre o WhatsApp SÍNCRONO no clique — em setTimeout o bloqueador de popup
-    // barraria por quebrar o "user gesture". Se mesmo assim vier null, navega na aba.
-    const url = wa(message);
-    const opened = window.open(url, "_blank", "noopener,noreferrer");
-    if (!opened) window.location.href = url;
-    setStatus("success");
+    setStatus("loading");
+    try {
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name.trim(),
+          phone: phone.trim(),
+          device: device.trim(),
+          consent,
+          company, // honeypot — vazio em humanos
+        }),
+      });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      trackConversion("form_submit", "contact_form");
+      setStatus("success");
+    } catch {
+      setStatus("error");
+    }
   }
 
   const fieldClass = (hasError?: string) =>
@@ -95,14 +113,29 @@ export function ContactForm() {
               <div className="flex flex-col items-center gap-3 py-6 text-center" role="status">
                 <CheckCircle2 size={48} className="text-cta" />
                 <h3 className="font-display text-xl font-semibold text-ink">
-                  Abrimos o WhatsApp pra você!
+                  Recebemos seu contato!
                 </h3>
                 <p className="text-sm text-muted">
-                  Se não abriu, é só chamar a gente direto. A gente responde rapidinho.
+                  A gente retorna rapidinho com seu orçamento. Se preferir, já pode
+                  chamar no WhatsApp também.
                 </p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-5">
+                {/* Honeypot: invisível pra humanos, atrai bots. Fora do tab e do leitor de tela. */}
+                <div aria-hidden="true" className="absolute -left-[9999px] h-0 w-0 overflow-hidden">
+                  <label htmlFor="form-company">Não preencha este campo</label>
+                  <input
+                    id="form-company"
+                    name="company"
+                    type="text"
+                    tabIndex={-1}
+                    autoComplete="off"
+                    value={company}
+                    onChange={(e) => setCompany(e.target.value)}
+                  />
+                </div>
+
                 <div className="flex flex-col gap-1.5">
                   <label htmlFor="form-name" className="text-sm font-medium text-ink">
                     Nome <span className="text-cta">*</span>
@@ -209,17 +242,39 @@ export function ContactForm() {
                   )}
                 </div>
 
-                <CtaButton type="submit" disabled={status === "loading"} className="w-full">
+                {status === "error" && (
+                  <div
+                    role="alert"
+                    className="rounded-xl border border-red-400/70 bg-red-500/10 px-4 py-3 text-sm text-red-200"
+                  >
+                    <p className="font-medium">Ops, não conseguimos enviar agora.</p>
+                    <p className="mt-1 text-red-200/90">
+                      Tenta de novo em instantes ou fala com a gente direto no WhatsApp.
+                    </p>
+                    <CtaLink
+                      href={waFallback}
+                      event="whatsapp_click"
+                      location="contact_form_fallback"
+                      className="mt-3 w-full"
+                    >
+                      <WhatsAppGlyph size={20} />
+                      Falar no WhatsApp
+                    </CtaLink>
+                  </div>
+                )}
+
+                <CtaButton
+                  type="submit"
+                  disabled={status === "loading"}
+                  className="w-full"
+                >
                   {status === "loading" ? (
                     <>
                       <Loader2 size={20} className="animate-spin" />
-                      Abrindo WhatsApp…
+                      Enviando…
                     </>
                   ) : (
-                    <>
-                      <WhatsAppGlyph size={20} />
-                      Quero meu orçamento
-                    </>
+                    "Quero meu orçamento"
                   )}
                 </CtaButton>
 
