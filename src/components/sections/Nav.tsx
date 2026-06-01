@@ -42,30 +42,39 @@ export function Nav() {
         </nav>
 
         <div className="flex items-center gap-2">
+          {/*
+            Visibilidade controlada no WRAPPER (span), não no CtaLink: o botão
+            tem `inline-flex` no base, que venceria o `hidden` na cascata e faria
+            os botões transbordarem no mobile. O span não tem display competindo.
+          */}
           {/* Telefone direto — só desktop, pra quem já decidiu ligar */}
-          <CtaLink
-            href={PHONE_TEL}
-            variant="secondary"
-            event="call_click"
-            location="nav"
-            external={false}
-            className="hidden h-11 min-h-0 px-4 text-sm lg:inline-flex"
-            aria-label={`Ligar para ${PHONE_DISPLAY}`}
-          >
-            <Phone size={16} />
-            <span className="hidden xl:inline">{PHONE_DISPLAY}</span>
-            <span className="xl:hidden">Ligar</span>
-          </CtaLink>
+          <span className="hidden lg:inline-flex">
+            <CtaLink
+              href={PHONE_TEL}
+              variant="secondary"
+              event="call_click"
+              location="nav"
+              external={false}
+              className="h-11 min-h-0 px-4 text-sm"
+              aria-label={`Ligar para ${PHONE_DISPLAY}`}
+            >
+              <Phone size={16} />
+              <span className="hidden xl:inline">{PHONE_DISPLAY}</span>
+              <span className="xl:hidden">Ligar</span>
+            </CtaLink>
+          </span>
 
-          <CtaLink
-            href={WA.generic}
-            event="whatsapp_click"
-            location="nav"
-            className="hidden h-11 min-h-0 px-5 text-sm sm:inline-flex"
-          >
-            <WhatsAppGlyph size={18} />
-            WhatsApp
-          </CtaLink>
+          <span className="hidden sm:inline-flex">
+            <CtaLink
+              href={WA.generic}
+              event="whatsapp_click"
+              location="nav"
+              className="h-11 min-h-0 px-5 text-sm"
+            >
+              <WhatsAppGlyph size={18} />
+              WhatsApp
+            </CtaLink>
+          </span>
 
           {/* Botão de menu — só no mobile */}
           <button

@@ -30,7 +30,7 @@ const SERVICES: Service[] = [
   {
     icon: Smartphone,
     title: "Manutenção de Celulares",
-    body: "Tela quebrada, bateria viciada, não carrega, molhou? iPhone e Android, todas as marcas. Troca de tela, bateria e conector, com peças de qualidade e garantia.",
+    body: "iPhone e Android, todas as marcas. Tela, bateria, não carrega, molhou ou conector.",
     cta: "Orçar meu celular",
     href: WA.celular,
     location: "services_celular",
@@ -38,7 +38,7 @@ const SERVICES: Service[] = [
   {
     icon: Monitor,
     title: "Manutenção de Computadores",
-    body: "PC, notebook e Mac travando, lento ou não liga? Formatação, limpeza, upgrade de SSD/memória, montagem e pasta térmica. Rápido de novo.",
+    body: "PC, notebook e Mac. Formatação, lentidão, não liga, upgrade de SSD/memória e limpeza.",
     cta: "Orçar meu PC",
     href: WA.pc,
     location: "services_pc",
@@ -46,7 +46,7 @@ const SERVICES: Service[] = [
   {
     icon: Tablet,
     title: "Tablets e iPad",
-    body: "Tela trincada, bateria que não segura, conector de carga ou não liga? A gente cuida do seu tablet Android e do iPad.",
+    body: "Tablet Android e iPad. Tela, bateria, conector de carga ou não liga.",
     cta: "Orçar meu tablet",
     href: WA.tablet,
     location: "services_tablet",
@@ -54,7 +54,7 @@ const SERVICES: Service[] = [
   {
     icon: Watch,
     title: "Smartwatch e Apple Watch",
-    body: "Tela ou vidro trincado e bateria fraca no seu relógio inteligente? Avaliamos e trocamos com cuidado.",
+    body: "Smartwatch e Apple Watch. Troca de tela, vidro e bateria.",
     cta: "Orçar meu relógio",
     href: WA.smartwatch,
     location: "services_smartwatch",
@@ -62,7 +62,7 @@ const SERVICES: Service[] = [
   {
     icon: Gamepad2,
     title: "Videogames e Consoles",
-    body: "PlayStation, Xbox e Nintendo. Não liga, superaquece, leitor com defeito, sem imagem (HDMI) ou controle com problema? A gente resolve.",
+    body: "PlayStation, Xbox e Nintendo. Não liga, superaquece, leitor, HDMI ou controle.",
     cta: "Orçar meu console",
     href: WA.videogame,
     location: "services_videogame",

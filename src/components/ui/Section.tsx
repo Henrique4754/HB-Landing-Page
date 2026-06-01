@@ -20,7 +20,7 @@ export function Section({
     <section
       id={id}
       aria-labelledby={labelledBy}
-      className={cn("py-[clamp(4rem,9vw,7.5rem)]", className)}
+      className={cn("py-[clamp(3rem,8vw,7.5rem)]", className)}
     >
       {children}
     </section>

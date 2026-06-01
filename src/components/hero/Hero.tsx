@@ -10,6 +10,10 @@ import { useIsDesktop } from "../../hooks/useIsDesktop";
 
 const MICROCOPY = ["Resposta rápida", "Orçamento grátis", "Sem compromisso"];
 
+// Chips de orientação rápida — o lead bate o olho e sabe que atende o aparelho
+// dele; clicar leva direto pra seção de serviços.
+const CONSERTAMOS = ["Celular", "Computador", "Videogame", "Tablet", "Smartwatch"];
+
 // O three.js + modelo 3D fica num chunk separado, carregado depois do paint inicial.
 // E SÓ é importado se o usuário cair no caminho desktop (mobile nunca baixa o chunk).
 const IphoneCanvas = lazy(() =>
@@ -47,7 +51,7 @@ function StaticHero() {
   return (
     <section
       id="topo"
-      className="relative isolate overflow-hidden pt-28 pb-20 sm:pt-32"
+      className="relative isolate overflow-hidden pt-24 pb-14 sm:pt-32 sm:pb-20"
     >
       {/* Glow de marca */}
       <div
@@ -211,8 +215,16 @@ function HeroContent() {
         Orçamento grátis, garantia de 90 dias e pronto no mesmo dia. Sem gambiarra.
       </motion.p>
 
-      <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
-        <CtaLink href={WA.generic} event="whatsapp_click" location="hero">
+      <motion.div
+        variants={fadeUp}
+        className="flex w-full flex-col gap-3 sm:w-auto sm:flex-row sm:flex-wrap"
+      >
+        <CtaLink
+          href={WA.generic}
+          event="whatsapp_click"
+          location="hero"
+          className="w-full sm:w-auto"
+        >
           <WhatsAppGlyph size={20} />
           Chamar no WhatsApp
         </CtaLink>
@@ -222,6 +234,7 @@ function HeroContent() {
           event="call_click"
           location="hero"
           external={false}
+          className="w-full sm:w-auto"
         >
           <Phone size={18} />
           Ligar agora
@@ -236,6 +249,21 @@ function HeroContent() {
           <li key={item} className="inline-flex items-center gap-1.5">
             <Check size={15} className="text-cta" />
             {item}
+          </li>
+        ))}
+      </motion.ul>
+
+      {/* Chips: orientação rápida do que consertamos → leva pra seção de serviços. */}
+      <motion.ul variants={fadeUp} className="flex flex-wrap items-center gap-2">
+        <li className="spec-label text-[11px] text-muted/80">Consertamos:</li>
+        {CONSERTAMOS.map((item) => (
+          <li key={item}>
+            <a
+              href="#servicos"
+              className="inline-flex min-h-[36px] items-center rounded-full border border-hairline bg-surface/60 px-3 text-xs font-medium text-muted transition-colors duration-300 ease-out-expo hover:border-brand/60 hover:text-ink"
+            >
+              {item}
+            </a>
           </li>
         ))}
       </motion.ul>

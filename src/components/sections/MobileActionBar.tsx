@@ -11,7 +11,7 @@ import { cn } from "../../lib/cn";
  * que ela cubra o conteúdo (footer).
  */
 export function MobileActionBar() {
-  const visible = useScrolled(560);
+  const visible = useScrolled(200);
 
   return (
     <div
