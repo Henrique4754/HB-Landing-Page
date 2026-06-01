@@ -1,5 +1,14 @@
 import { motion } from "framer-motion";
-import { Smartphone, Cpu, MessageCircle, ArrowRight, type LucideIcon } from "lucide-react";
+import {
+  Smartphone,
+  Monitor,
+  Tablet,
+  Watch,
+  Gamepad2,
+  MessageCircle,
+  ArrowRight,
+  type LucideIcon,
+} from "lucide-react";
 import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
@@ -21,18 +30,42 @@ const SERVICES: Service[] = [
   {
     icon: Smartphone,
     title: "Manutenção de Celulares",
-    body: "Tela quebrada, bateria viciada, não carrega, molhou? iPhone e Android. Troca de tela, bateria, películas e capas, com peças de qualidade e garantia.",
+    body: "Tela quebrada, bateria viciada, não carrega, molhou? iPhone e Android, todas as marcas. Troca de tela, bateria e conector, com peças de qualidade e garantia.",
     cta: "Orçar meu celular",
     href: WA.celular,
     location: "services_celular",
   },
   {
-    icon: Cpu,
+    icon: Monitor,
     title: "Manutenção de Computadores",
-    body: "PC travando, lento, não liga? Formatação, limpeza, upgrade de SSD/memória, montagem, Office e pasta térmica. Rápido de novo.",
+    body: "PC, notebook e Mac travando, lento ou não liga? Formatação, limpeza, upgrade de SSD/memória, montagem e pasta térmica. Rápido de novo.",
     cta: "Orçar meu PC",
     href: WA.pc,
     location: "services_pc",
+  },
+  {
+    icon: Tablet,
+    title: "Tablets e iPad",
+    body: "Tela trincada, bateria que não segura, conector de carga ou não liga? A gente cuida do seu tablet Android e do iPad.",
+    cta: "Orçar meu tablet",
+    href: WA.tablet,
+    location: "services_tablet",
+  },
+  {
+    icon: Watch,
+    title: "Smartwatch e Apple Watch",
+    body: "Tela ou vidro trincado e bateria fraca no seu relógio inteligente? Avaliamos e trocamos com cuidado.",
+    cta: "Orçar meu relógio",
+    href: WA.smartwatch,
+    location: "services_smartwatch",
+  },
+  {
+    icon: Gamepad2,
+    title: "Videogames e Consoles",
+    body: "PlayStation, Xbox e Nintendo. Não liga, superaquece, leitor com defeito, sem imagem (HDMI) ou controle com problema? A gente resolve.",
+    cta: "Orçar meu console",
+    href: WA.videogame,
+    location: "services_videogame",
   },
   {
     icon: MessageCircle,

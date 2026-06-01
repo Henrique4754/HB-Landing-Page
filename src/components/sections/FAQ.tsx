@@ -16,6 +16,7 @@ const FAQS = [
   { q: "A busca e entrega tem custo?", a: "Tem uma taxa que depende da distância até você, e a gente combina o valor antes de sair. Assim você já sabe quanto fica e decide com tranquilidade, sem surpresa." },
   { q: "Meus dados e fotos estão seguros?", a: "Totalmente. Seus arquivos ficam intactos e em sigilo. Se o serviço exigir formatação, avisamos antes e fazemos backup com você." },
   { q: "Tem garantia?", a: "Tem sim, são 90 dias no serviço. Deu problema no que consertamos, resolvemos de novo sem custo." },
+  { q: "Vocês consertam videogame, tablet e Mac também?", a: "Sim. Além de celular e PC, a gente conserta videogames (PlayStation, Xbox e Nintendo), tablets e iPad, smartwatch e Apple Watch, e Mac/MacBook. Chama a gente que avaliamos o seu aparelho." },
   { q: "Atendem empresas?", a: "Sim. Cuidamos de PCs e celulares de empresas e comércios de Campos dos Goytacazes também." },
 ];
 

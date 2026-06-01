@@ -19,6 +19,9 @@ export const WA = {
   generic: wa("Olá! Gostaria de fazer um orçamento."),
   celular: wa("Olá! Gostaria de fazer um orçamento para meu celular!"),
   pc: wa("Olá! Gostaria de fazer um orçamento para meu computador!"),
+  tablet: wa("Olá! Gostaria de fazer um orçamento para meu tablet/iPad!"),
+  smartwatch: wa("Olá! Gostaria de fazer um orçamento para meu smartwatch!"),
+  videogame: wa("Olá! Gostaria de fazer um orçamento para meu videogame!"),
   atendente: wa("Olá! Gostaria de saber a respeito"),
 } as const;
 

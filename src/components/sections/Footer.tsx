@@ -24,8 +24,8 @@ export function Footer() {
         <div className="flex flex-col gap-4 sm:col-span-2 lg:col-span-1">
           <Logo />
           <p className="max-w-xs text-sm text-muted">
-            Manutenção de celulares e computadores em Campos dos Goytacazes – RJ.
-            Busca e leva em Campos dos Goytacazes.
+            Assistência técnica em Campos dos Goytacazes – RJ: celular,
+            computador, tablet, smartwatch e videogame. Busca e leva na cidade.
           </p>
         </div>
 
@@ -87,8 +87,8 @@ export function Footer() {
         <div className="flex flex-col gap-3">
           <h3 className="spec-label text-xs text-brand">Atendimento</h3>
           <p className="text-sm text-muted">
-            Celulares e computadores · pessoas e empresas · orçamento grátis e sem
-            compromisso.
+            Celulares, computadores, tablets, smartwatches e videogames · pessoas e
+            empresas · orçamento grátis e sem compromisso.
           </p>
           {/*
             Reforço SEO local — bairros atendidos em Campos dos Goytacazes.

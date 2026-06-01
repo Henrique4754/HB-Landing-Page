@@ -207,8 +207,8 @@ function HeroContent() {
         variants={fadeUp}
         className="max-w-xl text-base text-muted sm:text-lg"
       >
-        Celular e computador em Campos dos Goytacazes. Orçamento
-        grátis, garantia de 90 dias e pronto no mesmo dia. Sem gambiarra.
+        Celular, computador, videogame e mais, em Campos dos Goytacazes.
+        Orçamento grátis, garantia de 90 dias e pronto no mesmo dia. Sem gambiarra.
       </motion.p>
 
       <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
