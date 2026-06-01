@@ -32,4 +32,4 @@ Allow: /
 User-agent: cohere-ai
 Allow: /
 
-Sitemap: https://hb-landing-page-tau.vercel.app/sitemap.xml
+Sitemap: https://hbcomercio.com.br/sitemap.xml

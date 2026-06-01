@@ -1,7 +1,7 @@
 // Template estático do blog. Funções puras: recebem dados, devolvem HTML.
 // Todas as classes Tailwind aqui são escaneadas via `@source` em src/index.css.
 
-export const SITE_URL = "https://hb-landing-page-tau.vercel.app";
+export const SITE_URL = "https://hbcomercio.com.br";
 
 const WA_LINK =
   "https://wa.me/5522998616139?text=" +
