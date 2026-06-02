@@ -4,7 +4,7 @@ import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { CtaLink } from "../ui/Button";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
-import { fadeUp, inViewProps } from "../../lib/motion";
+import { revealUnit, inViewProps } from "../../lib/motion";
 import { WA, PHONE_TEL, PHONE_DISPLAY } from "../../lib/site";
 
 const REFORCO = ["Resposta rápida", "Sem compromisso", "Você só paga se aprovar"];
@@ -20,7 +20,7 @@ export function FinalCTA() {
     <Section className="relative overflow-hidden">
       <Container>
         <motion.div
-          variants={fadeUp}
+          variants={revealUnit}
           {...inViewProps}
           className="relative mx-auto flex max-w-3xl flex-col items-center gap-6 overflow-hidden rounded-3xl border border-hairline bg-surface px-6 py-14 text-center sm:px-12"
         >

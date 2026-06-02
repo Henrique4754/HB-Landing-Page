@@ -6,7 +6,7 @@ import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { CtaButton, CtaLink } from "../ui/Button";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
-import { fadeUp, inViewProps } from "../../lib/motion";
+import { revealUnit, inViewProps } from "../../lib/motion";
 import { wa } from "../../lib/site";
 import { trackConversion } from "../../lib/analytics";
 import { cn } from "../../lib/cn";
@@ -105,7 +105,7 @@ export function ContactForm() {
           />
 
           <motion.div
-            variants={fadeUp}
+            variants={revealUnit}
             {...inViewProps}
             className="mt-10 rounded-2xl border border-hairline bg-surface p-6 sm:p-8"
           >

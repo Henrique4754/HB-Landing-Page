@@ -6,7 +6,7 @@ import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { CtaLink } from "../ui/Button";
 import { InstagramGlyph } from "../icons/InstagramGlyph";
-import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
+import { fadeUp, revealUnit, inViewProps, staggerContainer } from "../../lib/motion";
 import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS, REVIEWS } from "../../lib/site";
 
 // Tempo (ms) que cada depoimento fica visível antes do próximo entrar.
@@ -40,7 +40,7 @@ function ReviewsCarousel() {
 
   return (
     <motion.div
-      variants={fadeUp}
+      variants={revealUnit}
       {...inViewProps}
       className="mt-10"
       onMouseEnter={() => setPaused(true)}
@@ -136,7 +136,7 @@ export function SocialProof() {
             href={MAPS}
             target="_blank"
             rel="noopener noreferrer"
-            variants={fadeUp}
+            variants={revealUnit}
             {...inViewProps}
             className="group flex flex-col justify-between gap-6 rounded-2xl border border-hairline bg-surface p-7 transition-colors hover:border-brand/60"
           >

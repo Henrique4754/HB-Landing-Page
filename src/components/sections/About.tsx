@@ -6,7 +6,7 @@ import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { CtaLink } from "../ui/Button";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
-import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
+import { fadeUp, revealUnit, inViewProps, staggerContainer } from "../../lib/motion";
 import { WA } from "../../lib/site";
 
 /**
@@ -31,7 +31,7 @@ export function About() {
         <div className="mt-12 grid items-center gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)] lg:gap-14">
           {/* Retrato + identificação */}
           <motion.div
-            variants={fadeUp}
+            variants={revealUnit}
             {...inViewProps}
             className="mx-auto w-full max-w-[360px]"
           >
