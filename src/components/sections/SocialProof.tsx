@@ -7,6 +7,7 @@ import { SectionHeading } from "../ui/SectionHeading";
 import { CtaLink } from "../ui/Button";
 import { InstagramGlyph } from "../icons/InstagramGlyph";
 import { fadeUp, revealUnit, inViewProps, staggerContainer } from "../../lib/motion";
+import { useIsDesktop } from "../../hooks/useIsDesktop";
 import { INSTAGRAM, MAPS, GOOGLE_RATING, REELS, REVIEWS } from "../../lib/site";
 
 // Tempo (ms) que cada depoimento fica visível antes do próximo entrar.
@@ -25,7 +26,31 @@ const AUTOPLAY_MS = 3500;
  * animam pra suas novas posições simultaneamente — daí o efeito de
  * baralho se realinhando.
  */
+/** Conteúdo do card de avaliação (compartilhado entre mobile e desktop). */
+function ReviewBody({ review }: { review: (typeof REVIEWS)[number] }) {
+  return (
+    <>
+      <div
+        className="flex items-center gap-1 text-cta"
+        aria-label={`${review.rating} de 5 estrelas`}
+      >
+        {Array.from({ length: review.rating }).map((_, j) => (
+          <Star key={j} size={16} fill="currentColor" aria-hidden />
+        ))}
+      </div>
+      <p className="text-base leading-relaxed text-muted sm:text-lg">
+        "{review.text}"
+      </p>
+      <div className="mt-auto flex items-baseline justify-between gap-3">
+        <span className="text-sm font-medium text-ink">{review.author}</span>
+        <span className="spec-label text-[10px] text-muted/80">Google</span>
+      </div>
+    </>
+  );
+}
+
 function ReviewsCarousel() {
+  const isDesktop = useIsDesktop();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
   const total = REVIEWS.length;
@@ -38,6 +63,33 @@ function ReviewsCarousel() {
     return () => window.clearInterval(id);
   }, [paused, total]);
 
+  // MOBILE: carrossel simples e automático, sem bolinhas. Um único elemento
+  // (a "trilha") faz translateX — uma camada só, suave, sem flicker. Slides
+  // de altura igual (flex stretch), sem pulo de layout.
+  if (!isDesktop) {
+    return (
+      <div
+        className="mt-10 overflow-hidden"
+        aria-live="polite"
+        aria-atomic="true"
+      >
+        <div
+          className="flex transition-transform duration-500 ease-out-expo"
+          style={{ transform: `translateX(-${index * 100}%)` }}
+        >
+          {REVIEWS.map((review, i) => (
+            <div key={review.author} className="w-full shrink-0" aria-hidden={i !== index}>
+              <article className="flex h-full flex-col gap-3 rounded-2xl border border-hairline bg-surface p-5">
+                <ReviewBody review={review} />
+              </article>
+            </div>
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // DESKTOP: efeito "baralho" (deck) — cards empilhados que se realinham.
   return (
     <motion.div
       variants={revealUnit}
@@ -46,18 +98,13 @@ function ReviewsCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Palco — altura fixa pra acomodar a stack e não pular layout.
-          overflow-hidden: o card que sai (sobe e some) é recortado no palco
-          em vez de invadir/sobrepor os reels acima (corrige o "z-index"). */}
       <div
         className="relative mx-auto h-[210px] max-w-2xl overflow-hidden sm:h-[170px]"
         aria-live="polite"
         aria-atomic="true"
       >
         {REVIEWS.map((review) => {
-          // Distância circular do front. 0 = front; 1,2 = peek atrás; resto = oculto.
           const rawDist = (REVIEWS.indexOf(review) - index + total) % total;
-          // Card que acabou de sair do front: sobe e some por cima do deck.
           const isOutgoing = rawDist === total - 1;
           const inStack = rawDist <= 2;
 
@@ -73,7 +120,6 @@ function ReviewsCarousel() {
             scale = 1 - rawDist * 0.04;
             opacity = 1 - rawDist * 0.3;
           } else {
-            // No fundo, fora de vista — pronto pra reentrar.
             y = 48;
             scale = 0.88;
             opacity = 0;
@@ -82,29 +128,13 @@ function ReviewsCarousel() {
           return (
             <motion.article
               key={review.author}
-              // zIndex via style (não é interpolável; animar causava recálculo
-              // de stacking a cada frame → flicker). Só y/scale/opacity animam.
               style={{ zIndex: total - rawDist }}
               animate={{ y, scale, opacity }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-0 flex transform-gpu flex-col gap-3 rounded-2xl border border-hairline bg-surface p-5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] sm:p-6"
+              className="absolute inset-0 flex flex-col gap-3 rounded-2xl border border-hairline bg-surface p-5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)] sm:p-6"
               aria-hidden={rawDist !== 0}
             >
-              <div
-                className="flex items-center gap-1 text-cta"
-                aria-label={`${review.rating} de 5 estrelas`}
-              >
-                {Array.from({ length: review.rating }).map((_, j) => (
-                  <Star key={j} size={16} fill="currentColor" aria-hidden />
-                ))}
-              </div>
-              <p className="text-base leading-relaxed text-muted sm:text-lg">
-                "{review.text}"
-              </p>
-              <div className="mt-auto flex items-baseline justify-between gap-3">
-                <span className="text-sm font-medium text-ink">{review.author}</span>
-                <span className="spec-label text-[10px] text-muted/80">Google</span>
-              </div>
+              <ReviewBody review={review} />
             </motion.article>
           );
         })}

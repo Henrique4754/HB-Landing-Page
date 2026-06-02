@@ -18,25 +18,23 @@ const isMobile =
   typeof window !== "undefined" &&
   window.matchMedia("(max-width: 1023px)").matches;
 
-// Bloco/card que anima sozinho (não é filho de um container com stagger).
-// Igual nos dois ambientes: fade + sobe, como uma unidade.
-export const revealUnit: Variants = {
-  hidden: { opacity: 0, y: isMobile ? 16 : 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } },
-};
+// No MOBILE as animações de scroll-reveal são desligadas: o conteúdo aparece
+// direto (estático), garantindo zero flicker — versão enxuta pedida pro
+// celular. No DESKTOP mantemos o reveal com fade + sobe (e stagger).
 
-// Filho de um container com stagger.
-// Desktop: entra com fade + sobe (individual). Mobile: estático (quem anima é
-// o container, como uma camada só).
-export const fadeUp: Variants = isMobile
-  ? { hidden: {}, show: {} }
+// Bloco/card que anima sozinho (não é filho de um container com stagger).
+export const revealUnit: Variants = isMobile
+  ? { hidden: { opacity: 1 }, show: { opacity: 1 } }
   : { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } } };
 
-// Container que revela os filhos.
-// Desktop: só orquestra o stagger (não anima a si mesmo). Mobile: anima a si
-// mesmo como uma unidade (fade + sobe) e os filhos vêm junto, numa camada só.
+// Filho de um container com stagger.
+export const fadeUp: Variants = isMobile
+  ? { hidden: { opacity: 1 }, show: { opacity: 1 } }
+  : { hidden: { opacity: 0, y: 24 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } } };
+
+// Container que revela os filhos (desktop: orquestra o stagger).
 export const staggerContainer: Variants = isMobile
-  ? { hidden: { opacity: 0, y: 16 }, show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: EASE } } }
+  ? { hidden: {}, show: {} }
   : { hidden: {}, show: { transition: { staggerChildren: 0.06, delayChildren: 0.05 } } };
 
 // Props padrão para revelar ao entrar na viewport (uma vez só).
