@@ -49,6 +49,26 @@ function ReviewBody({ review }: { review: (typeof REVIEWS)[number] }) {
   );
 }
 
+/** Carrossel simples (mobile-friendly): trilha única com translateX, sem bolinhas. */
+function SimpleReviewsCarousel({ index }: { index: number }) {
+  return (
+    <div className="mt-10 overflow-hidden" aria-live="polite" aria-atomic="true">
+      <div
+        className="flex transition-transform duration-500 ease-out-expo"
+        style={{ transform: `translateX(-${index * 100}%)` }}
+      >
+        {REVIEWS.map((review, i) => (
+          <div key={review.author} className="w-full shrink-0" aria-hidden={i !== index}>
+            <article className="flex h-full flex-col gap-3 rounded-2xl border border-hairline bg-surface p-5">
+              <ReviewBody review={review} />
+            </article>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 function ReviewsCarousel() {
   const isDesktop = useIsDesktop();
   const [index, setIndex] = useState(0);
@@ -63,33 +83,12 @@ function ReviewsCarousel() {
     return () => window.clearInterval(id);
   }, [paused, total]);
 
-  // MOBILE: carrossel simples e automático, sem bolinhas. Um único elemento
-  // (a "trilha") faz translateX — uma camada só, suave, sem flicker. Slides
-  // de altura igual (flex stretch), sem pulo de layout.
-  if (!isDesktop) {
-    return (
-      <div
-        className="mt-10 overflow-hidden"
-        aria-live="polite"
-        aria-atomic="true"
-      >
-        <div
-          className="flex transition-transform duration-500 ease-out-expo"
-          style={{ transform: `translateX(-${index * 100}%)` }}
-        >
-          {REVIEWS.map((review, i) => (
-            <div key={review.author} className="w-full shrink-0" aria-hidden={i !== index}>
-              <article className="flex h-full flex-col gap-3 rounded-2xl border border-hairline bg-surface p-5">
-                <ReviewBody review={review} />
-              </article>
-            </div>
-          ))}
-        </div>
-      </div>
-    );
-  }
+  // TESTE: deck (baralho) também no mobile. Se piscar, voltar pro
+  // <SimpleReviewsCarousel index={index} /> no mobile.
+  void isDesktop;
+  void SimpleReviewsCarousel;
 
-  // DESKTOP: efeito "baralho" (deck) — cards empilhados que se realinham.
+  // Efeito "baralho" (deck) — cards empilhados que se realinham.
   return (
     <motion.div
       variants={revealUnit}
