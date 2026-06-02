@@ -83,12 +83,10 @@ function ReviewsCarousel() {
     return () => window.clearInterval(id);
   }, [paused, total]);
 
-  // TESTE: deck (baralho) também no mobile. Se piscar, voltar pro
-  // <SimpleReviewsCarousel index={index} /> no mobile.
-  void isDesktop;
-  void SimpleReviewsCarousel;
+  // MOBILE: carrossel simples (sem flicker, sem bolinhas).
+  if (!isDesktop) return <SimpleReviewsCarousel index={index} />;
 
-  // Efeito "baralho" (deck) — cards empilhados que se realinham.
+  // DESKTOP: efeito "baralho" (deck) — cards empilhados que se realinham.
   return (
     <motion.div
       variants={revealUnit}
