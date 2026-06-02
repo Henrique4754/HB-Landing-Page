@@ -46,9 +46,11 @@ function ReviewsCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      {/* Palco — altura fixa pra acomodar a stack e não pular layout. */}
+      {/* Palco — altura fixa pra acomodar a stack e não pular layout.
+          overflow-hidden: o card que sai (sobe e some) é recortado no palco
+          em vez de invadir/sobrepor os reels acima (corrige o "z-index"). */}
       <div
-        className="relative mx-auto h-[210px] max-w-2xl sm:h-[170px]"
+        className="relative mx-auto h-[210px] max-w-2xl overflow-hidden sm:h-[170px]"
         aria-live="polite"
         aria-atomic="true"
       >
@@ -80,9 +82,12 @@ function ReviewsCarousel() {
           return (
             <motion.article
               key={review.author}
-              animate={{ y, scale, opacity, zIndex: total - rawDist }}
+              // zIndex via style (não é interpolável; animar causava recálculo
+              // de stacking a cada frame → flicker). Só y/scale/opacity animam.
+              style={{ zIndex: total - rawDist }}
+              animate={{ y, scale, opacity }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-              className="absolute inset-0 flex flex-col gap-3 rounded-2xl border border-hairline bg-surface p-5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)] sm:p-6"
+              className="absolute inset-0 flex transform-gpu flex-col gap-3 rounded-2xl border border-hairline bg-surface p-5 shadow-[0_20px_40px_-20px_rgba(0,0,0,0.5)] [backface-visibility:hidden] sm:p-6"
               aria-hidden={rawDist !== 0}
             >
               <div
@@ -160,10 +165,10 @@ export function SocialProof() {
               <motion.div
                 key={reel.videoSrc}
                 variants={fadeUp}
-                className="group relative aspect-[9/16] overflow-hidden rounded-2xl border border-hairline bg-surface"
+                className="group relative aspect-[9/16] transform-gpu overflow-hidden rounded-2xl border border-hairline bg-surface [backface-visibility:hidden]"
               >
                 <video
-                  className="absolute inset-0 h-full w-full object-cover"
+                  className="absolute inset-0 h-full w-full transform-gpu object-cover [backface-visibility:hidden]"
                   src={reel.videoSrc}
                   poster={reel.poster}
                   preload="metadata"
