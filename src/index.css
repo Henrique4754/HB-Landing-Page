@@ -212,21 +212,3 @@
 .article img {
   border-radius: var(--radius-card);
 }
-
-/*
-  iOS Safari piscava ("flicker") nas animações de scroll (Framer Motion,
-  opacity/transform): o navegador recria/destrói a camada GPU a cada reveal.
-  Forçar uma camada composta estável nos elementos animados elimina o piscar
-  SEM mudar a animação. Escopo mobile (onde ocorre) pra não mexer no 3D do
-  hero no desktop. O seletor pega os elementos que o Framer estiliza inline
-  (transform/opacity); o transform inline do Framer continua vencendo durante
-  a animação, e o translateZ(0) só mantém a camada quando ele não está setado.
-*/
-@media (max-width: 1023px) {
-  main :where([style*="opacity"], [style*="transform"]) {
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-}

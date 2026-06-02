@@ -18,7 +18,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 transform-gpu border-b border-hairline bg-base/80 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-hairline bg-base/95 lg:bg-base/80 lg:backdrop-blur-xl">
 
       <Container className="flex h-16 items-center justify-between gap-4 sm:h-[72px]">
         <a href="#topo" aria-label="Início — HB Comércio" className="rounded-lg">
@@ -91,7 +91,7 @@ export function Nav() {
 
       {/* Painel mobile colapsável */}
       {open && (
-        <div className="border-t border-hairline bg-base/95 backdrop-blur-xl lg:hidden">
+        <div className="border-t border-hairline bg-base/95 lg:hidden">
           <Container className="flex flex-col gap-1 py-4">
             {LINKS.map((link) => (
               <a
