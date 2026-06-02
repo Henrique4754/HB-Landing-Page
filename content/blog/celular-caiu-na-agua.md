@@ -2,7 +2,7 @@
 title: "Celular caiu na água: o que fazer nos primeiros minutos"
 description: "Se o celular caiu na água agora, cada minuto conta. Veja o que fazer, o que não fazer, e por que o arroz não resolve — direto de quem conserta todo dia."
 date: 2026-06-02
-cover: /hero-iphone.webp
+cover: /post2image.png
 tags: [celular, agua, conserto]
 draft: false
 ---
