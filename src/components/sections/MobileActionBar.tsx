@@ -16,7 +16,7 @@ export function MobileActionBar() {
   return (
     <div
       className={cn(
-        "fixed inset-x-0 bottom-0 z-40 lg:hidden",
+        "fixed inset-x-0 bottom-0 z-40 transform-gpu lg:hidden",
         "border-t border-hairline bg-base/90 backdrop-blur-xl",
         "px-4 pb-[env(safe-area-inset-bottom)] transition-transform duration-300",
         visible ? "translate-y-0" : "translate-y-full",

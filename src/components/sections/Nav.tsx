@@ -18,7 +18,7 @@ export function Nav() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-hairline bg-base/80 backdrop-blur-xl">
+    <header className="fixed inset-x-0 top-0 z-50 transform-gpu border-b border-hairline bg-base/80 backdrop-blur-xl">
 
       <Container className="flex h-16 items-center justify-between gap-4 sm:h-[72px]">
         <a href="#topo" aria-label="Início — HB Comércio" className="rounded-lg">
