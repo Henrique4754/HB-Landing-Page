@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Phone } from "lucide-react";
 import { Container } from "../ui/Container";
 import { CtaLink } from "../ui/Button";
@@ -89,33 +90,42 @@ export function Nav() {
         </div>
       </Container>
 
-      {/* Painel mobile colapsável */}
-      {open && (
-        <div className="border-t border-hairline bg-base/95 lg:hidden">
-          <Container className="flex flex-col gap-1 py-4">
-            {LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
+      {/* Painel mobile colapsável — abre/fecha com expand suave (height + fade) */}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            key="mobile-menu"
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden border-t border-hairline bg-base/95 lg:hidden"
+          >
+            <Container className="flex flex-col gap-1 py-4">
+              {LINKS.map((link) => (
+                <a
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-surface-2"
+                >
+                  {link.label}
+                </a>
+              ))}
+              <CtaLink
+                href={WA.generic}
+                event="whatsapp_click"
+                location="nav_mobile"
+                className="mt-2"
                 onClick={() => setOpen(false)}
-                className="rounded-lg px-3 py-3 text-base font-medium text-ink hover:bg-surface-2"
               >
-                {link.label}
-              </a>
-            ))}
-            <CtaLink
-              href={WA.generic}
-              event="whatsapp_click"
-              location="nav_mobile"
-              className="mt-2"
-              onClick={() => setOpen(false)}
-            >
-              <WhatsAppGlyph size={18} />
-              Chamar no WhatsApp
-            </CtaLink>
-          </Container>
-        </div>
-      )}
+                <WhatsAppGlyph size={18} />
+                Chamar no WhatsApp
+              </CtaLink>
+            </Container>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
