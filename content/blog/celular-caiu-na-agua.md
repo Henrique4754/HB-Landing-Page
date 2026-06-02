@@ -13,7 +13,7 @@ Para. Respira. E lê isso antes de fazer qualquer coisa.
 
 ## Desligue o aparelho agora
 
-Se o celular ainda está ligado, desligue. Não espere terminar de ler. Componentes eletrônicos não morrem de água — morrem de curto-circuito causado pela água enquanto há energia passando por eles. Quanto mais tempo fica ligado, maior o estrago.
+Se o celular ainda está ligado, desligue. Não espere terminar de ler. Componentes eletrônicos não morrem de água morrem de curto-circuito causado pela água enquanto há energia passando por eles. Quanto mais tempo fica ligado, maior o estrago.
 
 Se já desligou sozinho, ótimo. Não tente religar pra ver se está funcionando.
 
