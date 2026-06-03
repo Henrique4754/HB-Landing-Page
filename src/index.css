@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
-/* Inclui as classes usadas só no template estático do blog (fora do grafo do Vite). */
+/* Inclui as classes usadas só nos templates estáticos (blog + serviços), fora do grafo do Vite. */
 @source "../scripts/blog-template.mjs";
+@source "../scripts/servicos-template.mjs";
 
 /*
   HB Comércio — Sistema de design "tech premium escuro / engenharia de precisão".

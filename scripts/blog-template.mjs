@@ -39,7 +39,7 @@ export function escapeHtml(value) {
     .replace(/"/g, "&quot;");
 }
 
-function head({ title, description, canonical, ogImage, cssHref, jsonLd }) {
+export function head({ title, description, canonical, ogImage, cssHref, jsonLd, ogType = "article" }) {
   const img = ogImage ? `${SITE_URL}${ogImage}` : `${SITE_URL}/og-image.png`;
   return `<!doctype html>
 <html lang="pt-BR">
@@ -52,7 +52,7 @@ function head({ title, description, canonical, ogImage, cssHref, jsonLd }) {
   <title>${escapeHtml(title)}</title>
   <meta name="description" content="${escapeHtml(description)}" />
   <link rel="canonical" href="${canonical}" />
-  <meta property="og:type" content="article" />
+  <meta property="og:type" content="${ogType}" />
   <meta property="og:locale" content="pt_BR" />
   <meta property="og:title" content="${escapeHtml(title)}" />
   <meta property="og:description" content="${escapeHtml(description)}" />
@@ -69,7 +69,7 @@ function head({ title, description, canonical, ogImage, cssHref, jsonLd }) {
 <body>`;
 }
 
-function header() {
+export function header() {
   return `<header class="sticky top-0 z-50 border-b border-hairline bg-base/80 backdrop-blur-xl">
   <div class="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 px-5 sm:h-[72px] sm:px-6 lg:px-8">
     <a href="/" aria-label="HB Comércio — início" class="inline-flex items-center gap-2.5 rounded-lg">
@@ -86,11 +86,20 @@ function header() {
 </header>`;
 }
 
-function footer() {
+export function footer() {
   return `<footer class="border-t border-hairline bg-surface/40">
   <div class="mx-auto max-w-[1200px] px-5 py-10 sm:px-6 lg:px-8">
-    <div class="flex flex-col gap-2 text-sm text-muted">
+    <div class="flex flex-col gap-3 text-sm text-muted">
       <p>HB Comércio &amp; Acessórios — assistência técnica de celulares e computadores em Campos dos Goytacazes/RJ.</p>
+      <nav aria-label="Serviços" class="flex flex-wrap gap-x-4 gap-y-1.5 text-xs">
+        <a href="/conserto/celular/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de celular</a>
+        <a href="/conserto/computador/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de computador</a>
+        <a href="/conserto/videogame/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de videogame</a>
+        <a href="/conserto/mac-macbook/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Assistência Mac e MacBook</a>
+        <a href="/conserto/tablet-ipad/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de tablet e iPad</a>
+        <a href="/conserto/smartwatch/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Smartwatch e Apple Watch</a>
+        <a href="/blog/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Blog</a>
+      </nav>
       <p>WhatsApp ${PHONE_DISPLAY} · Rua Raul Cardoso, 131 · Seg a Sáb, 9h às 18h</p>
       <p>
         <a href="/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Voltar ao site</a>
@@ -104,7 +113,7 @@ function footer() {
 </html>`;
 }
 
-function ctaBlock() {
+export function ctaBlock() {
   return `<div class="mt-12 rounded-2xl border border-hairline bg-surface p-6 text-center sm:p-8">
     <h2 class="font-display text-xl font-semibold text-ink">Precisa consertar seu aparelho?</h2>
     <p class="mx-auto mt-2 max-w-md text-sm text-muted">Orçamento grátis e sem compromisso. Chame a gente no WhatsApp.</p>

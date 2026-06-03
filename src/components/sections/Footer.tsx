@@ -85,11 +85,32 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col gap-3">
-          <h3 className="spec-label text-xs text-brand">Atendimento</h3>
-          <p className="text-sm text-muted">
-            Celulares, computadores, tablets, smartwatches e videogames · pessoas e
-            empresas · orçamento grátis e sem compromisso.
-          </p>
+          <h3 className="spec-label text-xs text-brand">Serviços</h3>
+          {/*
+            Links internos para as páginas de serviço (programmatic SEO).
+            Garante que /conserto/* seja rastreável a partir da home (sem órfãs)
+            e distribui autoridade com anchor text descritivo.
+          */}
+          <nav aria-label="Serviços" className="flex flex-col gap-2">
+            <a href="/conserto/celular/" className="text-sm text-muted transition-colors hover:text-ink">
+              Conserto de celular
+            </a>
+            <a href="/conserto/computador/" className="text-sm text-muted transition-colors hover:text-ink">
+              Conserto de computador
+            </a>
+            <a href="/conserto/videogame/" className="text-sm text-muted transition-colors hover:text-ink">
+              Conserto de videogame
+            </a>
+            <a href="/conserto/mac-macbook/" className="text-sm text-muted transition-colors hover:text-ink">
+              Assistência Mac e MacBook
+            </a>
+            <a href="/conserto/tablet-ipad/" className="text-sm text-muted transition-colors hover:text-ink">
+              Conserto de tablet e iPad
+            </a>
+            <a href="/conserto/smartwatch/" className="text-sm text-muted transition-colors hover:text-ink">
+              Smartwatch e Apple Watch
+            </a>
+          </nav>
           {/*
             Reforço SEO local — bairros atendidos em Campos dos Goytacazes.
             Cobre buscas long-tail por bairro ("conserto celular Pelinca",

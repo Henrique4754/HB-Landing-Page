@@ -16,4 +16,5 @@ dist
 /scripts/*
 !/scripts/build-blog.mjs
 !/scripts/blog-template.mjs
+!/scripts/servicos-template.mjs
 PRD-landing-page-HB.md

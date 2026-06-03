@@ -28,6 +28,17 @@ HB Comércio & Acessórios é uma assistência técnica especializada em manuten
 3. Após aprovação, o conserto é feito com peças de qualidade e 90 dias de garantia.
 4. Aparelho é devolvido pronto (mesmo dia / até 48h dependendo do tipo).
 
+## Páginas de serviço
+
+Páginas dedicadas, com detalhes e perguntas frequentes de cada serviço:
+
+- **Conserto de celular (iPhone e Android)**: https://www.hbcomercio.com.br/conserto/celular/ — troca de tela, bateria, conector de carga, celular que molhou ou não liga. Prazo: normalmente no mesmo dia.
+- **Conserto de computador e notebook**: https://www.hbcomercio.com.br/conserto/computador/ — formatação, lentidão, não liga, upgrade de SSD e memória, limpeza e pasta térmica. Prazo: em geral até 48h.
+- **Conserto de videogame (PS4, PS5, Xbox, Nintendo)**: https://www.hbcomercio.com.br/conserto/videogame/ — superaquecimento, não liga, não lê disco, controle com drift.
+- **Assistência de Mac e MacBook**: https://www.hbcomercio.com.br/conserto/mac-macbook/ — não liga, lentidão, bateria inchada, superaquecimento, upgrade de SSD.
+
+Preços: variam por aparelho e defeito; o orçamento é sempre grátis e sem compromisso, informado antes do serviço. Garantia de 90 dias em todos os serviços.
+
 ## Contato
 
 - **WhatsApp**: +55 22 99861-6139 ([abrir conversa](https://wa.me/5522998616139))

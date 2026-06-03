@@ -12,9 +12,11 @@ import { fileURLToPath } from "node:url";
 import matter from "gray-matter";
 import { marked } from "marked";
 import { renderListPage, renderPostPage, SITE_URL } from "./blog-template.mjs";
+import { renderServicePage } from "./servicos-template.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = join(ROOT, "content", "blog");
+const SERVICOS_DIR = join(ROOT, "content", "servicos");
 const DIST = join(ROOT, "dist");
 
 // 1. Descobrir o CSS hashado que o Vite gerou (lendo o index.html).
@@ -56,10 +58,40 @@ for (const post of posts) {
 mkdirSync(join(DIST, "blog"), { recursive: true });
 writeFileSync(join(DIST, "blog", "index.html"), renderListPage(posts, { cssHref }));
 
-// 5. Regenerar o sitemap incluindo o blog.
+// 5. Páginas de serviço (programmatic SEO) — content/servicos/*.md → /conserto/<slug>/.
+let servicos = [];
+if (existsSync(SERVICOS_DIR)) {
+  servicos = readdirSync(SERVICOS_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((file) => {
+      const raw = readFileSync(join(SERVICOS_DIR, file), "utf8");
+      const { data, content } = matter(raw);
+      const slug = file.replace(/\.md$/, "");
+      return { slug, data, html: marked.parse(content) };
+    })
+    .filter((s) => s.data.draft !== true);
+
+  const allBySlug = Object.fromEntries(servicos.map((s) => [s.slug, s]));
+  for (const service of servicos) {
+    const dir = join(DIST, "conserto", service.slug);
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(
+      join(dir, "index.html"),
+      renderServicePage(service, { cssHref, allBySlug }),
+    );
+  }
+}
+
+// 6. Regenerar o sitemap incluindo blog e páginas de serviço.
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   { loc: `${SITE_URL}/`, lastmod: today, changefreq: "monthly", priority: "1.0" },
+  ...servicos.map((s) => ({
+    loc: `${SITE_URL}/conserto/${s.slug}/`,
+    lastmod: today,
+    changefreq: "monthly",
+    priority: "0.8",
+  })),
   { loc: `${SITE_URL}/blog/`, lastmod: today, changefreq: "weekly", priority: "0.7" },
   ...posts.map((p) => ({
     loc: `${SITE_URL}/blog/${p.slug}/`,
@@ -81,4 +113,6 @@ const sitemap =
   `\n</urlset>\n`;
 writeFileSync(join(DIST, "sitemap.xml"), sitemap);
 
-console.log(`✓ Blog gerado: ${posts.length} post(s) + lista + sitemap.`);
+console.log(
+  `✓ Estático gerado: ${posts.length} post(s) + ${servicos.length} serviço(s) + listas + sitemap.`,
+);

@@ -2,14 +2,14 @@
 title: "Vale a pena trocar a tela do iPhone ou comprar outro?"
 description: "Quebrou a tela do iPhone e ficou na dúvida entre consertar ou trocar de aparelho? A gente explica quando cada caminho compensa, sem enrolação."
 date: 2026-06-01
-cover: /hero-iphone.webp
+cover: /blog-tela-iphone.jpg
 tags: [iphone, tela]
 draft: false
 ---
 
 Quebrou a tela do iPhone e bateu aquela dúvida: conserta ou parte pra um aparelho
 novo? A resposta honesta é "depende", mas dá pra decidir com tranquilidade olhando
-três coisas. Vamos por partes.
+três coisas.
 
 ## 1. Qual o modelo do seu iPhone?
 
