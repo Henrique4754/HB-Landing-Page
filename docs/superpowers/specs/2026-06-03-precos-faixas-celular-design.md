@@ -49,9 +49,11 @@ Seja `C` = custo da peça no fornecedor.
   que o cliente aceita.
 
 Mão de obra por dificuldade:
-- Fácil (bateria, conector): R$50
-- Médio (tela colada/aro, microfone): R$70
-- Difícil (placa, micro-solda, premium): R$100+
+- Fácil (bateria, conector): R$80
+- Médio (tela colada/aro, microfone): R$100
+- Difícil (placa, micro-solda, premium): **terceirizado**. O valor varia conforme o
+  custo do parceiro, então fica **fora desta fórmula e do preço publicado** — orçado
+  caso a caso.
 
 Regras de borda:
 - **Piso de serviço:** nenhum orçamento abaixo de R$100 total.
@@ -59,9 +61,9 @@ Regras de borda:
 - **Arredondar** o preço final para número cheio.
 
 Exemplos de validação:
-- Bateria iPhone 11 (C=110) → 2×110 + 50 = **R$270**
-- Tela iPhone 13 Pro (C=310) → 2×310 + 70 = **R$690**
-- Tela iPhone 17 Pro Max paralela (C=480) → 2×480 + 70 = **R$1.030**
+- Bateria iPhone 11 (C=110, fácil R$80) → 2×110 + 80 = **R$300**
+- Tela iPhone 13 Pro (C=310, médio R$100) → 2×310 + 100 = **R$720**
+- Tela iPhone 17 Pro Max paralela (C=480, médio R$100) → 2×480 + 100 = **R$1.060**
 
 ## Faixas "a partir de" a publicar (somente CELULAR)
 
@@ -69,9 +71,9 @@ Base: custo barato-comum (≈ p25) na Faixa 1, com a fórmula acima, arredondado
 
 | Serviço | Conta (caso de entrada) | A partir de |
 |---|---|---|
-| Troca de tela | 2×65 + 70 | **R$200** |
-| Troca de bateria | 2×55 + 50 | **R$150** |
-| Conector de carga | 2×40 + 50 | **R$130** |
+| Troca de tela | 2×65 + 100 (médio) | **R$230** |
+| Troca de bateria | 2×55 + 80 (fácil) | **R$190** |
+| Conector de carga | 2×40 + 80 (fácil) | **R$160** |
 
 Disclaimer obrigatório junto das faixas: *"Valores de referência a partir de; o
 preço final é fechado após avaliação grátis do aparelho."*
@@ -98,17 +100,17 @@ preço final é fechado após avaliação grátis do aparelho."*
    ```
    precos:
      - servico: "Troca de tela"
-       apartirde: 200
+       apartirde: 230
      - servico: "Troca de bateria"
-       apartirde: 150
+       apartirde: 190
      - servico: "Conector de carga"
-       apartirde: 130
+       apartirde: 160
    precoNota: "Valores de referência a partir de; o preço final é fechado após avaliação grátis do aparelho."
    ```
 
 3. **`public/llms.txt`** — na entrada de conserto de celular, acrescentar:
-   "Troca de tela a partir de R$200, troca de bateria a partir de R$150, conector de
-   carga a partir de R$130 (valores de referência, fechados após avaliação grátis)."
+   "Troca de tela a partir de R$230, troca de bateria a partir de R$190, conector de
+   carga a partir de R$160 (valores de referência, fechados após avaliação grátis)."
 
 4. **`scripts/precos-referencia.mjs`** *(novo, ferramenta de dev)* — busca a API do
    fornecedor, calcula os percentis de custo por categoria, aplica a fórmula e
