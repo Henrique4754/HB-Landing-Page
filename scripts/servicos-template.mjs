@@ -67,6 +67,28 @@ function relatedBlock(related = [], allBySlug = {}) {
   </section>`;
 }
 
+/** Bloco "Preços de referência" — faixas "a partir de" com moldura de valor. */
+function precosBlock(precos, nota) {
+  if (!Array.isArray(precos) || !precos.length) return "";
+  const rows = precos
+    .map(
+      (p, i) =>
+        `<div class="flex items-center justify-between gap-4 px-5 py-4${i > 0 ? " border-t border-hairline" : ""}">
+        <span class="text-sm text-ink">${escapeHtml(p.servico)}</span>
+        <span class="font-display text-base font-semibold text-brand whitespace-nowrap">a partir de R$ ${escapeHtml(p.apartirde)}</span>
+      </div>`,
+    )
+    .join("\n      ");
+  return `<section class="mt-12">
+    <h2 class="font-display text-2xl font-bold text-ink">Preços de referência</h2>
+    <div class="mt-5 overflow-hidden rounded-2xl border border-hairline bg-surface/60">
+      ${rows}
+    </div>
+    <p class="mt-3 text-sm text-muted">Varia conforme o modelo do aparelho. Todo serviço tem orçamento grátis, garantia de 90 dias e, na maioria dos casos, conserto no mesmo dia.</p>
+    ${nota ? `<p class="mt-1.5 text-xs text-muted/80">${escapeHtml(nota)}</p>` : ""}
+  </section>`;
+}
+
 /** Página de um serviço /conserto/<slug>/. */
 export function renderServicePage(service, { cssHref, allBySlug = {} }) {
   const { slug, data, html } = service;
@@ -74,23 +96,34 @@ export function renderServicePage(service, { cssHref, allBySlug = {} }) {
   const waText =
     data.waText || `Olá! Gostaria de um orçamento para ${data.cardTitle || data.h1}.`;
 
+  const serviceNode = {
+    "@type": "Service",
+    serviceType: data.serviceType || data.h1,
+    name: data.h1,
+    description: data.description,
+    url: canonical,
+    provider: { "@id": `${SITE_URL}/#business` },
+    areaServed: { "@type": "City", name: "Campos dos Goytacazes" },
+    availableChannel: {
+      "@type": "ServiceChannel",
+      serviceUrl: canonical,
+      servicePhone: "+5522998616139",
+    },
+  };
+  // Faixa "a partir de" -> AggregateOffer (lowPrice = menor faixa publicada).
+  if (Array.isArray(data.precos) && data.precos.length) {
+    serviceNode.offers = {
+      "@type": "AggregateOffer",
+      priceCurrency: "BRL",
+      lowPrice: String(Math.min(...data.precos.map((p) => Number(p.apartirde)))),
+      offerCount: String(data.precos.length),
+    };
+  }
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
-      {
-        "@type": "Service",
-        serviceType: data.serviceType || data.h1,
-        name: data.h1,
-        description: data.description,
-        url: canonical,
-        provider: { "@id": `${SITE_URL}/#business` },
-        areaServed: { "@type": "City", name: "Campos dos Goytacazes" },
-        availableChannel: {
-          "@type": "ServiceChannel",
-          serviceUrl: canonical,
-          servicePhone: "+5522998616139",
-        },
-      },
+      serviceNode,
       {
         "@type": "BreadcrumbList",
         itemListElement: [
@@ -163,6 +196,8 @@ export function renderServicePage(service, { cssHref, allBySlug = {} }) {
         ? `<h2 class="mt-12 font-display text-2xl font-bold text-ink">O que a gente resolve</h2>${resolveList(data.resolvemos)}`
         : ""
     }
+
+    ${precosBlock(data.precos, data.precoNota)}
 
     <article class="article mt-10">${html}</article>
 

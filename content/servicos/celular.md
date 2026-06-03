@@ -9,6 +9,14 @@ intro: "Tela trincada, bateria que não segura, conector que não carrega ou aqu
 prazo: "Normalmente no mesmo dia"
 cover: /hero-iphone.webp
 waText: "Olá! Gostaria de um orçamento para o conserto do meu celular."
+precos:
+  - servico: "Troca de tela"
+    apartirde: 230
+  - servico: "Troca de bateria"
+    apartirde: 190
+  - servico: "Conector de carga"
+    apartirde: 160
+precoNota: "Valores de referência a partir de; o preço final é fechado após avaliação grátis do aparelho."
 resolvemos:
   - "Troca de tela (display) trincada ou sem imagem"
   - "Troca de bateria viciada ou que descarrega rápido"
