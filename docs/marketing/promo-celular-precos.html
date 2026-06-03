@@ -1,0 +1,133 @@
+<!doctype html>
+<!--
+  Peça de divulgação HB Comércio — conserto de celular com preços "a partir de".
+  Canvas fixo 1080x1350 (retrato 4:5), pronto pra importar no Figma
+  (ex.: plugin "html.to.design") e converter em design editável.
+  Cores e fontes batem com o site. Não entra no build do site.
+-->
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      :root {
+        --navy: #070b18;
+        --ink: #f2f5fa;
+        --muted: #98a2b8;
+        --green: #25d366;
+        --green-ink: #04240f;
+        --hairline: rgba(255, 255, 255, 0.1);
+        --surface: rgba(255, 255, 255, 0.045);
+      }
+      body { background: #1b1b1f; display: flex; justify-content: center; padding: 40px; }
+
+      .canvas {
+        position: relative;
+        width: 1080px;
+        height: 1350px;
+        background:
+          radial-gradient(1100px 700px at 85% -10%, rgba(37, 211, 102, 0.18), transparent 60%),
+          radial-gradient(900px 600px at -10% 110%, rgba(37, 211, 102, 0.08), transparent 55%),
+          var(--navy);
+        color: var(--ink);
+        font-family: "Inter", sans-serif;
+        padding: 84px;
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+      }
+
+      /* topo: marca */
+      .brand { display: flex; align-items: center; gap: 18px; }
+      .mark {
+        width: 76px; height: 76px; border-radius: 18px;
+        background: var(--green); color: var(--green-ink);
+        display: grid; place-items: center;
+        font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 34px;
+        box-shadow: 0 8px 30px rgba(37, 211, 102, 0.35);
+      }
+      .brand-name { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 30px; line-height: 1; }
+      .brand-sub { color: var(--muted); font-size: 17px; font-weight: 500; margin-top: 6px; letter-spacing: 0.02em; }
+
+      /* headline */
+      .kicker { margin-top: 60px; color: var(--muted); font-size: 21px; font-weight: 600; letter-spacing: 0.08em; }
+      .headline {
+        margin-top: 16px;
+        font-family: "Space Grotesk", sans-serif; font-weight: 700;
+        font-size: 104px; line-height: 0.98; letter-spacing: -0.02em;
+      }
+      .headline .hl { color: var(--green); }
+      .lede { margin-top: 30px; color: var(--muted); font-size: 27px; line-height: 1.45; max-width: 840px; }
+
+      .disc { margin-top: 18px; color: var(--muted); font-size: 19px; }
+
+      /* selos de valor */
+      .chips { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 14px; }
+      .chip {
+        display: inline-flex; align-items: center; gap: 10px;
+        border: 1px solid var(--hairline); border-radius: 999px;
+        padding: 14px 22px; font-size: 20px; font-weight: 600;
+      }
+      .chip .dot { width: 9px; height: 9px; border-radius: 999px; background: var(--green); }
+
+      /* rodapé / CTA */
+      .spacer { flex: 1; }
+      .cta {
+        display: flex; align-items: center; justify-content: space-between; gap: 24px;
+        background: var(--green); color: var(--green-ink);
+        border-radius: 24px; padding: 30px 40px;
+      }
+      .cta .label { font-size: 21px; font-weight: 600; opacity: 0.8; }
+      .cta .phone { font-family: "Space Grotesk", sans-serif; font-weight: 700; font-size: 44px; line-height: 1; margin-top: 4px; }
+      .cta .wa { font-size: 22px; font-weight: 700; text-align: right; }
+      .cta .wa small { display: block; font-weight: 500; opacity: 0.8; font-size: 17px; }
+
+      .foot { margin-top: 26px; display: flex; align-items: center; justify-content: space-between; color: var(--muted); font-size: 19px; }
+      .foot b { color: var(--ink); font-weight: 600; }
+    </style>
+  </head>
+  <body>
+    <div class="canvas">
+      <div class="brand">
+        <div class="mark">HB</div>
+        <div>
+          <div class="brand-name">HB Comércio &amp; Acessórios</div>
+          <div class="brand-sub">ASSISTÊNCIA TÉCNICA · CAMPOS DOS GOYTACAZES</div>
+        </div>
+      </div>
+
+      <p class="kicker">CONSERTO DE CELULAR · IPHONE E ANDROID</p>
+      <h1 class="headline">Serviços<br /><span class="hl">a partir de R$150</span></h1>
+      <p class="lede">Bateria, tela, conector de carga, não liga, molhou e mais. A gente avalia, te passa o preço antes e só faz com a sua autorização.</p>
+      <p class="disc">Valor conforme o modelo do aparelho. Orçamento sempre grátis.</p>
+
+      <div class="chips">
+        <span class="chip"><span class="dot"></span>Garantia de 90 dias</span>
+        <span class="chip"><span class="dot"></span>Conserto no mesmo dia</span>
+        <span class="chip"><span class="dot"></span>Busca e leva na cidade</span>
+        <span class="chip"><span class="dot"></span>Sem gambiarra</span>
+      </div>
+
+      <div class="spacer"></div>
+
+      <div class="cta">
+        <div>
+          <div class="label">Chama no WhatsApp</div>
+          <div class="phone">(22) 99861-6139</div>
+        </div>
+        <div class="wa">Orçamento grátis<small>e sem compromisso</small></div>
+      </div>
+
+      <div class="foot">
+        <span>@hb_comercio.acessorios</span>
+        <span><b>www.hbcomercio.com.br</b></span>
+      </div>
+    </div>
+  </body>
+</html>
