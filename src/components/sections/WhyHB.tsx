@@ -54,11 +54,13 @@ export function WhyHB() {
             <motion.div
               key={spec.label}
               variants={fadeUp}
-              className="flex flex-col gap-3 bg-surface p-7"
+              className="flex gap-4 bg-surface p-5 sm:flex-col sm:gap-3 sm:p-7"
             >
-              <spec.icon size={22} className="text-brand" aria-hidden />
-              <span className="spec-label text-xs text-cta">{spec.label}</span>
-              <p className="text-sm leading-relaxed text-muted">{spec.body}</p>
+              <spec.icon size={22} className="mt-0.5 shrink-0 text-brand sm:mt-0" aria-hidden />
+              <div className="flex flex-col gap-1.5 sm:contents">
+                <span className="spec-label text-xs text-cta">{spec.label}</span>
+                <p className="text-sm leading-relaxed text-muted">{spec.body}</p>
+              </div>
             </motion.div>
           ))}
         </motion.div>

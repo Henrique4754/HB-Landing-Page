@@ -35,7 +35,7 @@ export function HowItWorks() {
           <motion.ol
             variants={staggerContainer}
             {...inViewProps}
-            className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4 lg:gap-6"
+            className="grid grid-cols-2 gap-x-4 gap-y-8 sm:gap-6 lg:grid-cols-4"
           >
             {STEPS.map((step) => (
               <motion.li key={step.n} variants={fadeUp} className="relative flex flex-col gap-3">
