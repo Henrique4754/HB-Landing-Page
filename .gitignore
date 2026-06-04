@@ -16,3 +16,4 @@ yarn-error.log*
 
 # Catálogo bruto do fornecedor (uso interno; não redistribuir)
 docs/superpowers/specs/rafaelcell-catalogo.csv
+design-source/
