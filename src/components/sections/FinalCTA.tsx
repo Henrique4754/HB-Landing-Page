@@ -4,6 +4,7 @@ import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { CtaLink } from "../ui/Button";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
+import { GuaranteeSeal } from "../icons/GuaranteeSeal";
 import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
 import { WA, PHONE_TEL, PHONE_DISPLAY } from "../../lib/site";
 
@@ -28,6 +29,10 @@ export function FinalCTA() {
                 "radial-gradient(50% 60% at 50% 0%, rgba(37,211,102,0.14), transparent 70%)",
             }}
           />
+          {/* Selo de garantia — prova visual antes do CTA final */}
+          <motion.div variants={fadeUp} className="text-brand">
+            <GuaranteeSeal size={96} />
+          </motion.div>
           <motion.h2
             variants={fadeUp}
             className="text-[clamp(1.75rem,5vw,3rem)] text-ink"

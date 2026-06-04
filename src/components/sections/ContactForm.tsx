@@ -1,13 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { motion } from "framer-motion";
-import { CheckCircle2, Loader2 } from "lucide-react";
+import { CheckCircle2, Loader2, MapPin, Clock } from "lucide-react";
 import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { CtaButton, CtaLink } from "../ui/Button";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
 import { fadeUp, inViewProps } from "../../lib/motion";
-import { wa } from "../../lib/site";
+import { wa, MAPS, MAPS_EMBED, ADDRESS, BUSINESS_HOURS } from "../../lib/site";
 import { trackConversion } from "../../lib/analytics";
 import { cn } from "../../lib/cn";
 
@@ -283,6 +283,43 @@ export function ContactForm() {
                 </p>
               </form>
             )}
+          </motion.div>
+
+          {/* Mapa real — reforça "loja física de verdade" e ajuda no LocalSEO */}
+          <motion.div
+            variants={fadeUp}
+            {...inViewProps}
+            className="mt-6 overflow-hidden rounded-2xl border border-hairline bg-surface"
+          >
+            <div className="flex flex-col gap-1 p-5 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+              <div className="flex flex-col gap-1.5 text-sm">
+                <span className="inline-flex items-center gap-2 font-medium text-ink">
+                  <MapPin size={16} className="shrink-0 text-brand" aria-hidden />
+                  {ADDRESS}
+                </span>
+                <span className="inline-flex items-center gap-2 text-muted">
+                  <Clock size={16} className="shrink-0 text-brand" aria-hidden />
+                  {BUSINESS_HOURS}
+                </span>
+              </div>
+              <CtaLink
+                href={MAPS}
+                variant="secondary"
+                event="maps_click"
+                location="contact_map"
+                className="min-h-[40px] shrink-0 px-4 text-sm"
+              >
+                <MapPin size={16} />
+                Como chegar
+              </CtaLink>
+            </div>
+            <iframe
+              src={MAPS_EMBED}
+              title="Localização da HB Comércio no Google Maps"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block h-64 w-full border-0 grayscale-[0.2]"
+            />
           </motion.div>
         </div>
       </Container>

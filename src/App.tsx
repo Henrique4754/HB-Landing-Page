@@ -4,6 +4,7 @@ import { Hero } from "./components/hero/Hero";
 import { TrustBar } from "./components/sections/TrustBar";
 import { Problem } from "./components/sections/Problem";
 import { Services } from "./components/sections/Services";
+import { BrandStrip } from "./components/sections/BrandStrip";
 import { WhyHB } from "./components/sections/WhyHB";
 import { HowItWorks } from "./components/sections/HowItWorks";
 import { SocialProof } from "./components/sections/SocialProof";
@@ -13,6 +14,7 @@ import { FAQ } from "./components/sections/FAQ";
 import { FinalCTA } from "./components/sections/FinalCTA";
 import { Footer } from "./components/sections/Footer";
 import { MobileActionBar } from "./components/sections/MobileActionBar";
+import { DesktopWhatsAppFab } from "./components/sections/DesktopWhatsAppFab";
 
 export default function App() {
   return (
@@ -32,6 +34,7 @@ export default function App() {
         <TrustBar />
         <Problem />
         <Services />
+        <BrandStrip />
         <WhyHB />
         <HowItWorks />
         <SocialProof />
@@ -46,6 +49,7 @@ export default function App() {
       {/* Espaço reservado pra barra fixa não cobrir o footer no mobile */}
       <div aria-hidden className="h-[72px] lg:hidden" />
       <MobileActionBar />
+      <DesktopWhatsAppFab />
 
       <Analytics />
     </>

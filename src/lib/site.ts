@@ -62,6 +62,10 @@ export const REELS: Reel[] = [
 export const MAPS =
   "https://www.google.com/maps/search/?api=1&query=HB+Com%C3%A9rcio+Rua+Raul+Cardoso+131+Campos+dos+Goytacazes";
 
+// Mesmo lugar, formato embed (iframe, sem API key) pra mostrar o mapa na página.
+export const MAPS_EMBED =
+  "https://maps.google.com/maps?q=HB+Com%C3%A9rcio+Rua+Raul+Cardoso+131+Campos+dos+Goytacazes&z=16&output=embed";
+
 // Dados do negócio, confirmados com o cliente.
 export const GOOGLE_RATING = "5,0"; // nota real do Google (5 avaliações)
 export const BUSINESS_HOURS = "Seg a Sáb, 9h às 18h";

@@ -9,7 +9,8 @@ export type ConversionEvent =
   | "whatsapp_click"
   | "call_click"
   | "form_submit"
-  | "instagram_click";
+  | "instagram_click"
+  | "maps_click";
 
 export function trackConversion(
   event: ConversionEvent,
