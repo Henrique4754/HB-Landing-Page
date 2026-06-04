@@ -1,12 +1,10 @@
-import { Suspense, lazy, useRef, useState } from "react";
-import { motion, useScroll, useReducedMotion, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { Phone, Check } from "lucide-react";
 import { Container } from "../ui/Container";
 import { CtaLink } from "../ui/Button";
 import { WhatsAppGlyph } from "../icons/WhatsAppGlyph";
 import { fadeUp, staggerContainer } from "../../lib/motion";
 import { WA, PHONE_TEL } from "../../lib/site";
-import { useIsDesktop } from "../../hooks/useIsDesktop";
 
 const MICROCOPY = ["Resposta rápida", "Orçamento grátis", "Sem compromisso"];
 
@@ -14,40 +12,14 @@ const MICROCOPY = ["Resposta rápida", "Orçamento grátis", "Sem compromisso"];
 // dele; clicar leva direto pra seção de serviços.
 const CONSERTAMOS = ["Celular", "Computador", "Videogame", "Tablet", "Smartwatch"];
 
-// O three.js + modelo 3D fica num chunk separado, carregado depois do paint inicial.
-// E SÓ é importado se o usuário cair no caminho desktop (mobile nunca baixa o chunk).
-const IphoneCanvas = lazy(() =>
-  import("./IphoneCanvas").then((m) => ({ default: m.IphoneCanvas })),
-);
-
 /**
- * Hero — dois caminhos:
- *  - **Desktop (≥1024px) + motion permitido:** 3D pinned no scroll (220vh+),
- *    iPhone real montando, câmera orbitando, peso visual máximo.
- *  - **Mobile / reduced-motion:** hero estático com WebP do iPhone como
- *    background (40KB), texto e CTAs em uma única dobra. Zero R3F carregado,
- *    zero scroll extra pra passar do hero, performance garantida em qualquer
- *    Android baratinho. Conversão preservada (CTAs above-the-fold).
+ * Hero — estático em todos os dispositivos. Mantém o copy, o ritmo e os CTAs
+ * acima da dobra, com um WebP do iPhone (40KB) como fundo sutil. Sem 3D/WebGL:
+ * o modelo three.js detonava o carregamento e a UX em máquinas de baixo
+ * desempenho, então foi removido em favor de performance garantida em qualquer
+ * dispositivo. A imagem carrega `eager`/`high` pra um LCP rápido.
  */
 export function Hero() {
-  const prefersReduced = useReducedMotion();
-  const isDesktop = useIsDesktop();
-  const useStaticHero = !isDesktop || prefersReduced;
-
-  if (useStaticHero) {
-    return <StaticHero />;
-  }
-  return <Scroll3DHero />;
-}
-
-/* ──────────────────────────────────────────────────────────────────────────── */
-
-/**
- * Versão estática: usada em telas <lg (mobile/tablet) e quando o sistema pede
- * menos movimento. Mantém o copy, o ritmo e os CTAs do hero principal — só
- * troca o 3D animado por uma imagem (PNG/WebP) do iPhone já montado.
- */
-function StaticHero() {
   return (
     <section
       id="topo"
@@ -101,87 +73,7 @@ function StaticHero() {
 /* ──────────────────────────────────────────────────────────────────────────── */
 
 /**
- * Versão desktop com 3D pinned: scroll vai de 0→1 dentro de uma janela alta;
- * `IphoneCanvas` lê esse progresso e dirige a animação + a órbita da câmera.
- * Quando o scroll passa do fim da seção, o sticky libera e a próxima seção entra.
- */
-function Scroll3DHero() {
-  const containerRef = useRef<HTMLElement>(null);
-  // `canvasReady` vira true quando o GLB de fato carrega e a cena é resolvida.
-  // Driva o fade-in que mascara o delay de download/parse do modelo (4MB).
-  const [canvasReady, setCanvasReady] = useState(false);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end end"],
-  });
-  // Mantemos um motion value de fallback caso precise (não usado neste caminho).
-  useMotionValue(1);
-
-  return (
-    <section
-      id="topo"
-      ref={containerRef}
-      className="relative isolate h-[300vh]"
-    >
-      <div className="sticky top-0 flex h-[100svh] items-center overflow-hidden pt-24 sm:pt-28">
-        {/* Glow de marca */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-20"
-          style={{
-            background:
-              "radial-gradient(60% 55% at 70% 30%, rgba(37,99,235,0.22), transparent 70%)",
-          }}
-        />
-
-        {/*
-          Canvas 3D centralizado atrás do texto. Começa invisível (opacity 0)
-          e faz fade-in suave em 900ms assim que o GLB termina de carregar
-          (`onReady` é chamado quando a cena é resolvida no Model). Isso
-          mascara o delay de download/parse do modelo de 4MB.
-        */}
-        <motion.div
-          className="pointer-events-none absolute inset-0 -z-10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: canvasReady ? 1 : 0 }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        >
-          <Suspense fallback={null}>
-            <IphoneCanvas
-              progress={scrollYProgress}
-              onReady={() => setCanvasReady(true)}
-            />
-          </Suspense>
-        </motion.div>
-
-        {/*
-          Vinheta radial escura na esquerda (atrás do texto) + fade vertical
-          leve nas pontas. Garante legibilidade do headline mesmo quando o
-          modelo mostra peças claras (tela acesa, traseira refletiva).
-        */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 -z-10"
-          style={{
-            background:
-              "radial-gradient(75% 80% at 22% 50%, rgba(7,11,24,0.88) 0%, rgba(7,11,24,0.55) 38%, rgba(7,11,24,0.05) 72%, transparent 100%), linear-gradient(180deg, rgba(7,11,24,0.55) 0%, transparent 18%, transparent 85%, rgba(7,11,24,0.55) 100%)",
-          }}
-        />
-
-        <Container className="relative w-full">
-          <HeroContent />
-        </Container>
-      </div>
-    </section>
-  );
-}
-
-/* ──────────────────────────────────────────────────────────────────────────── */
-
-/**
- * Conteúdo do hero (eyebrow, headline, sub, CTAs, microcopy). Compartilhado
- * pelas duas versões pra não duplicar copy nem variantes de animação.
+ * Conteúdo do hero (eyebrow, headline, sub, CTAs, microcopy).
  */
 function HeroContent() {
   return (
