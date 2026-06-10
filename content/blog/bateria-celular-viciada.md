@@ -3,6 +3,7 @@ title: "Bateria do celular viciada: 6 sinais de que está na hora de trocar"
 description: "Celular desligando com carga, esquentando ou durando meio dia? Veja os sinais de bateria viciada e quando a troca resolve, direto de quem conserta celular todo dia."
 date: 2026-06-03
 cover: /blog-bateria.jpg
+coverAlt: "Bateria de celular inchada retirada do aparelho, sobre a bancada"
 tags: [celular, bateria]
 draft: false
 ---

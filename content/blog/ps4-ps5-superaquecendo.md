@@ -3,6 +3,7 @@ title: "Videogame superaquecendo e desligando sozinho? Entenda a causa"
 description: "Console esquentando, com a ventoinha barulhenta e desligando sozinho? PlayStation ou Xbox, veja por que isso acontece, o que evitar e como o conserto resolve, direto da assistência."
 date: 2026-06-03
 cover: /blog-videogame.jpg
+coverAlt: "Console de videogame com calor saindo das saídas de ar, ilustrando superaquecimento"
 tags: [videogame, console, superaquecimento]
 draft: false
 ---

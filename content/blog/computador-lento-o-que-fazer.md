@@ -3,6 +3,7 @@ title: "Computador lento: 5 causas comuns e como resolver"
 description: "PC ou notebook travando e demorando para tudo? Veja as 5 causas mais comuns de lentidão e o que realmente resolve, direto de quem conserta computador todo dia."
 date: 2026-06-02
 cover: /blog-computador.jpg
+coverAlt: "Notebook sobre a mesa de trabalho, ilustrando um computador lento"
 tags: [computador, lentidao, ssd]
 draft: false
 ---

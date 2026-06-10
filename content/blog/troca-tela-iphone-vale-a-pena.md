@@ -3,6 +3,7 @@ title: "Vale a pena trocar a tela do iPhone ou comprar outro?"
 description: "Quebrou a tela do iPhone e ficou na dúvida entre consertar ou trocar de aparelho? A gente explica quando cada caminho compensa, sem enrolação."
 date: 2026-06-01
 cover: /blog-tela-iphone.jpg
+coverAlt: "Celular com a tela trincada apoiado em uma bancada de assistência técnica"
 tags: [iphone, tela]
 draft: false
 ---

@@ -124,7 +124,7 @@ export function ctaBlock() {
 function card(post) {
   const { slug, data, readingTime } = post;
   const cover = data.cover
-    ? `<img src="${data.cover}" alt="" class="aspect-[16/9] w-full object-cover" loading="lazy" />`
+    ? `<img src="${data.cover}" alt="${escapeHtml(data.coverAlt || data.title)}" class="aspect-[16/9] w-full object-cover" loading="lazy" />`
     : "";
   return `<a href="/blog/${slug}/" class="group flex flex-col overflow-hidden rounded-2xl border border-hairline bg-surface transition-colors hover:border-brand/60">
       ${cover}
@@ -179,7 +179,7 @@ export function renderPostPage(post, { cssHref }) {
   const { slug, data, html, readingTime } = post;
   const canonical = `${SITE_URL}/blog/${slug}/`;
   const cover = data.cover
-    ? `<img src="${data.cover}" alt="" class="mt-6 aspect-[16/9] w-full rounded-2xl object-cover" />`
+    ? `<img src="${data.cover}" alt="${escapeHtml(data.coverAlt || data.title)}" class="mt-6 aspect-[16/9] w-full rounded-2xl object-cover" />`
     : "";
   const jsonLd = {
     "@context": "https://schema.org",
