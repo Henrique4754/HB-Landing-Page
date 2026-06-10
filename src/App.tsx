@@ -15,8 +15,12 @@ import { FinalCTA } from "./components/sections/FinalCTA";
 import { Footer } from "./components/sections/Footer";
 import { MobileActionBar } from "./components/sections/MobileActionBar";
 import { DesktopWhatsAppFab } from "./components/sections/DesktopWhatsAppFab";
+import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 export default function App() {
+  // Scroll suave (inércia) no desktop; respeita reduced-motion e fica nativo no mobile.
+  useSmoothScroll();
+
   return (
     <>
       {/* Skip link — primeiro foco do teclado pula direto pro conteúdo */}

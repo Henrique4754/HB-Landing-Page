@@ -144,6 +144,25 @@
   }
 }
 
+/*
+  Lenis (scroll suave). Quando ativo, ele põe a classe `.lenis-smooth` no <html>
+  e assume o controle do scroll — por isso desligamos o scroll-behavior nativo
+  aqui (senão os dois brigam). Sob reduced-motion o Lenis nem inicializa, então
+  o scroll-behavior: smooth nativo (e o reset acima) seguem valendo.
+*/
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 /* Tipografia do corpo dos posts do blog (prose feito à mão, sem plugin). */
 .article {
   color: var(--color-ink);
