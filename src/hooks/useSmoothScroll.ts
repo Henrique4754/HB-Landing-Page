@@ -22,7 +22,7 @@ export function useSmoothScroll() {
     if (reduce.matches || !finePointer.matches) return;
 
     const lenis = new Lenis({
-      lerp: 0.08,
+      lerp: 0.06,
       wheelMultiplier: 1,
       smoothWheel: true,
     });
