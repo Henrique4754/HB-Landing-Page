@@ -128,7 +128,7 @@ export function Footer() {
       <div className="border-t border-hairline">
         <Container className="flex flex-col items-center gap-1.5 py-6">
           <p className="text-center text-xs text-muted">
-            © {year} Henrique Braga de Carvalho · HB Comércio &amp; Acessórios ·{" "}
+            © {year} Henrique Braga de Carvalho · HB Assistência Técnica e Acessórios ·{" "}
             <a
               href="/privacidade.html"
               className="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink"

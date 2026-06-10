@@ -155,7 +155,7 @@ export function renderServicePage(service, { cssHref, allBySlug = {} }) {
 
   return (
     head({
-      title: `${data.title} | HB Comércio`,
+      title: `${data.title} | HB Assistência Técnica`,
       description: data.description,
       canonical,
       ogImage: data.cover || null,

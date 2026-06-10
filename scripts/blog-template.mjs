@@ -72,11 +72,11 @@ export function head({ title, description, canonical, ogImage, cssHref, jsonLd, 
 export function header() {
   return `<header class="sticky top-0 z-50 border-b border-hairline bg-base/80 backdrop-blur-xl">
   <div class="mx-auto flex h-16 max-w-[1200px] items-center justify-between gap-4 px-5 sm:h-[72px] sm:px-6 lg:px-8">
-    <a href="/" aria-label="HB Comércio — início" class="inline-flex items-center gap-2.5 rounded-lg">
+    <a href="/" aria-label="HB Assistência Técnica — início" class="inline-flex items-center gap-2.5 rounded-lg">
       <span class="grid size-10 shrink-0 place-items-center overflow-hidden rounded-md bg-white">
-        <img src="/logo.svg" alt="HB Comércio e Acessórios" width="40" height="40" class="size-10 scale-[1.18] object-contain" />
+        <img src="/logo.svg" alt="HB Assistência Técnica e Acessórios" width="40" height="40" class="size-10 scale-[1.18] object-contain" />
       </span>
-      <span class="font-display text-lg font-bold leading-none tracking-tight text-ink">HB <span class="text-muted">Comércio</span></span>
+      <span class="font-display text-lg font-bold leading-none tracking-tight text-ink">HB <span class="text-muted">Assistência Técnica</span></span>
     </a>
     <nav class="flex items-center gap-3">
       <a href="/" class="hidden text-sm font-medium text-muted transition-colors hover:text-ink sm:inline">Site</a>
@@ -90,7 +90,7 @@ export function footer() {
   return `<footer class="border-t border-hairline bg-surface/40">
   <div class="mx-auto max-w-[1200px] px-5 py-10 sm:px-6 lg:px-8">
     <div class="flex flex-col gap-3 text-sm text-muted">
-      <p>HB Comércio &amp; Acessórios — assistência técnica de celulares e computadores em Campos dos Goytacazes/RJ.</p>
+      <p>HB Assistência Técnica e Acessórios — conserto de celulares e computadores em Campos dos Goytacazes/RJ.</p>
       <nav aria-label="Serviços" class="flex flex-wrap gap-x-4 gap-y-1.5 text-xs">
         <a href="/conserto/celular/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de celular</a>
         <a href="/conserto/computador/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de computador</a>
@@ -143,7 +143,7 @@ export function renderListPage(posts, { cssHref }) {
     head({
       title: "Blog da HB | Dicas de conserto de celular e computador",
       description:
-        "Dicas e respostas sobre conserto de celular e computador em Campos dos Goytacazes. Conteúdo direto da assistência técnica HB Comércio.",
+        "Dicas e respostas sobre conserto de celular e computador em Campos dos Goytacazes. Conteúdo direto da HB Assistência Técnica.",
       canonical,
       ogImage: null,
       cssHref,
@@ -163,6 +163,17 @@ export function renderListPage(posts, { cssHref }) {
   );
 }
 
+/** Box de bio do autor no rodapé do post (sinal de E-E-A-T). */
+export function authorBio() {
+  return `<aside class="mt-12 flex items-center gap-4 rounded-2xl border border-hairline bg-surface/40 p-5">
+    <img src="/about/henrique.jpg" alt="Henrique Braga, técnico da HB Assistência Técnica" width="64" height="64" class="size-16 shrink-0 rounded-full object-cover" loading="lazy" />
+    <div class="text-sm text-muted">
+      <p class="font-semibold text-ink">Henrique Braga</p>
+      <p class="mt-1">Técnico responsável pela HB Assistência Técnica e Acessórios, em Campos dos Goytacazes. Conserta celular, computador e mais todo dia na bancada, e escreve aqui pra te ajudar a entender o problema antes de gastar.</p>
+    </div>
+  </aside>`;
+}
+
 /** Página de um post /blog/<slug>/. */
 export function renderPostPage(post, { cssHref }) {
   const { slug, data, html, readingTime } = post;
@@ -176,14 +187,27 @@ export function renderPostPage(post, { cssHref }) {
     headline: data.title,
     description: data.description,
     datePublished: new Date(data.date).toISOString().slice(0, 10),
+    dateModified: new Date(data.updated || data.date).toISOString().slice(0, 10),
     image: data.cover ? `${SITE_URL}${data.cover}` : `${SITE_URL}/og-image.png`,
     mainEntityOfPage: canonical,
-    author: { "@type": "Organization", name: "HB Comércio & Acessórios" },
-    publisher: { "@type": "Organization", name: "HB Comércio & Acessórios" },
+    author: {
+      "@type": "Person",
+      name: "Henrique Braga",
+      jobTitle: "Técnico em manutenção de eletrônicos",
+      worksFor: {
+        "@type": "Organization",
+        name: "HB Assistência Técnica e Acessórios",
+      },
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "HB Assistência Técnica e Acessórios",
+      logo: { "@type": "ImageObject", url: `${SITE_URL}/og-image.png` },
+    },
   };
   return (
     head({
-      title: `${data.title} | HB Comércio`,
+      title: `${data.title} | HB Assistência Técnica`,
       description: data.description,
       canonical,
       ogImage: data.cover,
@@ -194,9 +218,10 @@ export function renderPostPage(post, { cssHref }) {
     `<main class="mx-auto max-w-[720px] px-5 py-12 sm:px-6">
     <a href="/blog/" class="text-sm text-muted transition-colors hover:text-ink">‹ Voltar ao blog</a>
     <h1 class="mt-4 font-display text-3xl font-bold text-ink sm:text-4xl">${escapeHtml(data.title)}</h1>
-    <p class="mt-3 text-sm text-muted">${formatDate(data.date)} · ${readingTime} min de leitura</p>
+    <p class="mt-3 text-sm text-muted">Por Henrique Braga · ${formatDate(data.date)} · ${readingTime} min de leitura${data.updated ? ` · Atualizado em ${formatDate(data.updated)}` : ""}</p>
     ${cover}
     <article class="article mt-8">${html}</article>
+    ${authorBio()}
     ${ctaBlock()}
   </main>` +
     footer()

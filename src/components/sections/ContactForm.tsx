@@ -222,7 +222,7 @@ export function ContactForm() {
                       className="mt-0.5 size-4 shrink-0 cursor-pointer accent-cta"
                     />
                     <span>
-                      Autorizo a HB Comércio a usar meu nome e telefone só pra
+                      Autorizo a HB Assistência Técnica a usar meu nome e telefone só pra
                       me responder. Veja a{" "}
                       <a
                         href="/privacidade.html"
@@ -315,7 +315,7 @@ export function ContactForm() {
             </div>
             <iframe
               src={MAPS_EMBED}
-              title="Localização da HB Comércio no Google Maps"
+              title="Localização da HB Assistência Técnica no Google Maps"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
               className="block h-64 w-full border-0 grayscale-[0.2]"

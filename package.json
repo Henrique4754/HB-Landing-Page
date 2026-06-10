@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "description": "Landing page HB Comércio & Acessórios — assistência técnica em Campos dos Goytacazes/RJ",
+  "description": "Landing page HB Assistência Técnica e Acessórios — assistência técnica em Campos dos Goytacazes/RJ",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build && node scripts/build-blog.mjs",

@@ -49,7 +49,7 @@ export function About() {
               {photoOk && (
                 <img
                   src="/about/henrique.jpg"
-                  alt="Henrique Braga, técnico responsável pela HB Comércio"
+                  alt="Henrique Braga, técnico responsável pela HB Assistência Técnica"
                   width={720}
                   height={900}
                   loading="lazy"

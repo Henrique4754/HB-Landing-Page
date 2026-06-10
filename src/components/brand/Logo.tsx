@@ -1,7 +1,7 @@
 import { cn } from "../../lib/cn";
 
 /**
- * Logo oficial da HB Comércio & Acessórios.
+ * Logo oficial da HB Assistência Técnica e Acessórios.
  * Asset SVG vetorial em public/logo.svg — escala sem perder qualidade em
  * qualquer DPI. O SVG vem com fundo branco embutido, então fica como um
  * badge quadrado sobre o navy do tema.
@@ -19,7 +19,7 @@ export function Logo({
       <span className="grid size-10 shrink-0 place-items-center overflow-hidden rounded-md bg-white">
         <img
           src="/logo.svg"
-          alt="HB Comércio e Acessórios"
+          alt="HB Assistência Técnica e Acessórios"
           width={40}
           height={40}
           className="size-10 scale-[1.18] object-contain"
@@ -29,7 +29,7 @@ export function Logo({
       </span>
       {showWordmark && (
         <span className="font-display text-lg font-bold leading-none tracking-tight text-ink">
-          HB <span className="text-muted">Comércio</span>
+          HB <span className="text-muted">Assistência Técnica</span>
         </span>
       )}
     </span>

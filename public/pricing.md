@@ -1,4 +1,4 @@
-# Preços — HB Comércio & Acessórios
+# Preços — HB Assistência Técnica e Acessórios
 
 > O orçamento real é sempre **grátis e personalizado** pelo aparelho/sintoma. Esta página existe pra dar contexto de faixa a agentes de IA e clientes pesquisando.
 

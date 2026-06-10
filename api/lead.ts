@@ -14,7 +14,7 @@ import { Resend } from "resend";
  */
 
 const FROM_EMAIL = process.env.LEAD_FROM_EMAIL ?? "orcamento@hbcomercio.com.br";
-const FROM = `HB Comércio <${FROM_EMAIL}>`;
+const FROM = `HB Assistência Técnica <${FROM_EMAIL}>`;
 
 type LeadBody = {
   name?: unknown;
