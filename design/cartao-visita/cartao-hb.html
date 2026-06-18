@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Cartão de Visita — HB Assistência Técnica</title>
+
+<!--
+  ============================================================================
+  CARTÃO DE VISITA — HB Assistência Técnica e Acessórios
+  ----------------------------------------------------------------------------
+  Como usar no Figma:
+    1) Abra este arquivo no navegador pra conferir.
+    2) Importe com o plugin "html.to.design" (cola a URL local OU o HTML).
+       Cada .face vira um frame editável no Figma.
+
+  Escala:  1 mm = 8 px
+    • Cartão (corte final):  720 x 400 px  = 90 x 50 mm  (padrão Brasil)
+    • Sangria (bleed):       24 px por lado = 3 mm
+    • Frame completo:        768 x 448 px  = 96 x 56 mm
+    • Margem de segurança:   +32 px (4 mm) interna — nada de texto fora dela
+
+  Assets externos (o plugin busca e rasteriza na importação):
+    • Logo:  https://www.hbcomercio.com.br/logo.png  (logo azul de produção)
+    • QR:    api.qrserver.com -> abre o WhatsApp (22) 99861-6139 com msg pronta
+  Pode trocar por imagens locais/embutidas depois, se quiser.
+
+  Cores da marca:
+    navy #070b18 · navy profundo #0b1e4d · cobalto #2563eb
+    verde WhatsApp #25d366 · texto claro #f4f7ff · muted #9daac6
+  ============================================================================
+-->
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  :root {
+    --navy:        #070b18;
+    --navy-deep:   #0b1e4d;
+    --cobalt:      #2563eb;
+    --green:       #25d366;
+    --ink:         #f4f7ff;
+    --muted:       #9daac6;
+    --gold:        #f5b50a;
+
+    --bleed:  24px;  /* 3 mm */
+    --safety: 32px;  /* 4 mm */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #e9edf4;
+    font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 28px;
+    padding: 48px 16px 64px;
+  }
+
+  /* rótulo acima de cada face — solto, fora dos frames (apague no Figma) */
+  .label {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6b7689;
+  }
+
+  /* ---- Frame do cartão (inclui sangria) ---- */
+  .face {
+    position: relative;
+    width: 768px;
+    height: 448px;
+    overflow: hidden;
+    padding: calc(var(--bleed) + var(--safety));
+    box-shadow: 0 14px 40px rgba(10, 20, 50, 0.18);
+  }
+
+  /* =========================== FRENTE =========================== */
+  .front {
+    background: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  .front .logo img {
+    height: 96px;
+    width: auto;
+    display: block;
+  }
+
+  .front .headline {
+    font-size: 52px;
+    font-weight: 800;
+    line-height: 1.04;
+    color: var(--navy-deep);
+    letter-spacing: -0.5px;
+  }
+  .front .headline .accent { color: var(--cobalt); }
+
+  .front .name {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--cobalt);
+    margin-bottom: 12px;
+  }
+  .front .services {
+    font-size: 17px;
+    font-weight: 500;
+    color: #4a5878;
+    line-height: 1.5;
+    max-width: 560px;
+  }
+
+  /* faixa de sotaque que sangra na base */
+  .front .strip {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    height: 20px;
+    background: linear-gradient(90deg, var(--navy-deep) 0%, var(--cobalt) 100%);
+  }
+
+  /* =========================== VERSO =========================== */
+  .back {
+    background: var(--navy);
+    color: var(--ink);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* textura sutil de marca no canto (sangra) */
+  .back::after {
+    content: "";
+    position: absolute;
+    top: -120px; right: -120px;
+    width: 340px; height: 340px;
+    background: radial-gradient(circle, rgba(37,99,235,0.35) 0%, rgba(37,99,235,0) 70%);
+    pointer-events: none;
+  }
+
+  .back .brand {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: var(--ink);
+  }
+  .back .brand b { color: var(--cobalt); }
+
+  .back .main {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  .back .qr {
+    flex: 0 0 auto;
+    background: #fff;
+    border-radius: 14px;
+    padding: 12px;
+    line-height: 0;
+  }
+  .back .qr img { width: 168px; height: 168px; display: block; }
+  .back .qr .cap {
+    line-height: 1.2;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--navy);
+    text-align: center;
+    padding-top: 8px;
+  }
+
+  .back .contact .kicker {
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 6px;
+  }
+  .back .contact .phone {
+    font-size: 34px;
+    font-weight: 800;
+    color: var(--green);
+    letter-spacing: -0.5px;
+  }
+  .back .contact .channel {
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 18px;
+  }
+  .back .contact .rating {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    font-weight: 700;
+  }
+  .back .contact .rating .star { color: var(--gold); font-size: 18px; }
+
+  /* rodapé discreto */
+  .back .footer {
+    border-top: 1px solid rgba(255,255,255,0.12);
+    padding-top: 14px;
+    font-size: 13px;
+    line-height: 1.7;
+    color: var(--muted);
+  }
+  .back .footer .row b { color: var(--ink); font-weight: 600; }
+
+  @media print {
+    body { background: #fff; gap: 0; padding: 0; }
+    .label { display: none; }
+    .face { box-shadow: none; page-break-after: always; }
+  }
+</style>
+</head>
+<body>
+
+  <div class="label">Frente · 90×50mm (+3mm sangria)</div>
+  <section class="face front">
+    <div class="logo">
+      <img src="https://www.hbcomercio.com.br/logo.png" alt="HB" />
+    </div>
+
+    <h1 class="headline">Quebrou?<br><span class="accent">A gente conserta.</span></h1>
+
+    <div>
+      <div class="name">HB Assistência Técnica e Acessórios</div>
+      <div class="services">Celular · Computador &amp; Mac · Tablet/iPad · Smartwatch · Videogame</div>
+    </div>
+
+    <div class="strip"></div>
+  </section>
+
+  <div class="label">Verso · QR abre o WhatsApp</div>
+  <section class="face back">
+    <div class="brand">HB <b>Assistência Técnica</b> e Acessórios</div>
+
+    <div class="main">
+      <div class="qr">
+        <img src="https://api.qrserver.com/v1/create-qr-code/?size=600x600&margin=0&qzone=1&ecc=M&data=https%3A%2F%2Fwa.me%2F5522998616139%3Ftext%3DOl%25C3%25A1!%2520Gostaria%2520de%2520fazer%2520um%2520or%25C3%25A7amento."
+             alt="QR Code WhatsApp" />
+        <div class="cap">Aponte a câmera<br>e fale com a gente</div>
+      </div>
+
+      <div class="contact">
+        <div class="kicker">Fale agora no</div>
+        <div class="phone">(22) 99861-6139</div>
+        <div class="channel">WhatsApp</div>
+        <div class="rating"><span class="star">★</span> 5,0 no Google</div>
+      </div>
+    </div>
+
+    <div class="footer">
+      <div class="row"><b>Rua Raul Cardoso, 131</b> · Campos dos Goytacazes/RJ</div>
+      <div class="row">Seg a Sáb, 9h às 18h</div>
+      <div class="row">@hb_comercio.acessorios · hbcomercio.com.br</div>
+    </div>
+  </section>
+
+</body>
+</html>
