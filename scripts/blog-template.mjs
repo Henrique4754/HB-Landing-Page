@@ -8,6 +8,104 @@ const WA_LINK =
   encodeURIComponent("Olá! Gostaria de fazer um orçamento.");
 const PHONE_DISPLAY = "(22) 99861-6139";
 
+/**
+ * NAP canônico do negócio — fonte ÚNICA pras páginas estáticas (serviço/blog).
+ * Confere LETRA POR LETRA com o Perfil da Empresa no Google (verificado em
+ * jun/2026): R. Raul Cardoso, 131 - Parque Rosário, Campos dos Goytacazes - RJ,
+ * 28027-290. Mantenha em sincronia se o perfil mudar.
+ */
+export const BUSINESS = {
+  name: "HB Assistência Técnica e Acessórios",
+  phoneDisplay: PHONE_DISPLAY,
+  phoneTel: "+5522998616139",
+  street: "Rua Raul Cardoso, 131",
+  neighborhood: "Parque Rosário",
+  city: "Campos dos Goytacazes",
+  region: "RJ",
+  postalCode: "28027-290",
+  hours: "Seg a Sáb, 9h às 18h",
+  // Bairros que a HB atende (loja no Parque Rosário + busca e entrega na cidade
+  // toda). Mira clientes que buscam por bairro, sem mexer no endereço verificado.
+  // Curadoria livre — edite à vontade. Mantenha sincronizado com a "área de
+  // atendimento" do Perfil do Google.
+  neighborhoodsServed: ["Centro", "Parque Avenida Pelinca", "Parque Aurora"],
+  mapsUrl:
+    "https://www.google.com/maps/search/?api=1&query=HB+Com%C3%A9rcio+Rua+Raul+Cardoso+131+Campos+dos+Goytacazes",
+  instagram: "https://www.instagram.com/hb_comercio.acessorios/",
+};
+
+/**
+ * Nó LocalBusiness completo (JSON-LD). Incluído no @graph de CADA página de
+ * serviço pra que o Google leia os sinais locais (endereço, geo, telefone,
+ * área atendida) sem depender de resolver um @id em outra URL. O mesmo @id
+ * é referenciado por Service.provider, fechando o grafo na própria página.
+ */
+export function businessNode() {
+  return {
+    "@type": "LocalBusiness",
+    "@id": `${SITE_URL}/#business`,
+    name: BUSINESS.name,
+    alternateName: ["HB Assistência Técnica", "HB Comércio", "HB Comércio & Acessórios"],
+    url: `${SITE_URL}/`,
+    image: `${SITE_URL}/og-image.png`,
+    logo: `${SITE_URL}/og-image.png`,
+    telephone: BUSINESS.phoneTel,
+    priceRange: "$$",
+    currenciesAccepted: "BRL",
+    paymentAccepted: "Dinheiro, PIX, Cartão de Crédito, Cartão de Débito",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: BUSINESS.street,
+      addressLocality: BUSINESS.city,
+      addressRegion: BUSINESS.region,
+      postalCode: BUSINESS.postalCode,
+      addressCountry: "BR",
+    },
+    areaServed: [
+      { "@type": "City", name: BUSINESS.city },
+      ...BUSINESS.neighborhoodsServed.map((n) => ({
+        "@type": "Place",
+        name: `${n}, ${BUSINESS.city}`,
+      })),
+    ],
+    geo: { "@type": "GeoCoordinates", latitude: -21.7587, longitude: -41.3186 },
+    hasMap: BUSINESS.mapsUrl,
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        opens: "09:00",
+        closes: "18:00",
+      },
+    ],
+    sameAs: [BUSINESS.instagram],
+  };
+}
+
+/**
+ * Bloco local VISÍVEL — endereço, horário, telefone e link do mapa. Reforça a
+ * relevância local de cada página de serviço e mantém o NAP consistente entre
+ * página visível, JSON-LD e Perfil do Google (sinal forte pra busca local).
+ */
+export function localBlock() {
+  return `<section class="mt-12" aria-labelledby="atendimento-local">
+    <h2 id="atendimento-local" class="font-display text-2xl font-bold text-ink">Atendimento em ${escapeHtml(BUSINESS.city)}</h2>
+    <div class="mt-5 grid gap-4 rounded-2xl border border-hairline bg-surface/60 p-5 sm:grid-cols-2 sm:p-6">
+      <div class="text-sm text-muted">
+        <p class="font-display text-base font-semibold text-ink">${escapeHtml(BUSINESS.name)}</p>
+        <p class="mt-2">${escapeHtml(BUSINESS.street)} — ${escapeHtml(BUSINESS.neighborhood)}</p>
+        <p>${escapeHtml(BUSINESS.city)}/${escapeHtml(BUSINESS.region)} · CEP ${escapeHtml(BUSINESS.postalCode)}</p>
+        <p class="mt-2">${escapeHtml(BUSINESS.hours)}</p>
+        <p class="mt-2"><a href="tel:${BUSINESS.phoneTel}" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">${escapeHtml(BUSINESS.phoneDisplay)}</a></p>
+      </div>
+      <div class="flex flex-col justify-center gap-3">
+        <a href="${BUSINESS.mapsUrl}" target="_blank" rel="noopener noreferrer" class="inline-flex min-h-[44px] items-center justify-center rounded-full border border-hairline bg-surface px-5 text-sm font-semibold text-ink transition-colors hover:border-brand/60">Ver no mapa</a>
+        <p class="text-xs text-muted">Atendemos toda ${escapeHtml(BUSINESS.city)} — ${escapeHtml(BUSINESS.neighborhoodsServed.slice(0, 3).join(", "))} e região. Se preferir, <strong class="font-semibold text-ink/80">buscamos e entregamos</strong> seu aparelho em casa ou na empresa.</p>
+      </div>
+    </div>
+  </section>`;
+}
+
 const MESES = [
   "jan",
   "fev",
@@ -100,7 +198,7 @@ export function footer() {
         <a href="/conserto/smartwatch/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Smartwatch e Apple Watch</a>
         <a href="/blog/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Blog</a>
       </nav>
-      <p>WhatsApp ${PHONE_DISPLAY} · Rua Raul Cardoso, 131 · Seg a Sáb, 9h às 18h</p>
+      <p>WhatsApp ${BUSINESS.phoneDisplay} · ${BUSINESS.street} — ${BUSINESS.neighborhood}, ${BUSINESS.city}/${BUSINESS.region} · CEP ${BUSINESS.postalCode} · ${BUSINESS.hours}</p>
       <p>
         <a href="/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Voltar ao site</a>
         ·

@@ -8,6 +8,8 @@ import {
   header,
   footer,
   ctaBlock,
+  businessNode,
+  localBlock,
 } from "./blog-template.mjs";
 
 const WA_LINK = (text) =>
@@ -123,6 +125,9 @@ export function renderServicePage(service, { cssHref, allBySlug = {} }) {
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
+      // LocalBusiness inline: cada página de serviço carrega os sinais locais
+      // completos (NAP, geo, área). serviceNode.provider referencia este @id.
+      businessNode(),
       serviceNode,
       {
         "@type": "BreadcrumbList",
@@ -202,6 +207,7 @@ export function renderServicePage(service, { cssHref, allBySlug = {} }) {
     <article class="article mt-10">${html}</article>
 
     ${faqBlock(data.faq)}
+    ${localBlock()}
     ${ctaBlock()}
     ${relatedBlock(data.related, allBySlug)}
   </main>` +
