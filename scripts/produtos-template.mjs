@@ -1,6 +1,15 @@
 // Template estático da página de venda de iPhone (/iphones/).
 // Reusa head/header/footer/businessNode do blog-template (mesmo CSS hashado).
-import { SITE_URL, escapeHtml, head, header, footer, businessNode, localBlock } from "./blog-template.mjs";
+import {
+  SITE_URL,
+  escapeHtml,
+  head,
+  header,
+  footer,
+  businessNode,
+  localBlock,
+  formatDate,
+} from "./blog-template.mjs";
 
 const WA_NUMBER = "5522998616139";
 
@@ -67,6 +76,9 @@ export function renderProductPage(product, { cssHref }) {
         url: canonical,
         image: `${SITE_URL}/og-image.png`,
         itemCondition: "https://schema.org/NewCondition",
+        // Frescor vem do frontmatter, não da data do build: só é "atualizado"
+        // quando o conteúdo realmente muda.
+        ...(data.updated ? { dateModified: data.updated } : {}),
         additionalProperty: [
           cores.length && {
             "@type": "PropertyValue",
@@ -123,6 +135,11 @@ export function renderProductPage(product, { cssHref }) {
     <p class="mt-4 spec-label text-xs text-brand">Venda de iPhone</p>
     <h1 class="mt-2 font-display text-3xl font-bold text-ink sm:text-4xl">${escapeHtml(data.h1)}</h1>
     <p class="mt-4 max-w-2xl text-base leading-relaxed text-muted sm:text-lg">${escapeHtml(data.intro)}</p>
+    ${
+      data.updated
+        ? `<p class="mt-3 text-xs text-muted/80">Disponibilidade atualizada em <time datetime="${new Date(data.updated).toISOString().slice(0, 10)}">${formatDate(data.updated)}</time>.</p>`
+        : ""
+    }
 
     <div class="mt-8 rounded-2xl border border-hairline bg-surface/60 p-5 sm:p-6">
       <div class="grid gap-4 sm:grid-cols-2">

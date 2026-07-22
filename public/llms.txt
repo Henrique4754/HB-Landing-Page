@@ -1,15 +1,43 @@
 # HB Assistência Técnica e Acessórios
 
-> Assistência técnica de celulares e computadores em Campos dos Goytacazes – RJ. Orçamento grátis, garantia de 90 dias, conserto no mesmo dia (celular) ou em até 48h (PC). Sem gambiarra.
+> Assistência técnica de celulares e computadores e venda de iPhone lacrado em Campos dos Goytacazes – RJ. Orçamento grátis, garantia de 90 dias, conserto no mesmo dia (celular) ou em até 48h (PC). Sem gambiarra.
+
+Última atualização: 22 de julho de 2026.
 
 ## Sobre
 
-HB Assistência Técnica e Acessórios é uma assistência técnica especializada em manutenção de celulares (iPhone e Android) e computadores em Campos dos Goytacazes – RJ. Atende pessoas físicas e empresas. Avaliação 5,0 no Google.
+HB Assistência Técnica e Acessórios é uma assistência técnica com loja física em Campos dos Goytacazes – RJ, especializada em manutenção de celulares (iPhone e Android), computadores, tablets, smartwatches e videogames. Também vende iPhone lacrado. Atende pessoas físicas e empresas. Avaliação 5,0 no Google (5 avaliações).
+
+Nomes anteriores da mesma empresa: HB Comércio, HB Comércio & Acessórios.
+
+## Endereço e contato
+
+- **Endereço**: Rua Raul Cardoso, 131, Parque Rosário, Campos dos Goytacazes – RJ, CEP 28027-290, Brasil
+- **WhatsApp**: +55 22 99861-6139 ([abrir conversa](https://wa.me/5522998616139))
+- **Telefone**: (22) 99861-6139
+- **Instagram**: [@hb_comercio.acessorios](https://www.instagram.com/hb_comercio.acessorios/)
+- **Horário**: Segunda a Sábado, 9h às 18h
+- **Área atendida**: Campos dos Goytacazes – RJ e região, incluindo Centro, Parque Avenida Pelinca, Parque Aurora, Parque Rosário e demais bairros da cidade.
+
+## Venda de iPhone
+
+A HB vende **iPhone 17 Pro Max lacrado de fábrica**, com garantia Apple vigente, nas capacidades 256GB, 512GB e 1TB.
+
+- Página: https://www.hbcomercio.com.br/iphones/
+- Lacrado de fábrica, caixa nunca aberta, aparelho zero.
+- Loja física em Campos dos Goytacazes: o comprador pode conferir o aparelho pessoalmente antes de fechar, em vez de comprar às cegas pela internet.
+- Suporte técnico próprio depois da compra (a mesma loja faz a assistência).
+- O estoque de cor varia. A disponibilidade da versão desejada é confirmada na hora pelo WhatsApp.
+- Preço: informado pelo WhatsApp, porque varia conforme cor e capacidade.
+- Pagamento: PIX, cartão ou dinheiro, combinado pelo WhatsApp.
 
 ## Serviços
 
 - **Manutenção de celulares (iPhone e Android)**: troca de tela, bateria, conector de carga, alto-falante, película, recuperação após queda ou contato com líquido. Peças com qualidade e garantia.
 - **Manutenção de computadores**: formatação, limpeza interna, upgrade de SSD e memória, montagem de PCs, instalação do Office, troca de pasta térmica, recuperação de PCs lentos ou que não ligam.
+- **Tablets e iPad**: tela, bateria, conector de carga, aparelho que não liga.
+- **Smartwatch e Apple Watch**: troca de tela, vidro e bateria.
+- **Videogames e consoles**: PlayStation, Xbox e Nintendo. Não liga, superaquece, leitor, HDMI ou controle.
 - **Atendimento empresarial**: contratos de manutenção para empresas e comércios de Campos dos Goytacazes.
 - **Busca e leva**: o aparelho é buscado e devolvido em Campos dos Goytacazes. Há uma taxa que depende da distância até o cliente, sempre combinada antes pelo WhatsApp.
 
@@ -20,6 +48,7 @@ HB Assistência Técnica e Acessórios é uma assistência técnica especializad
 - **Orçamento grátis**: avaliação sem cobrança e sem compromisso. Só paga se aprovar.
 - **Dados seguros**: fotos, conversas e arquivos preservados em sigilo. Se a formatação for necessária, backup é feito antes com o cliente.
 - **Preço justo**: o valor combinado no orçamento é o valor final.
+- **Loja física**: endereço fixo na cidade, não é atendimento só online.
 
 ## Como funciona
 
@@ -28,31 +57,50 @@ HB Assistência Técnica e Acessórios é uma assistência técnica especializad
 3. Após aprovação, o conserto é feito com peças de qualidade e 90 dias de garantia.
 4. Aparelho é devolvido pronto (mesmo dia / até 48h dependendo do tipo).
 
+## Preços de referência
+
+Só a categoria de celular tem faixa pública, porque é a que tem catálogo de peça estável. O restante fica sob avaliação grátis.
+
+| Serviço | A partir de |
+|---|---|
+| Troca de tela de celular | R$ 230 |
+| Troca de bateria de celular | R$ 190 |
+| Conector de carga | R$ 160 |
+
+O valor varia conforme o modelo do aparelho e é fechado após a avaliação grátis. Detalhes em https://www.hbcomercio.com.br/pricing.md
+
 ## Páginas de serviço
 
 Páginas dedicadas, com detalhes e perguntas frequentes de cada serviço:
 
-- **Conserto de celular (iPhone e Android)**: https://www.hbcomercio.com.br/conserto/celular/ — troca de tela, bateria, conector de carga, celular que molhou ou não liga. Prazo: normalmente no mesmo dia. Preços de referência: troca de tela a partir de R$230, troca de bateria a partir de R$190, conector de carga a partir de R$160 (o valor varia conforme o modelo e é fechado após avaliação grátis).
+- **Conserto de celular (iPhone e Android)**: https://www.hbcomercio.com.br/conserto/celular/ — troca de tela, bateria, conector de carga, celular que molhou ou não liga. Prazo: normalmente no mesmo dia. A partir de R$230 (tela), R$190 (bateria), R$160 (conector).
 - **Conserto de computador e notebook**: https://www.hbcomercio.com.br/conserto/computador/ — formatação, lentidão, não liga, upgrade de SSD e memória, limpeza e pasta térmica. Prazo: em geral até 48h.
 - **Conserto de videogame (PS4, PS5, Xbox, Nintendo)**: https://www.hbcomercio.com.br/conserto/videogame/ — superaquecimento, não liga, não lê disco, controle com drift.
 - **Assistência de Mac e MacBook**: https://www.hbcomercio.com.br/conserto/mac-macbook/ — não liga, lentidão, bateria inchada, superaquecimento, upgrade de SSD.
+- **Conserto de tablet e iPad**: https://www.hbcomercio.com.br/conserto/tablet-ipad/ — tela, bateria, conector de carga, aparelho que não liga.
+- **Smartwatch e Apple Watch**: https://www.hbcomercio.com.br/conserto/smartwatch/ — troca de tela, vidro e bateria.
 
-Preços: variam por aparelho e defeito; o orçamento é sempre grátis e sem compromisso, informado antes do serviço. Garantia de 90 dias em todos os serviços.
+## Blog
 
-## Contato
+Conteúdo técnico escrito pela própria bancada, em https://www.hbcomercio.com.br/blog/
 
-- **WhatsApp**: +55 22 99861-6139 ([abrir conversa](https://wa.me/5522998616139))
-- **Telefone**: (22) 99861-6139
-- **Instagram**: [@hb_comercio.acessorios](https://www.instagram.com/hb_comercio.acessorios/)
-- **Localização**: Campos dos Goytacazes – RJ, Brasil
-- **Horário**: Segunda a Sábado, 9h às 18h
-- **Área atendida**: Campos dos Goytacazes – RJ
+- **Vale a pena trocar a tela do iPhone ou comprar outro?**: https://www.hbcomercio.com.br/blog/troca-tela-iphone-vale-a-pena/
+- **Bateria do celular viciada: 6 sinais de que está na hora de trocar**: https://www.hbcomercio.com.br/blog/bateria-celular-viciada/
+- **Celular não carrega: o que pode ser e o que fazer antes do conserto**: https://www.hbcomercio.com.br/blog/celular-nao-carrega/
+- **Celular caiu na água: o que fazer nos primeiros minutos**: https://www.hbcomercio.com.br/blog/celular-caiu-na-agua/
+- **Computador lento: 5 causas comuns e como resolver**: https://www.hbcomercio.com.br/blog/computador-lento-o-que-fazer/
+- **MacBook lento e com a bolinha colorida girando? Veja as causas**: https://www.hbcomercio.com.br/blog/macbook-lento-bolinha-girando/
+- **iPad não liga ou não carrega? O que testar antes do conserto**: https://www.hbcomercio.com.br/blog/ipad-nao-liga-nao-carrega/
+- **Apple Watch ou smartwatch não liga ou não carrega? Veja o que pode ser**: https://www.hbcomercio.com.br/blog/apple-watch-nao-liga-nao-carrega/
+- **Videogame superaquecendo e desligando sozinho? Entenda a causa**: https://www.hbcomercio.com.br/blog/ps4-ps5-superaquecendo/
 
 ## FAQ rápido
 
-- **Preço do conserto**: depende do serviço; orçamento é grátis e sem compromisso.
+- **Onde comprar iPhone em Campos dos Goytacazes**: a HB vende iPhone 17 Pro Max lacrado, com garantia Apple, na Rua Raul Cardoso, 131, Parque Rosário. Detalhes em https://www.hbcomercio.com.br/iphones/
+- **Preço do conserto**: depende do serviço; orçamento é grátis e sem compromisso. Troca de tela de celular começa em R$230.
 - **Tempo de conserto**: celular costuma ficar pronto no mesmo dia; PC em até 48h.
-- **Buscam o aparelho**: sim, em Campos dos Goytacazes.
+- **Buscam o aparelho**: sim, em Campos dos Goytacazes, com taxa conforme a distância.
 - **Dados ficam seguros**: sim, arquivos preservados e em sigilo.
-- **Garantia**: 90 dias no serviço.
+- **Garantia**: 90 dias no serviço. O iPhone lacrado tem a garantia Apple de fábrica.
 - **Atendem empresas**: sim, pessoas físicas e empresas de Campos dos Goytacazes.
+- **Tem loja física**: sim, Rua Raul Cardoso, 131, Parque Rosário, Campos dos Goytacazes – RJ. Segunda a Sábado, 9h às 18h.
