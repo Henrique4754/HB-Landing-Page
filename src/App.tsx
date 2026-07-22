@@ -5,6 +5,7 @@ import { TrustBar } from "./components/sections/TrustBar";
 import { Problem } from "./components/sections/Problem";
 import { Services } from "./components/sections/Services";
 import { BrandStrip } from "./components/sections/BrandStrip";
+import { IphoneStore } from "./components/sections/IphoneStore";
 import { WhyHB } from "./components/sections/WhyHB";
 import { HowItWorks } from "./components/sections/HowItWorks";
 import { SocialProof } from "./components/sections/SocialProof";
@@ -39,6 +40,7 @@ export default function App() {
         <Problem />
         <Services />
         <BrandStrip />
+        <IphoneStore />
         <WhyHB />
         <HowItWorks />
         <SocialProof />
