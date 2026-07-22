@@ -190,6 +190,7 @@ export function footer() {
     <div class="flex flex-col gap-3 text-sm text-muted">
       <p>HB Assistência Técnica e Acessórios — conserto de celulares e computadores em Campos dos Goytacazes/RJ.</p>
       <nav aria-label="Serviços" class="flex flex-wrap gap-x-4 gap-y-1.5 text-xs">
+        <a href="/iphones/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Comprar iPhone</a>
         <a href="/conserto/celular/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de celular</a>
         <a href="/conserto/computador/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de computador</a>
         <a href="/conserto/videogame/" class="underline decoration-dotted underline-offset-2 transition-colors hover:text-ink">Conserto de videogame</a>

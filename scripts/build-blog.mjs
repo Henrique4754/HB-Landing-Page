@@ -13,10 +13,12 @@ import matter from "gray-matter";
 import { marked } from "marked";
 import { renderListPage, renderPostPage, SITE_URL } from "./blog-template.mjs";
 import { renderServicePage } from "./servicos-template.mjs";
+import { renderProductPage } from "./produtos-template.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 const CONTENT_DIR = join(ROOT, "content", "blog");
 const SERVICOS_DIR = join(ROOT, "content", "servicos");
+const PRODUTOS_DIR = join(ROOT, "content", "produtos");
 const DIST = join(ROOT, "dist");
 
 // 1. Descobrir o CSS hashado que o Vite gerou (lendo o index.html).
@@ -82,10 +84,33 @@ if (existsSync(SERVICOS_DIR)) {
   }
 }
 
-// 6. Regenerar o sitemap incluindo blog e páginas de serviço.
+// 6. Página de venda de iPhone (/iphones/) — content/produtos/*.md.
+let produtos = [];
+if (existsSync(PRODUTOS_DIR)) {
+  produtos = readdirSync(PRODUTOS_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((file) => {
+      const raw = readFileSync(join(PRODUTOS_DIR, file), "utf8");
+      const { data, content } = matter(raw);
+      const slug = file.replace(/\.md$/, "");
+      return { slug, data, html: marked.parse(content) };
+    })
+    .filter((p) => p.data.draft !== true);
+
+  if (produtos.length) {
+    const dir = join(DIST, "iphones");
+    mkdirSync(dir, { recursive: true });
+    writeFileSync(join(dir, "index.html"), renderProductPage(produtos[0], { cssHref }));
+  }
+}
+
+// 7. Regenerar o sitemap incluindo blog, páginas de serviço e iPhones.
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   { loc: `${SITE_URL}/`, lastmod: today, changefreq: "monthly", priority: "1.0" },
+  ...(produtos.length
+    ? [{ loc: `${SITE_URL}/iphones/`, lastmod: today, changefreq: "weekly", priority: "0.9" }]
+    : []),
   ...servicos.map((s) => ({
     loc: `${SITE_URL}/conserto/${s.slug}/`,
     lastmod: today,
@@ -114,5 +139,5 @@ const sitemap =
 writeFileSync(join(DIST, "sitemap.xml"), sitemap);
 
 console.log(
-  `✓ Estático gerado: ${posts.length} post(s) + ${servicos.length} serviço(s) + listas + sitemap.`,
+  `✓ Estático gerado: ${posts.length} post(s) + ${servicos.length} serviço(s) + ${produtos.length} produto(s) + listas + sitemap.`,
 );
