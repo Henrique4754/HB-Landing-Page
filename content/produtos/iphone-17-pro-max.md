@@ -1,7 +1,7 @@
 ---
-title: "iPhone 17 Pro Max Lacrado à venda em Campos dos Goytacazes"
-description: "iPhone 17 Pro Max lacrado, com garantia Apple, em todas as cores e capacidades (256GB, 512GB, 1TB). Pronta entrega em Campos dos Goytacazes/RJ. Fale no WhatsApp e receba o preço."
-h1: "iPhone 17 Pro Max lacrado, pronto pra entrega"
+title: "Comprar iPhone 17 Pro Max Lacrado em Campos dos Goytacazes"
+description: "Comprar iPhone 17 Pro Max lacrado em Campos dos Goytacazes: garantia Apple, todas as cores, 256GB, 512GB e 1TB, estoque pronto pra entrega imediata. Fale no WhatsApp e receba o preço."
+h1: "Comprar iPhone 17 Pro Max lacrado em Campos dos Goytacazes"
 cardTitle: "iPhone 17 Pro Max"
 intro: "Lacrado de fábrica, com garantia Apple, em todas as cores e nas capacidades 256GB, 512GB e 1TB. Estoque pronto aqui em Campos dos Goytacazes, sem espera de encomenda."
 cores:
@@ -31,4 +31,8 @@ faq:
 draft: false
 ---
 
-O iPhone 17 Pro Max lacrado da HB chega com garantia Apple e pronta entrega em Campos dos Goytacazes. Fale agora no WhatsApp pra confirmar cor, capacidade e preço.
+Comprar um iPhone lacrado direto de loja online tem um risco: você só vê o aparelho depois que já pagou. Na HB é diferente. Você compra de quem já conhece (ou pode conhecer pessoalmente, na loja em Campos dos Goytacazes) e tem endereço fixo, WhatsApp de verdade e suporte técnico próprio caso precise de qualquer coisa depois da compra.
+
+"Lacrado" aqui quer dizer lacrado de fábrica: caixa nunca aberta, aparelho zero, com a garantia Apple vigente. Trabalhamos com o iPhone 17 Pro Max em todas as cores e nas três capacidades (256GB, 512GB e 1TB), com estoque pronto — sem prazo de encomenda.
+
+O preço não fica exposto na página de propósito: ele varia conforme a cor e a capacidade escolhidas, e preferimos fechar isso com você diretamente no WhatsApp, já confirmando disponibilidade e forma de entrega.

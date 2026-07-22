@@ -1,6 +1,6 @@
 // Template estático da página de venda de iPhone (/iphones/).
 // Reusa head/header/footer/businessNode do blog-template (mesmo CSS hashado).
-import { SITE_URL, escapeHtml, head, header, footer, businessNode } from "./blog-template.mjs";
+import { SITE_URL, escapeHtml, head, header, footer, businessNode, localBlock } from "./blog-template.mjs";
 
 const WA_NUMBER = "5522998616139";
 
@@ -50,7 +50,7 @@ function optionsList(items = []) {
 /** Página de venda /iphones/. Preço não é exibido — o CTA "Ver preço" leva
  * direto pro WhatsApp com cor/capacidade escolhidas já na mensagem. */
 export function renderProductPage(product, { cssHref }) {
-  const { data } = product;
+  const { data, html } = product;
   const canonical = `${SITE_URL}/iphones/`;
   const cores = data.cores || [];
   const capacidades = data.capacidades || [];
@@ -66,6 +66,19 @@ export function renderProductPage(product, { cssHref }) {
         brand: { "@type": "Brand", name: "Apple" },
         url: canonical,
         image: `${SITE_URL}/og-image.png`,
+        itemCondition: "https://schema.org/NewCondition",
+        additionalProperty: [
+          cores.length && {
+            "@type": "PropertyValue",
+            name: "Cores disponíveis",
+            value: cores.join(", "),
+          },
+          capacidades.length && {
+            "@type": "PropertyValue",
+            name: "Capacidades disponíveis",
+            value: capacidades.join(", "),
+          },
+        ].filter(Boolean),
       },
       {
         "@type": "BreadcrumbList",
@@ -74,6 +87,18 @@ export function renderProductPage(product, { cssHref }) {
           { "@type": "ListItem", position: 2, name: data.cardTitle, item: canonical },
         ],
       },
+      ...(Array.isArray(data.faq) && data.faq.length
+        ? [
+            {
+              "@type": "FAQPage",
+              mainEntity: data.faq.map((f) => ({
+                "@type": "Question",
+                name: f.q,
+                acceptedAnswer: { "@type": "Answer", text: f.a },
+              })),
+            },
+          ]
+        : []),
     ],
   };
 
@@ -124,7 +149,10 @@ export function renderProductPage(product, { cssHref }) {
       <a href="tel:+5522998616139" class="inline-flex min-h-[48px] items-center justify-center rounded-full border border-hairline bg-surface px-6 font-semibold text-ink transition-colors hover:border-brand/60">Ligar (22) 99861-6139</a>
     </div>
 
+    <article class="article mt-10">${html}</article>
+
     ${faqBlock(data.faq)}
+    ${localBlock()}
   </main>
   <script>
     (function () {
