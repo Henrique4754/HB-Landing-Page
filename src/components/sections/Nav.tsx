@@ -22,14 +22,19 @@ export function Nav() {
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-hairline bg-base/80 backdrop-blur-xl">
 
-      <Container className="flex h-16 items-center justify-between gap-4 sm:h-[72px]">
+      {/*
+        gap-6 aqui é o piso de separação ENTRE os três grupos (logo, menu,
+        botões). Precisa ser maior que o gap interno do menu (gap-5), senão o
+        logo parece colado no primeiro link e os grupos não se lêem como grupos.
+      */}
+      <Container className="flex h-16 items-center justify-between gap-6 sm:h-[72px]">
         <a href="#topo" aria-label="Início — HB Assistência Técnica" className="rounded-lg">
           <Logo />
         </a>
 
         {/* Âncoras — só no desktop */}
         <nav aria-label="Navegação principal" className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-5">
             {LINKS.map((link) => (
               <li key={link.href}>
                 <a
