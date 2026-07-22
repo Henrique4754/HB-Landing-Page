@@ -28,7 +28,7 @@ export function Logo({
         />
       </span>
       {showWordmark && (
-        <span className="font-display text-lg font-bold leading-none tracking-tight text-ink">
+        <span className="whitespace-nowrap font-display text-lg font-bold leading-none tracking-tight text-ink">
           HB <span className="text-muted">Assistência Técnica</span>
         </span>
       )}

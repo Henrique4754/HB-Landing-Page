@@ -51,7 +51,7 @@ function optionsList(items = []) {
  * direto pro WhatsApp com cor/capacidade escolhidas já na mensagem. */
 export function renderProductPage(product, { cssHref }) {
   const { data, html } = product;
-  const canonical = `${SITE_URL}/iphones/`;
+  const canonical = `${SITE_URL}/${String(data.route).replace(/^\/|\/$/g, "")}/`;
   const cores = data.cores || [];
   const capacidades = data.capacidades || [];
 

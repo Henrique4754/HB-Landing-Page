@@ -97,10 +97,23 @@ if (existsSync(PRODUTOS_DIR)) {
     })
     .filter((p) => p.data.draft !== true);
 
-  if (produtos.length) {
-    const dir = join(DIST, "iphones");
+  // Cada produto declara sua própria rota no frontmatter (`route`), então
+  // adicionar um segundo .md publica uma página nova em vez de ser ignorado.
+  const rotasVistas = new Set();
+  for (const produto of produtos) {
+    const rota = String(produto.data.route || "").replace(/^\/|\/$/g, "");
+    if (!rota) {
+      throw new Error(
+        `content/produtos/${produto.slug}.md precisa de "route" no frontmatter (ex.: route: "/iphones/").`,
+      );
+    }
+    if (rotasVistas.has(rota)) {
+      throw new Error(`Rota duplicada em content/produtos/: /${rota}/`);
+    }
+    rotasVistas.add(rota);
+    const dir = join(DIST, rota);
     mkdirSync(dir, { recursive: true });
-    writeFileSync(join(dir, "index.html"), renderProductPage(produtos[0], { cssHref }));
+    writeFileSync(join(dir, "index.html"), renderProductPage(produto, { cssHref }));
   }
 }
 
@@ -108,9 +121,12 @@ if (existsSync(PRODUTOS_DIR)) {
 const today = new Date().toISOString().slice(0, 10);
 const urls = [
   { loc: `${SITE_URL}/`, lastmod: today, changefreq: "monthly", priority: "1.0" },
-  ...(produtos.length
-    ? [{ loc: `${SITE_URL}/iphones/`, lastmod: today, changefreq: "weekly", priority: "0.9" }]
-    : []),
+  ...produtos.map((p) => ({
+    loc: `${SITE_URL}/${String(p.data.route).replace(/^\/|\/$/g, "")}/`,
+    lastmod: today,
+    changefreq: "weekly",
+    priority: "0.9",
+  })),
   ...servicos.map((s) => ({
     loc: `${SITE_URL}/conserto/${s.slug}/`,
     lastmod: today,

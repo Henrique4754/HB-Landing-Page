@@ -9,7 +9,7 @@ import { WA, PHONE_TEL, PHONE_DISPLAY } from "../../lib/site";
 
 const LINKS = [
   { href: "#servicos", label: "Serviços" },
-  { href: "/iphones/", label: "Comprar iPhone" },
+  { href: "/iphones/", label: "iPhones" },
   { href: "#por-que", label: "Por que a HB" },
   { href: "#como-funciona", label: "Como funciona" },
   { href: "/blog/", label: "Blog" },
@@ -34,7 +34,7 @@ export function Nav() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="text-sm font-medium text-muted transition-colors hover:text-ink"
+                  className="whitespace-nowrap text-sm font-medium text-muted transition-colors hover:text-ink"
                 >
                   {link.label}
                 </a>
@@ -49,8 +49,13 @@ export function Nav() {
             tem `inline-flex` no base, que venceria o `hidden` na cascata e faria
             os botões transbordarem no mobile. O span não tem display competindo.
           */}
-          {/* Telefone direto — só desktop, pra quem já decidiu ligar */}
-          <span className="hidden lg:inline-flex">
+          {/*
+            Telefone direto — só a partir de xl. Entre lg e xl o menu tem 6
+            itens e não sobra largura pros dois botões; o WhatsApp (CTA
+            primário) tem prioridade, e o telefone segue no rodapé e na barra
+            fixa do mobile.
+          */}
+          <span className="hidden xl:inline-flex">
             <CtaLink
               href={PHONE_TEL}
               variant="secondary"

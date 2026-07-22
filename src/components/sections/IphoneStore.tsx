@@ -72,7 +72,13 @@ export function IphoneStore() {
                 ))}
               </ul>
 
-              <CtaLink href="/iphones/" external={false} className="group w-full sm:w-auto">
+              <CtaLink
+                href="/iphones/"
+                external={false}
+                event="iphone_page_click"
+                location="home_iphone_store"
+                className="group w-full sm:w-auto"
+              >
                 Ver iPhone 17 Pro Max
                 <ArrowRight
                   size={18}
