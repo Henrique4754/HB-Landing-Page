@@ -116,7 +116,6 @@ export function renderProductPage(product, { cssHref }) {
       </div>
 
       <a id="cta-preco" href="${waLink("Olá! Tenho interesse no iPhone 17 Pro Max lacrado.")}" target="_blank" rel="noopener noreferrer" class="glow-cta mt-5 inline-flex min-h-[52px] w-full items-center justify-center rounded-full bg-cta px-6 font-semibold text-cta-ink transition-colors hover:bg-cta-hover sm:w-auto">Ver preço</a>
-      <p class="mt-2.5 text-xs text-muted">Leva direto pro WhatsApp, já com a cor e a capacidade escolhidas.</p>
     </div>
 
     ${destaquesBlock(data.destaques)}
