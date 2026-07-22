@@ -32,6 +32,8 @@ Links usados (confira se ainda estão certos antes de colar):
 - Blog (trocar tela iPhone): `https://www.hbcomercio.com.br/blog/troca-tela-iphone-vale-a-pena/`
 - Blog (computador lento): `https://www.hbcomercio.com.br/blog/computador-lento-o-que-fazer/`
 - Blog (videogame esquentando): `https://www.hbcomercio.com.br/blog/ps4-ps5-superaquecendo/`
+- Venda de iPhone: `https://www.hbcomercio.com.br/iphones/`
+- Deixar avaliação (QR do balcão): `https://www.hbcomercio.com.br/avaliar/`
 
 ---
 
@@ -209,6 +211,51 @@ mostrando a variedade.
 
 ---
 
+## POST 13 — Venda de iPhone (novidade, linha nova)
+
+**Tipo:** Novidade
+**Texto:**
+
+```
+Agora a HB também vende iPhone lacrado. iPhone 17 Pro Max com garantia Apple, nas versões 256GB, 512GB e 1TB. Passa na loja pra conferir o aparelho pessoalmente antes de fechar.
+```
+
+**Foto pra tirar:** o iPhone lacrado na caixa, em cima da sua bancada, com a loja ao fundo.
+Foto real do seu aparelho, não imagem de catálogo da Apple.
+**Botão:** Saiba mais → `https://www.hbcomercio.com.br/iphones/`
+
+---
+
+## POST 14 — Comprar com segurança (confiança, puxa a venda)
+
+**Tipo:** Novidade
+**Texto:**
+
+```
+Comprar iPhone pela internet tem um risco: você só vê o aparelho depois de pagar. Aqui você vem na loja, confere o lacre na sua frente e ainda tem assistência técnica no mesmo lugar depois.
+```
+
+**Foto pra tirar:** você segurando o aparelho lacrado no balcão, mostrando a caixa fechada
+pro cliente. Foto com pessoa converte mais que foto só do produto.
+**Botão:** Saiba mais → `https://www.hbcomercio.com.br/iphones/`
+
+---
+
+## POST 15 — Avaliações (alimenta a máquina de avaliação)
+
+**Tipo:** Novidade
+**Texto:**
+
+```
+Foi atendido aqui e gostou? Deixa uma avaliação pra gente no Google. Leva um minuto e ajuda demais uma loja pequena a aparecer pra mais gente aqui em Campos.
+```
+
+**Foto pra tirar:** o adesivo com o QR no balcão, ou uma print das avaliações que você já
+tem. Ver que outros avaliaram incentiva.
+**Botão:** Saiba mais → `https://www.hbcomercio.com.br/avaliar/`
+
+---
+
 ## Calendário sugerido (12 semanas)
 
 Alterna serviço, educativo e oferta pra não cansar. Quando acabar, recomeça do topo
@@ -216,18 +263,21 @@ Alterna serviço, educativo e oferta pra não cansar. Quando acabar, recomeça d
 
 | Semana | Post | Tema |
 |--------|------|------|
-| 1 | POST 1 | Conserto de celular |
+| 1 | POST 13 | **Novidade: venda de iPhone** |
 | 2 | POST 6 | Educativo: não carrega |
-| 3 | POST 5 | Oferta: orçamento grátis |
-| 4 | POST 2 | Conserto de computador |
+| 3 | POST 1 | Conserto de celular |
+| 4 | POST 14 | **Comprar iPhone com segurança** |
 | 5 | POST 8 | Educativo: tela iPhone |
-| 6 | POST 11 | Acessórios |
-| 7 | POST 3 | Videogame |
+| 6 | POST 2 | Conserto de computador |
+| 7 | POST 15 | **Pedido de avaliação** |
 | 8 | POST 7 | Educativo: caiu na água |
 | 9 | POST 4 | Garantia |
 | 10 | POST 10 | Educativo: PC lento |
-| 11 | POST 12 | Conserta de tudo |
+| 11 | POST 11 | Acessórios |
 | 12 | POST 9 | Educativo: bateria viciada |
+
+Os posts 3 (videogame), 5 (orçamento grátis) e 12 (conserta de tudo) entram no segundo
+ciclo, ou substituem qualquer semana em que faltar foto pros de cima.
 
 ## Dica final
 

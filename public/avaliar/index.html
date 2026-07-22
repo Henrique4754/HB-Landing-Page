@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<!--
+  Página-ponte do QR code do balcão (/avaliar/).
+
+  Por que existe em vez do QR apontar direto pro Google: o link de avaliação
+  do Google é longo e pode mudar. O QR impresso aponta pra cá, então trocar
+  o destino é editar este arquivo, sem reimprimir nada.
+
+  PARA MELHORAR: DESTINO abaixo usa a busca do Maps, que abre a ficha e o
+  cliente ainda precisa tocar em "Avaliar". O ideal é o link direto do
+  formulário, que já abre nas estrelas. Pega ele em:
+  Perfil da Empresa no Google > Pedir avaliações > copiar link
+  (formato https://g.page/r/XXXXXXXX/review) e cola no lugar.
+-->
+<title>Avaliar a HB Assistência Técnica</title>
+<meta name="robots" content="noindex, nofollow" />
+<link rel="icon" href="/favicon.ico?v=2" sizes="any" />
+<meta name="theme-color" content="#070B18" />
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100dvh; display: grid; place-items: center;
+    padding: 24px; background: #070B18; color: #E8ECF8; text-align: center;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  .card { max-width: 380px; }
+  .stars { font-size: 34px; letter-spacing: 4px; }
+  h1 { font-size: 21px; line-height: 1.3; margin: 18px 0 8px; }
+  p { margin: 0; color: #9AA6C4; font-size: 15px; line-height: 1.55; }
+  a.btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 50px; margin-top: 22px; padding: 0 26px; border-radius: 999px;
+    background: #25D366; color: #062012; font-weight: 700; font-size: 16px;
+    text-decoration: none;
+  }
+  small { display: block; margin-top: 16px; color: #6B7699; font-size: 13px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="stars" aria-hidden="true">★★★★★</div>
+    <h1>Obrigado por avaliar a HB!</h1>
+    <p>Estamos te levando pro Google. Leva menos de um minuto e ajuda demais a loja.</p>
+    <a class="btn" id="ir" href="#">Abrir avaliação</a>
+    <small>Não abriu sozinho? Toca no botão acima.</small>
+  </div>
+<script>
+  // Destino único: trocar aqui atualiza o QR impresso sem reimprimir.
+  var DESTINO = "https://www.google.com/maps/search/?api=1&query=HB+Com%C3%A9rcio+Rua+Raul+Cardoso+131+Campos+dos+Goytacazes";
+  document.getElementById("ir").href = DESTINO;
+  // replace() para o botão "voltar" não cair de volta nesta ponte.
+  setTimeout(function () { location.replace(DESTINO); }, 900);
+</script>
+</body>
+</html>

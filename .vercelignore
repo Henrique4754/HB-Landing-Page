@@ -19,3 +19,5 @@ dist
 !/scripts/servicos-template.mjs
 !/scripts/produtos-template.mjs
 PRD-landing-page-HB.md
+# Material de marketing (guias, QR pra impressão): não entra no build nem no site.
+/docs
