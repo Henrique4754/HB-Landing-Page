@@ -16,6 +16,7 @@ import { FinalCTA } from "./components/sections/FinalCTA";
 import { Footer } from "./components/sections/Footer";
 import { MobileActionBar } from "./components/sections/MobileActionBar";
 import { DesktopWhatsAppFab } from "./components/sections/DesktopWhatsAppFab";
+import { ScrollProgress } from "./components/ui/ScrollProgress";
 import { useSmoothScroll } from "./hooks/useSmoothScroll";
 
 export default function App() {
@@ -33,6 +34,7 @@ export default function App() {
       </a>
 
       <Nav />
+      <ScrollProgress />
 
       <main id="conteudo">
         <Hero />

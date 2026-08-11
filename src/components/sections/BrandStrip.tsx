@@ -15,7 +15,8 @@ import {
   type SimpleIcon,
 } from "simple-icons";
 import { Container } from "../ui/Container";
-import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
+import { Marquee } from "../ui/Marquee";
+import { fadeUp, inViewProps } from "../../lib/motion";
 
 // Marcas reais que a HB atende (celular + computador + console). Só entram as
 // que têm logo disponível na lib; a ordem agrupa por categoria.
@@ -43,25 +44,25 @@ export function BrandStrip() {
           <p className="spec-label text-center text-xs text-muted">
             Marcas que a gente conserta
           </p>
-          <motion.ul
-            variants={staggerContainer}
-            {...inViewProps}
-            className="mt-6 flex flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-12"
-          >
-            {BRANDS.map((brand) => (
-              <motion.li key={brand.title} variants={fadeUp}>
+          {/* Rolagem infinita: com 12 marcas a faixa estática ocupava duas
+              linhas quebradas e morria na página. Em movimento ela lê como
+              "atendemos muita marca" e ainda resolve o layout. */}
+          <motion.div variants={fadeUp} {...inViewProps} className="mt-6">
+            <Marquee>
+              {BRANDS.map((brand) => (
                 <svg
+                  key={brand.title}
                   role="img"
                   aria-label={brand.title}
                   viewBox="0 0 24 24"
-                  className="h-6 w-auto fill-muted/70 transition-colors duration-200 hover:fill-ink sm:h-7"
+                  className="h-6 w-auto shrink-0 fill-muted/70 transition-colors duration-200 hover:fill-ink sm:h-7"
                 >
                   <title>{brand.title}</title>
                   <path d={brand.path} />
                 </svg>
-              </motion.li>
-            ))}
-          </motion.ul>
+              ))}
+            </Marquee>
+          </motion.div>
         </div>
       </Container>
     </div>

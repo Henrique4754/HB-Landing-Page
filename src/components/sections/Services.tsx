@@ -13,7 +13,8 @@ import { Container } from "../ui/Container";
 import { Section } from "../ui/Section";
 import { SectionHeading } from "../ui/SectionHeading";
 import { buttonClasses } from "../ui/Button";
-import { fadeUp, inViewProps, staggerContainer } from "../../lib/motion";
+import { cardIn, inViewProps, staggerGrid } from "../../lib/motion";
+import { useTilt } from "../../hooks/useTilt";
 import { WA } from "../../lib/site";
 import { trackConversion } from "../../lib/analytics";
 import { cn } from "../../lib/cn";
@@ -103,49 +104,65 @@ export function Services() {
         />
 
         <motion.div
-          variants={staggerContainer}
+          variants={staggerGrid}
           {...inViewProps}
           className="mt-10 grid grid-cols-2 gap-3 md:mt-12 md:grid-cols-3 md:gap-5"
         >
           {SERVICES.map((s) => (
-            <motion.a
-              key={s.title}
-              href={s.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={() => trackConversion("whatsapp_click", s.location)}
-              variants={fadeUp}
-              className="group flex flex-col items-center rounded-2xl border border-hairline bg-surface p-4 text-center transition-[translate,border-color,box-shadow] duration-300 ease-out-expo will-change-transform hover:-translate-y-1 hover:border-brand/70 hover:shadow-[0_12px_40px_-12px_rgba(37,99,235,0.35)] md:items-start md:p-7 md:text-left"
-            >
-              <span className="grid size-11 place-items-center rounded-xl border border-hairline bg-surface-2 text-brand transition-colors duration-300 ease-out-expo group-hover:border-brand/60 md:size-12">
-                <s.icon size={22} aria-hidden />
-              </span>
-
-              {/* Mobile: rótulo curto. Desktop: título completo. */}
-              <h3 className="mt-3 font-display text-sm font-semibold leading-tight text-ink group-hover:text-brand md:hidden">
-                {s.short}
-              </h3>
-              <h3 className="mt-5 hidden font-display text-xl font-semibold text-ink md:block">
-                {s.title}
-              </h3>
-
-              {/* Detalhes e CTA: só no desktop (no mobile o card todo já é o link). */}
-              <p className="mt-3 hidden flex-1 text-sm leading-relaxed text-muted md:block">
-                {s.body}
-              </p>
-              <span className="mt-6 hidden w-full md:block">
-                <span className={cn(buttonClasses(), "w-full")}>
-                  {s.cta}
-                  <ArrowRight
-                    size={18}
-                    className="transition-transform duration-300 ease-out-expo group-hover:translate-x-0.5"
-                  />
-                </span>
-              </span>
-            </motion.a>
+            <ServiceCard key={s.title} service={s} />
           ))}
         </motion.div>
       </Container>
     </Section>
+  );
+}
+
+/**
+ * Card de serviço. Três camadas de movimento, conforme a skill de motion:
+ *  - primária:   entrada (cardIn) + inclinação 3D seguindo o mouse
+ *  - secundária: sombra que cresce e ícone que sobe junto com o card
+ *  - ambiente:   a borda esquenta pro azul da marca
+ * Nada disso roda no toque nem sob prefers-reduced-motion (ver useTilt).
+ */
+function ServiceCard({ service: s }: { service: Service }) {
+  const tilt = useTilt();
+
+  return (
+    <motion.a
+      href={s.href}
+      target="_blank"
+      rel="noopener noreferrer"
+      onClick={() => trackConversion("whatsapp_click", s.location)}
+      variants={cardIn}
+      style={tilt.style}
+      {...tilt.handlers}
+      className="group flex flex-col items-center rounded-2xl border border-hairline bg-surface p-4 text-center transition-[translate,border-color,box-shadow] duration-300 ease-out-expo will-change-transform hover:-translate-y-1 hover:border-brand/70 hover:shadow-[0_16px_44px_-12px_rgba(37,99,235,0.42)] md:items-start md:p-7 md:text-left"
+    >
+      <span className="grid size-11 place-items-center rounded-xl border border-hairline bg-surface-2 text-brand transition-[transform,border-color,background-color] duration-300 ease-out-expo group-hover:-translate-y-0.5 group-hover:border-brand/60 group-hover:bg-brand/10 md:size-12">
+        <s.icon size={22} aria-hidden />
+      </span>
+
+      {/* Mobile: rótulo curto. Desktop: título completo. */}
+      <h3 className="mt-3 font-display text-sm font-semibold leading-tight text-ink group-hover:text-brand md:hidden">
+        {s.short}
+      </h3>
+      <h3 className="mt-5 hidden font-display text-xl font-semibold text-ink md:block">
+        {s.title}
+      </h3>
+
+      {/* Detalhes e CTA: só no desktop (no mobile o card todo já é o link). */}
+      <p className="mt-3 hidden flex-1 text-sm leading-relaxed text-muted md:block">
+        {s.body}
+      </p>
+      <span className="mt-6 hidden w-full md:block">
+        <span className={cn(buttonClasses(), "w-full")}>
+          {s.cta}
+          <ArrowRight
+            size={18}
+            className="transition-transform duration-300 ease-out-expo group-hover:translate-x-0.5"
+          />
+        </span>
+      </span>
+    </motion.a>
   );
 }

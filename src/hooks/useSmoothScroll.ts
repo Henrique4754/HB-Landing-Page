@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
+import { richMotionQueries } from "../lib/motion-env";
 
 // Compensa a nav fixa ao rolar por âncoras (casa com scroll-padding-top: 5rem).
 const NAV_OFFSET = 80;
@@ -17,8 +18,9 @@ const NAV_OFFSET = 80;
  */
 export function useSmoothScroll() {
   useEffect(() => {
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const finePointer = window.matchMedia("(pointer: fine)");
+    const queries = richMotionQueries();
+    if (!queries) return;
+    const { reduce, finePointer } = queries;
     if (reduce.matches || !finePointer.matches) return;
 
     const lenis = new Lenis({
