@@ -86,7 +86,7 @@ function precosBlock(precos, nota, mesmoDia = true) {
     <div class="mt-5 overflow-hidden rounded-2xl border border-hairline bg-surface/60">
       ${rows}
     </div>
-    <p class="mt-3 text-sm text-muted">Varia conforme o modelo do aparelho. Todo serviço tem orçamento grátis, garantia de 90 dias${mesmoDia ? " e, na maioria dos casos, conserto no mesmo dia" : ""}.</p>
+    <p class="mt-3 text-sm text-muted">Varia conforme o modelo do aparelho. Todo serviço tem orçamento grátis, garantia de 90 dias${mesmoDia ? " e, na maioria dos casos, pronto no mesmo dia" : ""}.</p>
     ${nota ? `<p class="mt-1.5 text-xs text-muted/80">${escapeHtml(nota)}</p>` : ""}
   </section>`;
 }
@@ -202,7 +202,7 @@ export function renderServicePage(service, { cssHref, allBySlug = {} }) {
         : ""
     }
 
-    ${precosBlock(data.precos, data.precoNota, data.precoMesmoDia !== false)}
+    ${precosBlock(data.precos, data.precoNota, data.prontoMesmoDia !== false)}
 
     <article class="article mt-10">${html}</article>
 

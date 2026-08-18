@@ -15,7 +15,7 @@ precos:
     apartirde: "189"
   - servico: "Troca de analógico do controle (TMR)"
     apartirde: "219"
-precoMesmoDia: false
+prontoMesmoDia: false
 precoNota: "Faixa para a troca do analógico (conserto do drift). O tipo de peça você escolhe na avaliação. Demais serviços de console seguem sob orçamento grátis."
 resolvemos:
   - "PlayStation (PS4 e PS5) superaquecendo ou desligando sozinho"
