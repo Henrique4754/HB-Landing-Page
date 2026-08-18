@@ -30,7 +30,7 @@ faq:
     a: "O pagamento é combinado direto no WhatsApp: PIX, cartão ou dinheiro."
   - q: "Por que o preço não aparece na página?"
     a: "O preço muda conforme a cor e a capacidade, e prefiro fechar isso com você no WhatsApp já confirmando disponibilidade e forma de entrega."
-draft: false
+draft: true
 ---
 
 Comprar um iPhone lacrado pela internet tem um risco: você só vê o aparelho depois que já pagou. Aqui é diferente. Você compra de quem tem loja com endereço fixo em Campos dos Goytacazes, pode passar aqui pra conferir o aparelho antes de fechar, e tem assistência técnica própria caso precise de alguma coisa depois.

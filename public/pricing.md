@@ -33,18 +33,9 @@ Sem faixa pública porque o custo varia bastante por modelo e defeito. Em todas,
 | Videogame (PS4, PS5, Xbox, Nintendo) | Sob avaliação grátis | Varia |
 | Contrato empresarial | Sob consulta | Combinado |
 
-## Venda de iPhone
-
-| Produto | Condição | Capacidades | Preço |
-|---|---|---|---|
-| iPhone 17 Pro Max | Lacrado de fábrica, garantia Apple | 256GB, 512GB, 1TB | Informado pelo WhatsApp |
-
-O preço do aparelho varia conforme cor e capacidade, e a disponibilidade da versão é confirmada na hora. Pagamento em PIX, cartão ou dinheiro. Página: https://www.hbcomercio.com.br/iphones/
-
 ## Garantia & condições
 
 - Garantia: 90 dias em todo serviço executado.
-- iPhone lacrado: garantia Apple de fábrica.
 - Prazo: celular costuma ficar pronto no mesmo dia; PC em até 48h.
 - Busca e leva em Campos dos Goytacazes – RJ: taxa conforme a distância, combinada antes pelo WhatsApp.
 - Formas de pagamento: dinheiro, PIX, cartão de crédito e cartão de débito.

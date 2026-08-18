@@ -62,12 +62,6 @@ export function Footer() {
           >
             Blog
           </a>
-          <a
-            href="/iphones/"
-            className="inline-flex items-center gap-2 text-sm text-muted transition-colors hover:text-ink"
-          >
-            Comprar iPhone
-          </a>
         </div>
 
         <div className="flex flex-col gap-3">

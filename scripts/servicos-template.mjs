@@ -70,7 +70,7 @@ function relatedBlock(related = [], allBySlug = {}) {
 }
 
 /** Bloco "Preços de referência" — faixas "a partir de" com moldura de valor. */
-function precosBlock(precos, nota) {
+function precosBlock(precos, nota, mesmoDia = true) {
   if (!Array.isArray(precos) || !precos.length) return "";
   const rows = precos
     .map(
@@ -86,7 +86,7 @@ function precosBlock(precos, nota) {
     <div class="mt-5 overflow-hidden rounded-2xl border border-hairline bg-surface/60">
       ${rows}
     </div>
-    <p class="mt-3 text-sm text-muted">Varia conforme o modelo do aparelho. Todo serviço tem orçamento grátis, garantia de 90 dias e, na maioria dos casos, conserto no mesmo dia.</p>
+    <p class="mt-3 text-sm text-muted">Varia conforme o modelo do aparelho. Todo serviço tem orçamento grátis, garantia de 90 dias${mesmoDia ? " e, na maioria dos casos, conserto no mesmo dia" : ""}.</p>
     ${nota ? `<p class="mt-1.5 text-xs text-muted/80">${escapeHtml(nota)}</p>` : ""}
   </section>`;
 }
@@ -202,7 +202,7 @@ export function renderServicePage(service, { cssHref, allBySlug = {} }) {
         : ""
     }
 
-    ${precosBlock(data.precos, data.precoNota)}
+    ${precosBlock(data.precos, data.precoNota, data.precoMesmoDia !== false)}
 
     <article class="article mt-10">${html}</article>
 

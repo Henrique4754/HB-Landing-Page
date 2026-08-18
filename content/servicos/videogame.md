@@ -8,6 +8,15 @@ keyword: "conserto de videogame campos dos goytacazes"
 intro: "Seu PlayStation, Xbox ou Nintendo está superaquecendo, desligando sozinho, não lendo disco ou nem liga? A HB conserta videogame com orçamento grátis e garantia de 90 dias."
 prazo: "Combinado após avaliação"
 waText: "Olá! Gostaria de um orçamento para o conserto do meu videogame."
+precos:
+  - servico: "Troca de analógico do controle (comum 3D)"
+    apartirde: "169"
+  - servico: "Troca de analógico do controle (Hall Effect)"
+    apartirde: "189"
+  - servico: "Troca de analógico do controle (TMR)"
+    apartirde: "219"
+precoMesmoDia: false
+precoNota: "Faixa para a troca do analógico (conserto do drift). O tipo de peça você escolhe na avaliação. Demais serviços de console seguem sob orçamento grátis."
 resolvemos:
   - "PlayStation (PS4 e PS5) superaquecendo ou desligando sozinho"
   - "Console que não liga ou fica em luz azul/branca piscando"

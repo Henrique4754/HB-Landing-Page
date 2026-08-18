@@ -34,6 +34,26 @@
 
   /* Curvas de animação (enter ease-out expressivo / saída ease-in) */
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /*
+    Papelaria (orçamento, laudo técnico, OS, recibo) — contexto SEPARADO do web.
+    A landing é escura e nasce em tela; o documento é claro e nasce em papel A4.
+    Não misturar: nenhum token `doc-*` deve aparecer nas seções do site, e nenhum
+    token de superfície escura deve aparecer nos componentes de documento.
+    Prefixo `doc-` marca essa fronteira. Hierarquia é peso + cor, nunca moldura.
+  */
+  --color-doc-paper: #ffffff; /* fundo da folha */
+  --color-doc-navy: #1a2a6c; /* título, totais, cabeçalho de tabela */
+  --color-doc-navy-soft: #4a6cb3; /* nome da empresa, rótulos de rodapé */
+  --color-doc-bar: #2b3a8f; /* faixa sólida do topo da folha */
+  --color-doc-accent: #c2185b; /* data de emissão / status */
+  --color-doc-accent-strong: #e91e63; /* valor final / veredicto — máx. 2x por página */
+  --color-doc-warn: #e05252; /* aviso legal miúdo (validade, ressalvas) */
+  --color-doc-slate: #5f7a7a; /* endereço, contato, texto de apoio */
+  --color-doc-amber: #b87333; /* números secundários (qtd, preço unitário) */
+  --color-doc-ink: #1c1c1c; /* corpo de texto, descrições */
+  --color-doc-row: #f1f1f1; /* zebra de linha e blocos de campo aberto */
+  --color-doc-rule: #d9d9d9; /* filete de separação */
 }
 
 @layer base {

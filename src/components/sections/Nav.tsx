@@ -9,7 +9,6 @@ import { WA, PHONE_TEL, PHONE_DISPLAY } from "../../lib/site";
 
 const LINKS = [
   { href: "#servicos", label: "Serviços" },
-  { href: "/iphones/", label: "iPhones" },
   { href: "#por-que", label: "Por que a HB" },
   { href: "#como-funciona", label: "Como funciona" },
   { href: "/blog/", label: "Blog" },
