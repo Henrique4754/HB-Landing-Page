@@ -50,6 +50,10 @@ Antes de achar que o aparelho "morreu", vale checar o conector de carga, que
 acumula sujeira e desgasta com o tempo. Muitas vezes o que parece problema grave se
 resolve na entrada de energia.
 
+Dá pra testar bastante coisa em casa antes de trazer. Se o seu é um Galaxy Tab ou
+outro Android, veja [o que fazer quando o tablet Samsung não liga ou não carrega](/blog/tablet-samsung-nao-liga/).
+Se é iPad, o passo a passo é [este aqui](/blog/ipad-nao-liga-nao-carrega/).
+
 ## Como funciona
 
 1. Chame no WhatsApp e descreva o problema do tablet ou iPad (pode mandar foto).

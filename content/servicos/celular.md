@@ -53,13 +53,22 @@ empurrar serviço: se não valer a pena, a gente fala.
 
 Celular que desliga com 30%, esquenta ou só dura até o meio da tarde quase sempre é
 bateria viciada, não defeito grave. A troca é um dos serviços mais rápidos e
-costuma devolver o fôlego do aparelho no mesmo dia.
+costuma devolver o fôlego do aparelho no mesmo dia. Veja
+[os sinais de bateria viciada](/blog/bateria-celular-viciada/) para saber se é o seu caso.
 
 ## Caiu na água? Cada minuto conta
 
-Se o celular molhou, **não tente carregar nem ligar** para testar — é assim que o
+Se o celular molhou, **não tente carregar nem ligar** para testar, é assim que o
 estrago aumenta. Desligue e traga o quanto antes. Quanto mais rápido a gente faz a
 limpeza dos contatos, maior a chance de recuperar o aparelho sem perder seus dados.
+Se acabou de acontecer, veja [o que fazer nos primeiros minutos](/blog/celular-caiu-na-agua/).
+
+## Som abafado, não carrega e outros defeitos comuns
+
+Nem todo problema pede peça cara. Som baixo ou abafado costuma ser só
+[sujeira no alto-falante](/blog/alto-falante-celular-sem-som/), e quando o celular
+[não carrega](/blog/celular-nao-carrega/) muitas vezes é o cabo ou o conector, não a
+placa. A gente testa e te diz o que é antes de passar qualquer orçamento.
 
 ## Como funciona o atendimento
 

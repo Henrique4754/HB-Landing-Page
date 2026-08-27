@@ -55,4 +55,5 @@ devolve o computador pronto para usar — sem você perder nada.
 
 PC ou notebook que esquenta muito e desliga sozinho costuma estar com a ventilação
 entupida de poeira e a pasta térmica ressecada. A limpeza interna com troca de
-pasta resolve a maioria desses casos e prolonga a vida do aparelho.
+pasta resolve a maioria desses casos e prolonga a vida do aparelho. Se o notebook
+nem liga, veja [o que testar antes de levar pro conserto](/blog/notebook-nao-liga/).

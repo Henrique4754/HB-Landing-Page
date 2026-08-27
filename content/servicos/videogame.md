@@ -59,8 +59,8 @@ reparo.
 ## Controle com drift tem conserto
 
 Analógico que anda sozinho na tela (o famoso *drift*) é um dos defeitos mais
-comuns de controle de PS4, PS5 e Xbox — e tem solução. Não precisa comprar
-controle novo antes de avaliar.
+comuns de controle de PS4, PS5 e Xbox, e tem solução. Não precisa comprar
+controle novo antes de avaliar. Entenda [por que o analógico anda sozinho e os tipos de reparo](/blog/controle-drift-analogico-andando-sozinho/), incluindo o upgrade Hall Effect e TMR.
 
 ## Como funciona
 

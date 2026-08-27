@@ -158,6 +158,14 @@ export function head({ title, description, canonical, ogImage, cssHref, jsonLd, 
   <meta property="og:image" content="${img}" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:image" content="${img}" />
+  <!-- Google tag (gtag.js) — GA4 property G-HBW47T6RM0 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBW47T6RM0"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-HBW47T6RM0');
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet" />

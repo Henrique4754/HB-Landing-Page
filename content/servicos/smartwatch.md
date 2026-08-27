@@ -46,7 +46,8 @@ aparelho funcionando como antes.
 
 Relógio que não passa o dia, desliga sozinho ou não encaixa direito no carregador
 quase sempre é bateria viciada ou contato de carga. São reparos que costumam
-devolver o relógio ao normal.
+devolver o relógio ao normal. Se o seu não liga ou não carrega, veja
+[o que pode ser e o que dá pra testar em casa](/blog/apple-watch-nao-liga-nao-carrega/).
 
 ## Como funciona
 
